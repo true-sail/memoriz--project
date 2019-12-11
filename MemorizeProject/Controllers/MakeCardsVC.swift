@@ -11,12 +11,12 @@ import UIKit
 import RealmSwift
 
 class MakeCardsVC: UIViewController {
-
-  
  
     @IBOutlet weak var textViewQ: UITextView!
     
     @IBOutlet weak var textViewA: UITextView!
+    
+    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,56 @@ class MakeCardsVC: UIViewController {
        
     }
 
+    // 作成ボタンを押した時にカードをRealmに追加するメソッド
+    fileprivate func makeNewCards() {
+        // Realmに接続
+        let realm = try! Realm()
+        
+        // Realmデータベースファイルまでのパスを表示
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        // QとAをRealmに登録
+        let card = Card() // インスタンス化(Cardクラスをもとに作成)
+        card.Q = textViewQ.text
+        card.A = textViewA.text
+        //        card.date = Date() // Date() : 現在の日付を入れる
+        
+        // 現在あるidの最大値+1の値を取得(AutoIncrement)
+        let id = (realm.objects(Card.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        card.id = id
+        
+        //Realmに新規カードを書き込む(追加)
+        try! realm.write {
+            realm.add(card)
+        }
+    }
+    
+    @IBAction func didClickButton(_ sender: UIButton) {
+        
+        // カードをRealmに追加
+        makeNewCards()
+                
+        // 「登録しました」と表示してtextViewを空にする
+        textViewQ.text = ""
+        textViewA.text = ""
+        
+    }
+  
+    
+//    // スイッチを押した時
+//    @IBAction func didSwitchButton(_ sender: UISwitch) {
+//        // オンの場合
+//        if sender.isOn {
+//            print("オンです")
+//        } else {
+//        // オフの場合
+//            print("オフです")
+//
+//        }
+//    }
+    
+  
+    
 }
 
 // placeholderを使えるように拡張

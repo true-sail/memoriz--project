@@ -14,6 +14,9 @@
 		174EC904239E97580075B28F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174EC902239E97580075B28F /* LaunchScreen.storyboard */; };
 		174EC90C239E97B40075B28F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 174EC90B239E97B40075B28F /* GoogleService-Info.plist */; };
 		174EC90F239E9FDD0075B28F /* MakeCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */; };
+		17F9337023A0F2850015E2D6 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9336F23A0F2850015E2D6 /* CategoryVC.swift */; };
+		17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9337123A0F5550015E2D6 /* SearchVC.swift */; };
+		17F9337723A0FAC60015E2D6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9337623A0FAC60015E2D6 /* Card.swift */; };
 		CFE0D521A3723815B368223F /* Pods_MemorizeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6843D2D2903C525206E65A5A /* Pods_MemorizeProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		174EC905239E97580075B28F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174EC90B239E97B40075B28F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCardsVC.swift; sourceTree = "<group>"; };
+		17F9336F23A0F2850015E2D6 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		17F9337123A0F5550015E2D6 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		17F9337623A0FAC60015E2D6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		27F33BCA7C3FDF91937DC579 /* Pods-MemorizeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemorizeProject.debug.xcconfig"; path = "Target Support Files/Pods-MemorizeProject/Pods-MemorizeProject.debug.xcconfig"; sourceTree = "<group>"; };
 		6843D2D2903C525206E65A5A /* Pods_MemorizeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemorizeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4831EDD33AE186868620D7C /* Pods-MemorizeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemorizeProject.release.xcconfig"; path = "Target Support Files/Pods-MemorizeProject/Pods-MemorizeProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 		174EC8F6239E97560075B28F /* MemorizeProject */ = {
 			isa = PBXGroup;
 			children = (
+				17F9337323A0F7020015E2D6 /* Objects */,
 				174EC90D239E9FC00075B28F /* Controllers */,
 				174EC8F7239E97560075B28F /* AppDelegate.swift */,
 				174EC8F9239E97560075B28F /* SceneDelegate.swift */,
@@ -81,8 +88,18 @@
 			isa = PBXGroup;
 			children = (
 				174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */,
+				17F9336F23A0F2850015E2D6 /* CategoryVC.swift */,
+				17F9337123A0F5550015E2D6 /* SearchVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		17F9337323A0F7020015E2D6 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				17F9337623A0FAC60015E2D6 /* Card.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		3EED4C70AD96AA32E1AC9890 /* Pods */ = {
@@ -219,7 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				174EC90F239E9FDD0075B28F /* MakeCardsVC.swift in Sources */,
+				17F9337723A0FAC60015E2D6 /* Card.swift in Sources */,
+				17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */,
 				174EC8F8239E97560075B28F /* AppDelegate.swift in Sources */,
+				17F9337023A0F2850015E2D6 /* CategoryVC.swift in Sources */,
 				174EC8FA239E97560075B28F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
