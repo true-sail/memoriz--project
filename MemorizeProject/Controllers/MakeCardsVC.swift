@@ -46,11 +46,14 @@ class MakeCardsVC: UIViewController {
         // Realmデータベースファイルまでのパスを表示
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
+        
         // QとAをRealmに登録
-        let card = Card() // インスタンス化(Cardクラスをもとに作成)
+        var card = Card()
+        
+        // インスタンス化(Cardクラスをもとに作成)
         card.Q = textViewQ.text
         card.A = textViewA.text
-        //        card.date = Date() // Date() : 現在の日付を入れる
+        card.date = Date() // Date() : 現在の日付を入れる
         
         // 現在あるidの最大値+1の値を取得(AutoIncrement)
         let id = (realm.objects(Card.self).max(ofProperty: "id") as Int? ?? 0) + 1
@@ -62,29 +65,45 @@ class MakeCardsVC: UIViewController {
         }
     }
     
+    // 作成ボタンを押した時の処理
     @IBAction func didClickButton(_ sender: UIButton) {
         
         // カードをRealmに追加
         makeNewCards()
+        
+        // シェア
+        if didCheckSwitch == true {
+            // スイッチがオンの時
+            print("shareします")
+        } else {
+            // スイッチがオフの時
+            print("shareしません")
+            
+        }
                 
         // 「登録しました」と表示してtextViewを空にする
         textViewQ.text = ""
         textViewA.text = ""
         
+    
     }
   
     
-//    // スイッチを押した時
-//    @IBAction func didSwitchButton(_ sender: UISwitch) {
-//        // オンの場合
-//        if sender.isOn {
-//            print("オンです")
-//        } else {
-//        // オフの場合
-//            print("オフです")
-//
-//        }
-//    }
+    // スイッチを押した時
+
+    @IBAction func didSwitchButton(_ sender: UISwitch) {
+    
+        if sender.isOn {
+        // オンの場合
+            didCheckSwitch = true
+            print("オンです")
+        } else {
+        // オフの場合
+            didCheckSwitch = false
+            print("オフです")
+
+        }
+    }
     
   
     

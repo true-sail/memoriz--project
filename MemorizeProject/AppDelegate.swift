@@ -11,6 +11,8 @@ import UIKit
 import Firebase
 import IQKeyboardManagerSwift
 
+// スイッチの状態確認
+var didCheckSwitch = true
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
