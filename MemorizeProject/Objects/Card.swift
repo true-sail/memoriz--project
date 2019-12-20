@@ -9,7 +9,11 @@
 import Foundation
 import RealmSwift
 
-
+//struct Card {
+//    let Q: String
+//    let A: String
+//
+//}
 
 class Card: Object {
     // データを管理するテーブルの作成
@@ -22,6 +26,9 @@ class Card: Object {
 
     // カードの解答
     @objc dynamic var A: String = ""
+    
+    // カードのカテゴリ
+    @objc dynamic var category: String = ""
 
     // カードの作成日
     @objc dynamic var date: Date = Date()

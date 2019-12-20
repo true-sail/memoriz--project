@@ -11,16 +11,18 @@ import UIKit
 import RealmSwift
 
 class MakeCardsVC: UIViewController {
+    
+    // 編集する時に飛んでくる値を受け取る
+    var card: Card? = nil
  
     @IBOutlet weak var textViewQ: UITextView!
     
     @IBOutlet weak var textViewA: UITextView!
-    
+   
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         textViewQ.text = "問題"
         textViewQ.textColor = UIColor.lightGray
@@ -37,22 +39,34 @@ class MakeCardsVC: UIViewController {
         textViewA.layer.borderColor = UIColor.lightGray.cgColor
        
     }
+    
+    // カードを編集するためのメソッド
+    fileprivate func updateCard(newQ: String, newA: String, newCategory: String, card: Card) {
+        let realm = try! Realm()
+        try! realm.write {
+            card.Q = newQ
+            card.A = newA
+            card.category = newCategory
+        }
+    }
 
     // 作成ボタンを押した時にカードをRealmに追加するメソッド
-    fileprivate func makeNewCards() {
+    fileprivate func makeNewCards(_ inputQ: String, _ inputA: String, _ inputCategory: String) {
+        
         // Realmに接続
         let realm = try! Realm()
         
         // Realmデータベースファイルまでのパスを表示
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
+        print("-------------------------------------------------")
         
         // QとAをRealmに登録
         var card = Card()
         
         // インスタンス化(Cardクラスをもとに作成)
-        card.Q = textViewQ.text
-        card.A = textViewA.text
+        card.Q = inputQ
+        card.A = inputA
+        card.category = inputCategory
         card.date = Date() // Date() : 現在の日付を入れる
         
         // 現在あるidの最大値+1の値を取得(AutoIncrement)
@@ -65,32 +79,56 @@ class MakeCardsVC: UIViewController {
         }
     }
     
-    // 作成ボタンを押した時の処理
+    
     @IBAction func didClickButton(_ sender: UIButton) {
         
-        // カードをRealmに追加
-        makeNewCards()
-        
-        // シェア
-        if didCheckSwitch == true {
-            // スイッチがオンの時
-            print("shareします")
-        } else {
-            // スイッチがオフの時
-            print("shareしません")
-            
+        // textViewQがnilの場合
+        guard let inputQ = textViewQ.text else {
+            // return:このメソッド(didClickButton)を中断する
+            return
         }
-                
-        // 「登録しました」と表示してtextViewを空にする
-        textViewQ.text = ""
-        textViewA.text = ""
         
-    
+        // textViewQが空の場合
+        if inputQ.isEmpty {
+            return
+        }
+        
+        // textViewAがnilの場合
+        guard let inputA = textViewA.text else {
+            return
+        }
+        
+        // textViewAが空の場合
+        if inputA.isEmpty {
+            return
+        }
+        
+        // textFieldがnilの場合
+        guard let inputCategory = textField.text else {
+            return
+        }
+        
+        // inputCategoryが空の場合
+        if inputCategory.isEmpty {
+            return
+        }
+        
+        if let c = card {
+            // 変数cardがnilでない場合
+            // 更新する場合
+            updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, card: c)
+        } else {
+            // 変数cardがnilの場合
+            // 新規作成の場合
+            makeNewCards(inputQ, inputA, inputCategory)
+        }
+        
+        
+        
     }
-  
+    
     
     // スイッチを押した時
-
     @IBAction func didSwitchButton(_ sender: UISwitch) {
     
         if sender.isOn {
@@ -159,4 +197,7 @@ extension MakeCardsVC: UITextViewDelegate {
             }
         }
     }
+    
+
+    
 }
