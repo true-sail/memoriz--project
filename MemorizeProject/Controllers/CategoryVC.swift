@@ -14,7 +14,14 @@ class CategoryVC: UIViewController {
     // カードの一覧を持つ配列
     var cards: [Card] = [] {
         // cardsが書き換えられた時に実行
-        didSet{
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var categories: [String] = [] {
+        // cardsが書き換えられた時に実行
+        didSet {
             collectionView.reloadData()
         }
     }
@@ -23,13 +30,15 @@ class CategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // おまじない
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
     // 画面を表示した時に毎回実行される
     override func viewWillAppear(_ animated: Bool) {
+        
         // Realmに接続
         let realm = try! Realm()
         
@@ -37,7 +46,12 @@ class CategoryVC: UIViewController {
         // realm.objects(クラス名.self) : Realmから同じクラスの全データを取得
         cards = realm.objects(Card.self).reversed()
         
-        
+        for card in cards {
+            let category = card.category
+            if !categories.contains(category) {
+                self.categories.append(category)
+            }
+        }
     }
 
 
@@ -46,7 +60,8 @@ class CategoryVC: UIViewController {
 extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // collectionViewに表示するセルの数
-        cards.count
+//        cards.count
+        return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,12 +73,33 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         // セルの中のlabelをタグ番号で取得し、文字の設定をする。
         let label = cell.viewWithTag(1) as! UILabel
         
-        label.text = "Hello World"
+//        let card = cards[indexPath.row]
+//        label.text = card.category
+        
+        let selectedCategory = categories[indexPath.row]
+        label.text = selectedCategory
         
         return cell
         
     }
     
+    // collectionViewのcellがクリックされたときの処理
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCategory = categories[indexPath.row]
+        
+        performSegue(withIdentifier: "toCard", sender: selectedCategory)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toCard" {
+            
+            let CardVC = segue.destination as! CardVC
+            
+            CardVC.selectedCategory = sender as! String
+        }
+    }
     
 }
 

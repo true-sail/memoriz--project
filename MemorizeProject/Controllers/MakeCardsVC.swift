@@ -13,7 +13,7 @@ import RealmSwift
 class MakeCardsVC: UIViewController {
     
     // 編集する時に飛んでくる値を受け取る
-    var card: Card? = nil
+    var createdCard: Card? = nil
  
     @IBOutlet weak var textViewQ: UITextView!
     
@@ -41,12 +41,12 @@ class MakeCardsVC: UIViewController {
     }
     
     // カードを編集するためのメソッド
-    fileprivate func updateCard(newQ: String, newA: String, newCategory: String, card: Card) {
+    fileprivate func updateCard(newQ: String, newA: String, newCategory: String, createdCard: Card) {
         let realm = try! Realm()
         try! realm.write {
-            card.Q = newQ
-            card.A = newA
-            card.category = newCategory
+            createdCard.Q = newQ
+            createdCard.A = newA
+            createdCard.category = newCategory
         }
     }
 
@@ -61,21 +61,21 @@ class MakeCardsVC: UIViewController {
         print("-------------------------------------------------")
         
         // QとAをRealmに登録
-        var card = Card()
+        var createdCard = Card()
         
         // インスタンス化(Cardクラスをもとに作成)
-        card.Q = inputQ
-        card.A = inputA
-        card.category = inputCategory
-        card.date = Date() // Date() : 現在の日付を入れる
+        createdCard.Q = inputQ
+        createdCard.A = inputA
+        createdCard.category = inputCategory
+        createdCard.date = Date() // Date() : 現在の日付を入れる
         
         // 現在あるidの最大値+1の値を取得(AutoIncrement)
         let id = (realm.objects(Card.self).max(ofProperty: "id") as Int? ?? 0) + 1
-        card.id = id
+        createdCard.id = id
         
         //Realmに新規カードを書き込む(追加)
         try! realm.write {
-            realm.add(card)
+            realm.add(createdCard)
         }
     }
     
@@ -113,18 +113,20 @@ class MakeCardsVC: UIViewController {
             return
         }
         
-        if let c = card {
+        if let c = createdCard {
             // 変数cardがnilでない場合
             // 更新する場合
-            updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, card: c)
+            updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, createdCard: c)
         } else {
             // 変数cardがnilの場合
             // 新規作成の場合
             makeNewCards(inputQ, inputA, inputCategory)
         }
         
-        
-        
+        textViewQ.text = "問題"
+        textViewQ.textColor = UIColor.lightGray
+        textViewA.text = "解答"
+        textViewA.textColor = UIColor.lightGray
     }
     
     
