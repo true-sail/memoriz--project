@@ -13,7 +13,7 @@ import RealmSwift
 class MakeCardsVC: UIViewController {
     
     // 編集する時に飛んでくる値を受け取る
-    var createdCard: Card? = nil
+    var editCard: Card? = nil
  
     @IBOutlet weak var textViewQ: UITextView!
     
@@ -21,25 +21,46 @@ class MakeCardsVC: UIViewController {
    
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
-        textViewQ.text = "問題"
-        textViewQ.textColor = UIColor.lightGray
-        textViewA.text = "解答"
-        textViewA.textColor = UIColor.lightGray
-        
+        // おまじない
         textViewQ.delegate = self
         textViewA.delegate = self
     
         // textViewQの枠線
         textViewQ.layer.borderWidth = 1
         textViewQ.layer.borderColor = UIColor.lightGray.cgColor
+        
+        // textViewAの枠線
         textViewA.layer.borderWidth = 1
         textViewA.layer.borderColor = UIColor.lightGray.cgColor
+        
+        // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
+        if let e = editCard {
+            // nilの場合（編集の場合）
+            // 編集内容を表示
+            textViewQ.text = e.Q
+            textViewA.text = e.A
+            textField.text = e.category
+            button.setTitle("変更", for: .normal)
+            
+        } else {
+            // nilでない場合（作成の場合）
+            // textViewQ,textViewAにplaceholderを表示
+            textViewQ.text = "問題"
+            textViewQ.textColor = UIColor.lightGray
+            textViewA.text = "解答"
+            textViewA.textColor = UIColor.lightGray
+            
+            // buttonの文字を「作成」にする
+            button.setTitle("作成", for: .normal)
+        }
         
     }
     
@@ -116,7 +137,7 @@ class MakeCardsVC: UIViewController {
             return
         }
         
-        if let c = createdCard {
+        if let c = editCard {
             // 変数cardがnilでない場合
             // 更新する場合
             updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, createdCard: c)

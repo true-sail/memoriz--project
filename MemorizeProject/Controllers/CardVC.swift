@@ -15,7 +15,7 @@ class CardVC: UIViewController {
     var selectedCategory = ""
 
     // 飛んできたカテゴリのカードのための箱
-    var categorizedCards: [String] = [] {
+    var categorizedCards: [Card] = [] {
         // categorizedCardsが書き換えられた時に実行
         didSet {
             tableView.reloadData()
@@ -34,24 +34,34 @@ class CardVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+
     }
     
     // 画面を表示した時に毎回実行される
     override func viewWillAppear(_ animated: Bool) {
-        print(selectedCategory)
+          print(selectedCategory)
+        
         // Realmに接続
         let realm = try! Realm()
         
         // realmから選択されたカテゴリのカードを取得
         let cards = realm.objects(Card.self).filter("category == '\(selectedCategory)'")
         
+        // 配列results
+        var results: [Card] = []
+        
+        // 配列resultsにcardを追加
         for card in cards {
-            categorizedCards.append(card.Q)
+            results.append(card)
         }
+        
+        // categorizedCardsにresultsを代入
+        categorizedCards = results
     }
 }
 
 extension CardVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categorizedCards.count
     }
@@ -62,11 +72,26 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let categorizedCard = categorizedCards[indexPath.row]
-        cell.textLabel?.text = categorizedCard
+        cell.textLabel?.text = categorizedCard.Q
         
         return cell
         
     }
     
+    // セルを選択したときの処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let editCard = categorizedCards[indexPath.row]
+        
+        performSegue(withIdentifier: "toEdit", sender: editCard)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toEdit" {
+            
+            let MakeCardsVC = segue.destination as! MakeCardsVC
+            
+            MakeCardsVC.editCard = sender as? Card        }
+    }
 }
