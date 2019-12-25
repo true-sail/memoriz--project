@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jsl-ew-cJV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ids-fl-vr2">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -78,20 +78,35 @@
                                 </connections>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" red="0.81652247905731201" green="0.92131751775741577" blue="0.61721491813659668" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="tng-YK-NDE"/>
                     <connections>
                         <outlet property="textField" destination="xXR-VR-3Yy" id="a22-p7-AQW"/>
                         <outlet property="textViewA" destination="czo-4b-cWT" id="4WK-a4-fIC"/>
                         <outlet property="textViewQ" destination="7oJ-88-UFE" id="lnu-Bv-BCR"/>
-                        <segue destination="Jsl-ew-cJV" kind="modal" identifier="toCategory" modalPresentationStyle="fullScreen" id="LOA-PE-6Z7"/>
-                        <segue destination="We8-99-hP4" kind="modal" identifier="toSearch" modalPresentationStyle="fullScreen" id="FgB-VR-P4I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-257.97101449275362" y="15.401785714285714"/>
+            <point key="canvasLocation" x="3381.1594202898555" y="15.401785714285714"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fhk-BF-NV5">
+            <objects>
+                <viewController id="qlI-0h-APs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eVv-Uy-zYa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="EhO-za-lxb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FfO-E6-9be"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gk-eK-oCH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5134.7826086956529" y="562.5"/>
         </scene>
         <!--SearchVC-->
         <scene sceneID="UMf-Ok-qpc">
@@ -127,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMq-Kt-JAx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.52173913043487" y="501.5625"/>
+            <point key="canvasLocation" x="2297" y="1133"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="JoZ-dZ-rWJ">
@@ -161,7 +176,13 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCd-si-nFT">
+                                                    <rect key="frame" x="8" y="85" width="123" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </collectionViewCellContentView>
@@ -177,12 +198,12 @@
                     <navigationItem key="navigationItem" id="6hy-d4-n5I"/>
                     <connections>
                         <outlet property="collectionView" destination="Ab0-8w-cdr" id="f3e-1h-Msu"/>
-                        <segue destination="uci-Ji-wl6" kind="modal" identifier="toCard" modalPresentationStyle="fullScreen" id="fi9-xK-gl5"/>
+                        <segue destination="uci-Ji-wl6" kind="show" identifier="toCard" id="yyR-Ip-BOO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xoy-oL-UaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.52173913043487" y="-300"/>
+            <point key="canvasLocation" x="5135" y="-544"/>
         </scene>
         <!--CardVC-->
         <scene sceneID="44i-jn-3Rq">
@@ -218,7 +239,88 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeA-Vf-dqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1500.0000000000002" y="-300"/>
+            <point key="canvasLocation" x="6174" y="-544"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="DFx-yR-SNt">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ids-fl-vr2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nsh-wJ-HDd">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="kac-HF-82e" kind="relationship" relationship="viewControllers" id="z4r-EL-aPH"/>
+                        <segue destination="Ry3-Kh-bSf" kind="relationship" relationship="viewControllers" id="S32-eU-mmw"/>
+                        <segue destination="1FR-Ob-rNt" kind="relationship" relationship="viewControllers" id="6mO-bx-CSa"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Bd-5U-ZCS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="15"/>
+        </scene>
+        <!--カード-->
+        <scene sceneID="eUz-XJ-Vgr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kac-HF-82e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="カード" image="rectangle.on.rectangle.angled" catalog="system" id="7d8-rC-soh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DGr-ko-iw7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jsl-ew-cJV" kind="relationship" relationship="rootViewController" id="FiP-bB-tZn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ikQ-SG-l2T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4225" y="-544"/>
+        </scene>
+        <!--作成-->
+        <scene sceneID="nCN-9a-iPG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ry3-Kh-bSf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="作成" image="plus.square" catalog="system" id="xeP-EQ-jLt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FOH-rC-BpE">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gaU-3S-kY5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1g-Oh-sdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2471.0144927536235" y="15.401785714285714"/>
+        </scene>
+        <!--学習-->
+        <scene sceneID="LPO-4s-fa3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1FR-Ob-rNt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="学習" image="book" catalog="system" id="FON-3M-368"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rz3-aT-Cf8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qlI-0h-APs" kind="relationship" relationship="rootViewController" id="jiX-I6-RfB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d61-RO-smj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4224.6376811594209" y="562.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book" catalog="system" width="64" height="50"/>
+        <image name="plus.square" catalog="system" width="64" height="56"/>
+        <image name="rectangle.on.rectangle.angled" catalog="system" width="64" height="50"/>
+    </resources>
 </document>

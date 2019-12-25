@@ -24,6 +24,9 @@ class MakeCardsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // navbarの色設定
+        navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
+        
         textViewQ.text = "問題"
         textViewQ.textColor = UIColor.lightGray
         textViewA.text = "解答"
@@ -37,7 +40,7 @@ class MakeCardsVC: UIViewController {
         textViewQ.layer.borderColor = UIColor.lightGray.cgColor
         textViewA.layer.borderWidth = 1
         textViewA.layer.borderColor = UIColor.lightGray.cgColor
-       
+        
     }
     
     // カードを編集するためのメソッド

@@ -12,13 +12,14 @@ import RealmSwift
 class CategoryVC: UIViewController {
     
     // カードの一覧を持つ配列
-    var cards: [Card] = [] {
+    var createdCards: [Card] = [] {
         // cardsが書き換えられた時に実行
         didSet {
             collectionView.reloadData()
         }
     }
     
+    // 全カテゴリの配列
     var categories: [String] = [] {
         // cardsが書き換えられた時に実行
         didSet {
@@ -26,14 +27,21 @@ class CategoryVC: UIViewController {
         }
     }
     
+    // そのカテゴリのカードが何枚あるか数えるための変数
+//    var cardCount = 0
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // navbarの色設定
+        navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
+        
         // おまじない
         collectionView.dataSource = self
         collectionView.delegate = self
+    
     }
     
     // 画面を表示した時に毎回実行される
@@ -44,10 +52,13 @@ class CategoryVC: UIViewController {
         
         // realmからcardの一覧を取得
         // realm.objects(クラス名.self) : Realmから同じクラスの全データを取得
-        cards = realm.objects(Card.self).reversed()
+        createdCards = realm.objects(Card.self).reversed()
         
-        for card in cards {
-            let category = card.category
+        for createdCard in createdCards {
+            
+            
+            let category = createdCard.category
+            
             if !categories.contains(category) {
                 self.categories.append(category)
             }
@@ -73,11 +84,13 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         // セルの中のlabelをタグ番号で取得し、文字の設定をする。
         let label = cell.viewWithTag(1) as! UILabel
         
-//        let card = cards[indexPath.row]
-//        label.text = card.category
+//        let numberLabel = cell.viewWithTag(2) as! UILabel
         
         let selectedCategory = categories[indexPath.row]
+        
         label.text = selectedCategory
+        
+//        numberLabel.text = "全\(cardCount)枚"
         
         return cell
         
