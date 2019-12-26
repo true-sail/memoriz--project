@@ -138,9 +138,15 @@ class MakeCardsVC: UIViewController {
         }
         
         if let c = editCard {
-            // 変数cardがnilでない場合
+            // 変数editCardがnilでない場合
             // 更新する場合
             updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, createdCard: c)
+            
+            let selectedCategory = editCard?.category
+            
+            // CardVCに戻る
+            performSegue(withIdentifier: "backToCard", sender: selectedCategory)
+            
         } else {
             // 変数cardがnilの場合
             // 新規作成の場合
@@ -151,6 +157,16 @@ class MakeCardsVC: UIViewController {
         textViewQ.textColor = UIColor.lightGray
         textViewA.text = "解答"
         textViewA.textColor = UIColor.lightGray
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "backToCard" {
+            
+            let CardVC = segue.destination as! CardVC
+            
+            CardVC.selectedCategory = sender as! String
+        }
     }
     
     

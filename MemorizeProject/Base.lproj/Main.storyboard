@@ -87,6 +87,7 @@
                         <outlet property="textField" destination="xXR-VR-3Yy" id="a22-p7-AQW"/>
                         <outlet property="textViewA" destination="czo-4b-cWT" id="4WK-a4-fIC"/>
                         <outlet property="textViewQ" destination="7oJ-88-UFE" id="lnu-Bv-BCR"/>
+                        <segue destination="uci-Ji-wl6" kind="modal" identifier="backToCard" modalPresentationStyle="fullScreen" id="SCL-Bn-RWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,7 +237,7 @@
                     <navigationItem key="navigationItem" id="mpK-9q-fY0"/>
                     <connections>
                         <outlet property="tableView" destination="iLr-LT-Ni0" id="m0D-x9-I9Y"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toEdit" id="DpV-aL-eHs"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="toEdit" modalPresentationStyle="fullScreen" id="DpV-aL-eHs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeA-Vf-dqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -326,6 +327,7 @@
         <image name="rectangle.on.rectangle.angled" catalog="system" width="64" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SCL-Bn-RWe"/>
         <segue reference="DpV-aL-eHs"/>
     </inferredMetricsTieBreakers>
 </document>
