@@ -15,6 +15,8 @@ class MakeCardsVC: UIViewController {
     // 編集する時に飛んでくる値を受け取る
     var editCard: Card? = nil
  
+    @IBOutlet weak var label: UILabel!
+    
     @IBOutlet weak var textViewQ: UITextView!
     
     @IBOutlet weak var textViewA: UITextView!
@@ -44,6 +46,10 @@ class MakeCardsVC: UIViewController {
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
             // nilの場合（編集の場合）
+            
+            // labelに「編集」と表示
+            label.text = "編集"
+            
             // 編集内容を表示
             textViewQ.text = e.Q
             textViewA.text = e.A
@@ -52,6 +58,10 @@ class MakeCardsVC: UIViewController {
             
         } else {
             // nilでない場合（作成の場合）
+            
+            // labelに「今日学んだこと」と表示
+            label.text = "今日学んだこと"
+            
             // textViewQ,textViewAにplaceholderを表示
             textViewQ.text = "問題"
             textViewQ.textColor = UIColor.lightGray
