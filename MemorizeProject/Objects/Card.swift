@@ -34,3 +34,14 @@ class Card: Object {
     @objc dynamic var date: Date = Date()
 
 }
+
+struct Card2 {
+    
+    let Q : String
+    
+    let A : String
+    
+    let category : String
+    
+    let documentId : String
+}

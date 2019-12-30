@@ -9,6 +9,7 @@
 import UIKit
 // 読み込み
 import RealmSwift
+import Firebase
 
 class MakeCardsVC: UIViewController {
     
@@ -95,7 +96,7 @@ class MakeCardsVC: UIViewController {
         print("-------------------------------------------------")
         
         // QとAをRealmに登録
-        var createdCard = Card()
+        let createdCard = Card()
         
         // インスタンス化(Cardクラスをもとに作成)
         createdCard.Q = inputQ
@@ -163,6 +164,26 @@ class MakeCardsVC: UIViewController {
             makeNewCards(inputQ, inputA, inputCategory)
         }
         
+        // スイッチがオンの状態の時、databaseに接続
+        if didCheckSwitch == true {
+            
+            // firebaseに接続
+            let db = Firestore.firestore()
+                 print("on")
+            
+            db.collection("cards").addDocument(data: ["Q": textViewQ.text!, "A": textViewA.text!, "category": textField.text!, "createdAt": FieldValue.serverTimestamp()
+            ]) { error in
+                if let err = error {
+                    // エラーが発生した場合、エラー情報を表示
+                    print(err.localizedDescription)
+                } else {
+                    // エラーがない場合
+                    print("カードをシェアしました")
+                }
+            }
+        }
+        
+        // textViewを最初の状態に戻す
         textViewQ.text = "問題"
         textViewQ.textColor = UIColor.lightGray
         textViewA.text = "解答"
@@ -191,8 +212,9 @@ class MakeCardsVC: UIViewController {
         // オフの場合
             didCheckSwitch = false
             print("オフです")
-
         }
+        
+     
     }
     
   

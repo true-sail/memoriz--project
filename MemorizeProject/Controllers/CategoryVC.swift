@@ -128,6 +128,7 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
         // 画面の幅の半分を計算
         let cellSize = screenSize / 2 - 5
         
+        
         return CGSize(width: cellSize, height: cellSize)
     }
 }
