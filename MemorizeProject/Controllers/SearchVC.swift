@@ -13,15 +13,15 @@ class SearchVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    
-    
     // データが入っている配列
-    var cards: [Card2] = [] {
+    var sharedCards: [Card2] = [] {
         didSet {
             // 値が書き換わったら、tableViewを更新する
             tableView.reloadData()
         }
     }
+    
+    var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,48 +33,135 @@ class SearchVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
       
-        print("-------------------------")
-        print(cards)
+//
+//        // firebaseに接続
+//        let db = Firestore.firestore()
+//
+//        db.collection("cards").order(by: "createdAt", descending: true).addSnapshotListener {
+//            (querySnapshot, error) in
+//
+//                // 最新のcardコレクションの中身（ドキュメント）を取得
+//                guard let documents = querySnapshot?.documents else {
+//                    // cardsコレクションの中身がnilの場合、処理を中断
+//                    return
+//                    }
+//
+//                // 結果を入れる配列
+//                var results: [Card2] = []
+//
+//                // ドキュメントをfor文を使ってループする
+//                for document in documents {
+//                    let Q = document.get("Q") as! String
+//                    let A = document.get("A") as! String
+//                    let category = document.get("category") as! String
+//                    let card = Card2(Q: Q, A: A, category: category, documentId: document.documentID)
+//
+//                    // 配列cardsにcardを追加
+//                    results.append(card)
+//                }
+//
+//                // テーブルに表示する変数cardsを全結果の入ったresultsで上書き
+//                self.sharedCards = results
+//
+//            }
         
-        let db = Firestore.firestore()
+        // searchBarを表示
+        setupSearchBar()
         
-        db.collection("cards").order(by: "createdAt", descending: true).addSnapshotListener {
-            (querySnapshot, error) in
-            
-                // 最新のcardコレクションの中身（ドキュメント）を取得
-                guard let documents = querySnapshot?.documents else {
-                    // cardsコレクションの中身がnilの場合、処理を中断
-                    return
-                    }
+        searchBar.delegate = self
+    }
+    
+        func setupSearchBar() {
+             
+             // navigationBarFrameがnilでない場合
+            if let navigationBarFrame = navigationController?.navigationBar.bounds {
+                 
+                let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
+                 
+    //             searchBar.delegate = self as? UISearchBarDelegate
+                 
+                // searchBarにplaceholderを設定
+                searchBar.placeholder = "検索"
                 
-                // 結果を入れる配列
-                var results: [Card2] = []
+    //            searchBar.showsCancelButton = true
                 
-                // ドキュメントをfor文を使ってループする
-                for document in documents {
-                    let Q = document.get("Q") as! String
-                    let A = document.get("A") as! String
-                    let category = document.get("category") as! String
-                    let card = Card2(Q: Q, A: A, category: category, documentId: document.documentID)
-                    
-                    // 配列cardsにcardを追加
-                    results.append(card)
-                }
+                // 入力された文字の一文字目が大文字にならないようにする
+                searchBar.autocapitalizationType = UITextAutocapitalizationType.none
                 
-                // テーブルに表示する変数cardsを全結果の入ったresultsで上書き
-                self.cards = results
-            
+                searchBar.keyboardType = UIKeyboardType.default
+                
+                // navigationItemのtitleViewにsearchBarを設置
+                navigationItem.titleView = searchBar
+                
+    //            navigationItem.titleView?.frame = searchBar.frame
+                 
+                self.searchBar = searchBar
+                
+                // 画面が表示された時にすでにsearchBarにカーソルが置かれた状態にする
+                searchBar.becomeFirstResponder()
+                
             }
+            
+        }
+    
+}
+
+
+extension SearchVC: UISearchBarDelegate {
+    
+    // searchBarの編集が始まった時の処理
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+    
+    // searchBarのcancelボタンが押された時の処理
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    // searchBarの検索ボタンが押された時の処理
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        print("あいうえおかきくけこ")
+//        // firebaseに接続
+//        let db = Firestore.firestore()
+//
+//        // 前方一致でデータを取得する
+//        db.collection("cards").order(by: "name").start(at: ["t"]).end(at: [searchBar.text! + "{f8ff}"]).getDocuments { ( querySnapshot, error) in
+//
+//            // docsがnilの場合
+//            guard let docs = querySnapshot?.documents else {
+//                //処理を中止
+//                return
+//            }
+//
+//            // 空の箱
+//            var searchResults: [Card2] = []
+//
+//            for doc in docs {
+//                let id = doc.documentID
+//                let Q = doc.get("Q") as! String
+//                let A = doc.get("A") as! String
+//                let category = doc.get("category") as! String
+//
+//                let sharedCard = Card2(Q: Q, A: A, category: category, documentId: id)
+//
+//                searchResults.append(sharedCard)
+//            }
+//
+//            self.sharedCards = searchResults
+//
+//        }
         
     }
 
 }
 
-
-
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cards.count
+        return sharedCards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +169,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         // セルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let card = cards[indexPath.row]
+        let card = sharedCards[indexPath.row]
         
         cell.textLabel?.text = card.Q
         
@@ -90,8 +177,29 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // クリックされたセルの情報を取得
+        let card = sharedCards[indexPath.row]
+        
+        // セルの選択状態(グレーになるやつを解除)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // 画面遷移
+        performSegue(withIdentifier: "toShare", sender: card)
+    }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "toShare" {
+//            let ShareVC = segue.destination as! ShareVC
+//
+//            ShareVC.
+//        }
+    }
     
     
 }
+
+
