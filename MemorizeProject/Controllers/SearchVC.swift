@@ -121,39 +121,55 @@ extension SearchVC: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
+    
     // searchBarの検索ボタンが押された時の処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        print("あいうえおかきくけこ")
-//        // firebaseに接続
-//        let db = Firestore.firestore()
-//
-//        // 前方一致でデータを取得する
-//        db.collection("cards").order(by: "name").start(at: ["t"]).end(at: [searchBar.text! + "{f8ff}"]).getDocuments { ( querySnapshot, error) in
-//
-//            // docsがnilの場合
-//            guard let docs = querySnapshot?.documents else {
-//                //処理を中止
-//                return
-//            }
-//
-//            // 空の箱
-//            var searchResults: [Card2] = []
-//
-//            for doc in docs {
-//                let id = doc.documentID
-//                let Q = doc.get("Q") as! String
-//                let A = doc.get("A") as! String
-//                let category = doc.get("category") as! String
-//
-//                let sharedCard = Card2(Q: Q, A: A, category: category, documentId: id)
-//
-//                searchResults.append(sharedCard)
-//            }
-//
-//            self.sharedCards = searchResults
-//
-//        }
+        print("-------------検索内容---------------")
+        print(searchBar.text!)
+        
+        // firebaseに接続
+        let db = Firestore.firestore()
+
+        
+        print(searchBar.text!)
+        // 前方一致でデータを取得する
+        db.collection("cards")
+            .order(by: "Q", descending: true)
+//            .whereField("Q", isEqualTo: searchBar.text!)
+            .start(at: [searchBar.text!])
+            .end(at: [searchBar.text! + "{f8ff}"])
+            .getDocuments { ( querySnapshot, error) in
+
+            // docsがnilの場合
+            guard let docs = querySnapshot?.documents else {
+                //処理を中止
+                return
+            }
+
+            // 空の箱
+            var searchResults: [Card2] = []
+                print("-------------searchResults---------------")
+                print(searchResults)
+
+            for doc in docs {
+                let id = doc.documentID
+                let Q = doc.get("Q") as! String
+                let A = doc.get("A") as! String
+                let category = doc.get("category") as! String
+
+                let sharedCard = Card2(Q: Q, A: A, category: category, documentId: id)
+
+                searchResults.append(sharedCard)
+                print("-------------sharedCard---------------")
+                print(sharedCard)
+            }
+
+            self.sharedCards = searchResults
+            print("-------------sharedCards---------------")
+            print(self.sharedCards)
+
+        }
         
     }
 
