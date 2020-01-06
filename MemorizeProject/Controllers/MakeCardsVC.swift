@@ -15,6 +15,9 @@ class MakeCardsVC: UIViewController {
     
     // 編集する時に飛んでくる値を受け取る
     var editCard: Card? = nil
+    
+    // alertに表示するmessage
+    var message = ""
  
     @IBOutlet weak var label: UILabel!
     
@@ -46,7 +49,7 @@ class MakeCardsVC: UIViewController {
         
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
-            // nilの場合（編集の場合）
+            // nilでない場合（編集の場合）
             
             // labelに「編集」と表示
             label.text = "編集"
@@ -58,7 +61,7 @@ class MakeCardsVC: UIViewController {
             button.setTitle("変更", for: .normal)
             
         } else {
-            // nilでない場合（作成の場合）
+            // nilの場合（作成の場合）
             
             // labelに「今日学んだこと」と表示
             label.text = "今日学んだこと"
@@ -179,9 +182,19 @@ class MakeCardsVC: UIViewController {
                 } else {
                     // エラーがない場合
                     print("カードをシェアしました")
+                    self.message = "カードをシェアしました"
+                    print(self.message)
                 }
             }
         }
+        
+        // アラートの画面作成
+        let alert = UIAlertController(title: "カード作成完了!", message: "\(message)", preferredStyle: .alert)
+        print(message)
+        
+        // アラートを表示
+        present(alert, animated: true, completion: nil)
+        
         
         // textViewを最初の状態に戻す
         textViewQ.text = "問題"

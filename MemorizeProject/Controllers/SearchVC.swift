@@ -32,38 +32,6 @@ class SearchVC: UIViewController {
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self
-      
-//
-//        // firebaseに接続
-//        let db = Firestore.firestore()
-//
-//        db.collection("cards").order(by: "createdAt", descending: true).addSnapshotListener {
-//            (querySnapshot, error) in
-//
-//                // 最新のcardコレクションの中身（ドキュメント）を取得
-//                guard let documents = querySnapshot?.documents else {
-//                    // cardsコレクションの中身がnilの場合、処理を中断
-//                    return
-//                    }
-//
-//                // 結果を入れる配列
-//                var results: [Card2] = []
-//
-//                // ドキュメントをfor文を使ってループする
-//                for document in documents {
-//                    let Q = document.get("Q") as! String
-//                    let A = document.get("A") as! String
-//                    let category = document.get("category") as! String
-//                    let card = Card2(Q: Q, A: A, category: category, documentId: document.documentID)
-//
-//                    // 配列cardsにcardを追加
-//                    results.append(card)
-//                }
-//
-//                // テーブルに表示する変数cardsを全結果の入ったresultsで上書き
-//                self.sharedCards = results
-//
-//            }
         
         // searchBarを表示
         setupSearchBar()
@@ -82,8 +50,7 @@ class SearchVC: UIViewController {
                  
                 // searchBarにplaceholderを設定
                 searchBar.placeholder = "検索"
-                
-    //            searchBar.showsCancelButton = true
+    
                 
                 // 入力された文字の一文字目が大文字にならないようにする
                 searchBar.autocapitalizationType = UITextAutocapitalizationType.none
@@ -125,7 +92,6 @@ extension SearchVC: UISearchBarDelegate {
     // searchBarの検索ボタンが押された時の処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        print("-------------検索内容---------------")
         print(searchBar.text!)
         
         // firebaseに接続
@@ -135,7 +101,7 @@ extension SearchVC: UISearchBarDelegate {
         print(searchBar.text!)
         // 前方一致でデータを取得する
         db.collection("cards")
-            .order(by: "Q", descending: true)
+            .order(by: "Q")
 //            .whereField("Q", isEqualTo: searchBar.text!)
             .start(at: [searchBar.text!])
             .end(at: [searchBar.text! + "{f8ff}"])
@@ -149,8 +115,6 @@ extension SearchVC: UISearchBarDelegate {
 
             // 空の箱
             var searchResults: [Card2] = []
-                print("-------------searchResults---------------")
-                print(searchResults)
 
             for doc in docs {
                 let id = doc.documentID
@@ -161,13 +125,10 @@ extension SearchVC: UISearchBarDelegate {
                 let sharedCard = Card2(Q: Q, A: A, category: category, documentId: id)
 
                 searchResults.append(sharedCard)
-                print("-------------sharedCard---------------")
-                print(sharedCard)
+                
             }
 
             self.sharedCards = searchResults
-            print("-------------sharedCards---------------")
-            print(self.sharedCards)
 
         }
         
@@ -207,12 +168,12 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "toShare" {
+            let ShareVC = segue.destination as! ShareVC
 //
-//        if segue.identifier == "toShare" {
-//            let ShareVC = segue.destination as! ShareVC
-//
-//            ShareVC.
-//        }
+            ShareVC.selectedCard = sender as? Card2
+        }
     }
     
     
