@@ -74,7 +74,7 @@
                                 <rect key="frame" x="243" y="638" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="didSwitchButton:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ftx-dg-cww"/>
+                                    <action selector="didSwitchButton:" destination="BYZ-38-t0r" eventType="valueChanged" id="cPa-0j-o8E"/>
                                 </connections>
                             </switch>
                         </subviews>
@@ -127,7 +127,7 @@
             <objects>
                 <viewController id="We8-99-hP4" customClass="SearchVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4WV-lQ-KHK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p1B-k0-Nfs">
@@ -152,19 +152,19 @@
                     <navigationItem key="navigationItem" id="duu-FO-4fg"/>
                     <connections>
                         <outlet property="tableView" destination="p1B-k0-Nfs" id="wGH-ZJ-sfh"/>
-                        <segue destination="Gjc-Xd-O4A" kind="show" identifier="toShare" id="x4i-go-h3h"/>
+                        <segue destination="Gjc-Xd-O4A" kind="show" identifier="toDownload" id="x4i-go-h3h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMq-Kt-JAx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3205.7971014492755" y="1132.3660714285713"/>
         </scene>
-        <!--ShareVC-->
+        <!--DownloadVC-->
         <scene sceneID="g2d-kt-ity">
             <objects>
-                <viewController id="Gjc-Xd-O4A" customClass="ShareVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gjc-Xd-O4A" customClass="DownloadVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A00-8g-QZg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリ：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiV-6w-Y9t">
@@ -406,7 +406,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FzT-Y0-N30"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ttp-sV-yLM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -427,7 +427,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nv2-5w-zbP"/>
-        <segue reference="PLE-Xe-Gc4"/>
+        <segue reference="9HO-W0-LuR"/>
         <segue reference="WYJ-Hy-W7J"/>
     </inferredMetricsTieBreakers>
 </document>

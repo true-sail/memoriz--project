@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		171EB40723BA75FB00DE67E0 /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171EB40623BA75FB00DE67E0 /* ShareVC.swift */; };
+		171EB40723BA75FB00DE67E0 /* DownloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171EB40623BA75FB00DE67E0 /* DownloadVC.swift */; };
 		174EC8F8239E97560075B28F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC8F7239E97560075B28F /* AppDelegate.swift */; };
 		174EC8FA239E97560075B28F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC8F9239E97560075B28F /* SceneDelegate.swift */; };
 		174EC8FF239E97560075B28F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174EC8FD239E97560075B28F /* Main.storyboard */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		171EB40623BA75FB00DE67E0 /* ShareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
+		171EB40623BA75FB00DE67E0 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
 		174EC8F4239E97560075B28F /* MemorizeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemorizeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		174EC8F7239E97560075B28F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		174EC8F9239E97560075B28F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				17F9336F23A0F2850015E2D6 /* CategoryVC.swift */,
 				17F9337123A0F5550015E2D6 /* SearchVC.swift */,
 				17557EAB23AF49FC0054693B /* CardVC.swift */,
-				171EB40623BA75FB00DE67E0 /* ShareVC.swift */,
+				171EB40623BA75FB00DE67E0 /* DownloadVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 				17F9337723A0FAC60015E2D6 /* Card.swift in Sources */,
 				17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */,
 				174EC8F8239E97560075B28F /* AppDelegate.swift in Sources */,
-				171EB40723BA75FB00DE67E0 /* ShareVC.swift in Sources */,
+				171EB40723BA75FB00DE67E0 /* DownloadVC.swift in Sources */,
 				17557EAC23AF49FC0054693B /* CardVC.swift in Sources */,
 				17F9337023A0F2850015E2D6 /* CategoryVC.swift in Sources */,
 				174EC8FA239E97560075B28F /* SceneDelegate.swift in Sources */,

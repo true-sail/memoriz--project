@@ -163,16 +163,16 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // 画面遷移
-        performSegue(withIdentifier: "toShare", sender: card)
+        performSegue(withIdentifier: "toDownload", sender: card)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "toShare" {
-            let ShareVC = segue.destination as! ShareVC
-//
-            ShareVC.selectedCard = sender as? Card2
+        if segue.identifier == "toDownload" {
+            let DownloadVC = segue.destination as! DownloadVC
+            
+            DownloadVC.selectedCard = sender as? Card2
         }
     }
     

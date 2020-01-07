@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ShareVC: UIViewController {
+class DownloadVC: UIViewController {
     
     var selectedCard: Card2? = nil
 
@@ -67,6 +67,20 @@ class ShareVC: UIViewController {
         try! realm.write {
             realm.add(downloadCard)
         }
+        
+        // アラート画面を作成
+        let alert = UIAlertController(title: "ダウンロード完了！", message: "カテゴリ「\(downloadCard.category)」に追加されました", preferredStyle: .alert)
+        
+        // okボタンを作成
+        let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            print("okが押されました")
+        }
+        
+        // アラートにokボタンを追加
+        alert.addAction(okAction)
+        
+        // アラートを表示
+        present(alert, animated: true, completion: nil)
         
     }
     

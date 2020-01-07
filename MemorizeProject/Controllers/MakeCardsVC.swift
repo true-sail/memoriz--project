@@ -17,7 +17,8 @@ class MakeCardsVC: UIViewController {
     var editCard: Card? = nil
     
     // alertに表示するmessage
-    var message = ""
+    var alertMessage = ""
+    var alertTitle = ""
  
     @IBOutlet weak var label: UILabel!
     
@@ -54,6 +55,9 @@ class MakeCardsVC: UIViewController {
             // labelに「編集」と表示
             label.text = "編集"
             
+            // アラートのtitle設定
+            alertTitle = "編集"
+            
             // 編集内容を表示
             textViewQ.text = e.Q
             textViewA.text = e.A
@@ -65,6 +69,9 @@ class MakeCardsVC: UIViewController {
             
             // labelに「今日学んだこと」と表示
             label.text = "今日学んだこと"
+            
+            // アラートのtitle設定
+            alertTitle = "作成"
             
             // textViewQ,textViewAにplaceholderを表示
             textViewQ.text = "問題"
@@ -115,6 +122,23 @@ class MakeCardsVC: UIViewController {
         try! realm.write {
             realm.add(createdCard)
         }
+    }
+    
+    
+    // スイッチを押した時
+    @IBAction func didSwitchButton(_ sender: UISwitch) {
+    
+        if sender.isOn {
+        // オンの場合
+            didCheckSwitch = true
+            print("オンです")
+        } else {
+        // オフの場合
+            didCheckSwitch = false
+            print("オフです")
+        }
+        
+     
     }
     
     
@@ -172,25 +196,38 @@ class MakeCardsVC: UIViewController {
             
             // firebaseに接続
             let db = Firestore.firestore()
-                 print("on")
             
             db.collection("cards").addDocument(data: ["Q": textViewQ.text!, "A": textViewA.text!, "category": textField.text!, "createdAt": FieldValue.serverTimestamp()
             ]) { error in
                 if let err = error {
                     // エラーが発生した場合、エラー情報を表示
+                    print("エラーーーーーーーーー")
                     print(err.localizedDescription)
                 } else {
                     // エラーがない場合
-                    print("カードをシェアしました")
-                    self.message = "カードをシェアしました"
-                    print(self.message)
+                    print("シェアしました")
                 }
             }
+            
+        }
+        
+        // スイッチがオンかどうか
+        if didCheckSwitch == true {
+            self.alertMessage = "カードをシェアしました"
+        } else {
+            self.alertMessage = ""
         }
         
         // アラートの画面作成
-        let alert = UIAlertController(title: "カード作成完了!", message: "\(message)", preferredStyle: .alert)
-        print(message)
+        let alert = UIAlertController(title: "カード\(alertTitle)完了！", message: "\(alertMessage)", preferredStyle: .alert)
+
+        // okボタンの作成
+        let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            print("okを押しました")
+        }
+        
+        // alertにokボタンを追加
+        alert.addAction(okAction)
         
         // アラートを表示
         present(alert, animated: true, completion: nil)
@@ -212,25 +249,6 @@ class MakeCardsVC: UIViewController {
             CardVC.selectedCategory = sender as! String
         }
     }
-    
-    
-    // スイッチを押した時
-    @IBAction func didSwitchButton(_ sender: UISwitch) {
-    
-        if sender.isOn {
-        // オンの場合
-            didCheckSwitch = true
-            print("オンです")
-        } else {
-        // オフの場合
-            didCheckSwitch = false
-            print("オフです")
-        }
-        
-     
-    }
-    
-  
     
 }
 
