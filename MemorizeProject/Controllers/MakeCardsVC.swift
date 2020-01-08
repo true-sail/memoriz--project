@@ -10,6 +10,7 @@ import UIKit
 // 読み込み
 import RealmSwift
 import Firebase
+import UserNotifications
 
 class MakeCardsVC: UIViewController {
     
@@ -32,6 +33,9 @@ class MakeCardsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // textViewQに最初カーソルが置かれた状態にする
+//        textViewQ.becomeFirstResponder()
        
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
@@ -47,6 +51,11 @@ class MakeCardsVC: UIViewController {
         // textViewAの枠線
         textViewA.layer.borderWidth = 1
         textViewA.layer.borderColor = UIColor.lightGray.cgColor
+        
+        // 大文字で始まらないようにする
+        textViewQ.autocapitalizationType = UITextAutocapitalizationType.none
+        textViewA.autocapitalizationType = UITextAutocapitalizationType.none
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
@@ -87,12 +96,15 @@ class MakeCardsVC: UIViewController {
     
     // カードを編集するためのメソッド
     fileprivate func updateCard(newQ: String, newA: String, newCategory: String, createdCard: Card) {
+        
         let realm = try! Realm()
+        
         try! realm.write {
             createdCard.Q = newQ
             createdCard.A = newA
             createdCard.category = newCategory
         }
+        
     }
 
     // 作成ボタンを押した時にカードをRealmに追加するメソッド
@@ -138,12 +150,23 @@ class MakeCardsVC: UIViewController {
             print("オフです")
         }
         
-     
     }
     
-    
+    // ボタンを押した時
     @IBAction func didClickButton(_ sender: UIButton) {
         
+//        var field = ""
+//
+//        var alert = UIAlertController(title:  "\(field)を入力して下さい", message: "", preferredStyle: .alert)
+//
+//        var okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+//            print("okを押しました")
+//        }
+//
+//        alert.addAction(okAction)
+//
+//        present(alert, animated: true, completion: nil)
+//
         // textViewQがnilの場合
         guard let inputQ = textViewQ.text else {
             // return:このメソッド(didClickButton)を中断する
@@ -170,10 +193,11 @@ class MakeCardsVC: UIViewController {
             return
         }
         
-        // inputCategoryが空の場合
+        // textFieldが空の場合
         if inputCategory.isEmpty {
             return
         }
+        
         
         if let c = editCard {
             // 変数editCardがnilでない場合
@@ -218,21 +242,46 @@ class MakeCardsVC: UIViewController {
             self.alertMessage = ""
         }
         
+
         // アラートの画面作成
         let alert = UIAlertController(title: "カード\(alertTitle)完了！", message: "\(alertMessage)", preferredStyle: .alert)
 
         // okボタンの作成
         let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            print("okを押しました")
-        }
-        
+                print("okを押しました")
+            }
+
         // alertにokボタンを追加
         alert.addAction(okAction)
-        
+
         // アラートを表示
         present(alert, animated: true, completion: nil)
         
+        // 通知の作成
+        let notificationContent = UNMutableNotificationContent()
+
+        // 通知のタイトルに画面で入力された問題を設定
+        notificationContent.title = textViewQ.text!
+
+        // 通知の本文に画面で入力された答えを設定
+        notificationContent.body = textViewA.text!
+
+        // 通知音にデフォルト音声を設定
+        notificationContent.sound = .default
         
+        // 通知時間の作成
+//            var notificationTime = DateComponents()
+        let trigger: UNNotificationTrigger
+//            let calendar = Calendar.current  // 現在時間を取得
+    
+        // 時間の設定
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let uuid = NSUUID().uuidString
+        let request = UNNotificationRequest(identifier: uuid, content: notificationContent, trigger: trigger)
+    
+        // 通知を登録
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    
         // textViewを最初の状態に戻す
         textViewQ.text = "問題"
         textViewQ.textColor = UIColor.lightGray

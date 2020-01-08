@@ -102,7 +102,6 @@ extension SearchVC: UISearchBarDelegate {
         // 前方一致でデータを取得する
         db.collection("cards")
             .order(by: "Q")
-//            .whereField("Q", isEqualTo: searchBar.text!)
             .start(at: [searchBar.text!])
             .end(at: [searchBar.text! + "{f8ff}"])
             .getDocuments { ( querySnapshot, error) in

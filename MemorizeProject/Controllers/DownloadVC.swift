@@ -13,11 +13,12 @@ class DownloadVC: UIViewController {
     
     var selectedCard: Card2? = nil
 
-    @IBOutlet weak var textViewQ: UITextView!
+
+    @IBOutlet weak var labelQ: UILabel!
     
-    @IBOutlet weak var textViewA: UITextView!
+    @IBOutlet weak var labelA: UILabel!
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +27,20 @@ class DownloadVC: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
 
         // textViewQの枠線
-        textViewQ.layer.borderWidth = 1
-        textViewQ.layer.borderColor = UIColor.lightGray.cgColor
+        labelQ.layer.borderWidth = 1
+        labelQ.layer.borderColor = UIColor.lightGray.cgColor
         
         // textViewAの枠線
-        textViewA.layer.borderWidth = 1
-        textViewA.layer.borderColor = UIColor.lightGray.cgColor
+        labelA.layer.borderWidth = 1
+        labelA.layer.borderColor = UIColor.lightGray.cgColor
         
         // firebaseの選択したデータを反映
-        textViewQ.text = selectedCard?.Q
-        textViewA.text = selectedCard?.A
-        label.text = selectedCard?.category
+        labelQ.text = selectedCard?.Q
+        labelA.text = selectedCard?.A
+        textField.text = selectedCard?.category
         
     }
     
-
     @IBAction func didClickButton(_ sender: UIButton) {
         
         // Realmに接続
@@ -56,7 +56,7 @@ class DownloadVC: UIViewController {
         // インスタンス化(Cardクラスをもとに作成)
         downloadCard.Q = selectedCard!.Q
         downloadCard.A = selectedCard!.A
-        downloadCard.category = selectedCard!.category
+        downloadCard.category = textField.text!
         downloadCard.date = Date() // Date() : 現在の日付を入れる
         
         // 現在あるidの最大値+1の値を取得(AutoIncrement)
