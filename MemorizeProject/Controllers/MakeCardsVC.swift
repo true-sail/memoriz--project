@@ -40,6 +40,10 @@ class MakeCardsVC: UIViewController {
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
+        // tabbarの色設定
+//        tabBarController?.tabBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
+        
+        
         // おまじない
         textViewQ.delegate = self
         textViewA.delegate = self
@@ -275,7 +279,7 @@ class MakeCardsVC: UIViewController {
 //            let calendar = Calendar.current  // 現在時間を取得
     
         // 時間の設定
-        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 720, repeats: true)
         let uuid = NSUUID().uuidString
         let request = UNNotificationRequest(identifier: uuid, content: notificationContent, trigger: trigger)
     

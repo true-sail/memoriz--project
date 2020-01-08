@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="3381.1594202898555" y="15.401785714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--StudyVC-->
         <scene sceneID="fhk-BF-NV5">
             <objects>
-                <viewController id="qlI-0h-APs" sceneMemberID="viewController">
+                <viewController id="qlI-0h-APs" customClass="StudyVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVv-Uy-zYa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -62,6 +62,26 @@ class CardVC: UIViewController {
         // categorizedCardsにresultsを代入
         categorizedCards = results
     }
+
+    // 左にスワイプしたらdeleteが出てくる
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         // 選択されたボタンがdeleteの場合
+        if editingStyle == .delete {
+           // Realmに接続する
+            let realm = try! Realm()
+            
+            // 該当のタスクをRealmから削除
+            // indexPath.row： 今回スワイプしたやつの情報
+           let categorizedCard = categorizedCards[indexPath.row]
+            
+            try! realm.write {
+                realm.delete(categorizedCard)
+            }
+            // todos配列から削除
+            // indexPathのrow番目を削除
+            categorizedCards.remove(at: indexPath.row)
+        }
+    }
 }
 
 extension CardVC: UITableViewDelegate, UITableViewDataSource {
@@ -77,6 +97,9 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
         
         let categorizedCard = categorizedCards[indexPath.row]
         cell.textLabel?.text = categorizedCard.Q
+        
+        // セルに矢印をつける
+        cell.accessoryType = .disclosureIndicator
         
         return cell
         
