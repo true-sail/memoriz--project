@@ -44,7 +44,7 @@ class CategoryVC: UIViewController {
         // おまじない
         collectionView.dataSource = self
         collectionView.delegate = self
-    
+        
     }
     
     // 画面を表示した時に毎回実行される
@@ -122,16 +122,19 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
 // コレクションビューのデザインを調整するための拡張
 extension CategoryVC: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         // 画像の幅を取得
         let screenSize = self.view.bounds.width
-        
+
         // 画面の幅の半分を計算
-        let cellSize = screenSize / 2 - 5
-        
-        
+        let cellSize = screenSize / 3 + 5
+
+
         return CGSize(width: cellSize, height: cellSize)
+
     }
 }
+
+

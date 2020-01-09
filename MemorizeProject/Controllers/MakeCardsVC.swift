@@ -156,7 +156,6 @@ class MakeCardsVC: UIViewController {
         }
     }
     
-    
     // スイッチを押した時
     @IBAction func didSwitchButton(_ sender: UISwitch) {
     
