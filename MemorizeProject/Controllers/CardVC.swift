@@ -63,6 +63,11 @@ class CardVC: UIViewController {
         categorizedCards = results
     }
 
+    // 追加ボタンを押した時の処理
+    @IBAction func didClickButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "toMain", sender: selectedCategory)
+    }
+    
     // 左にスワイプしたらdeleteが出てくる
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          // 選択されたボタンがdeleteの場合
@@ -119,6 +124,16 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
             
             let MakeCardsVC = segue.destination as! MakeCardsVC
             
-            MakeCardsVC.editCard = sender as? Card        }
+            MakeCardsVC.editCard = sender as? Card
+            
+        }
+        
+        if segue.identifier == "toMain" {
+            
+            let MakeCardsVC = segue.destination as! MakeCardsVC
+            
+            MakeCardsVC.selectedCategory = sender as! String
+            
+        }
     }
 }

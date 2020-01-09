@@ -48,7 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 // 許可されなかった場合
                 print("許可されなかった")
             }
+            
         }
+        
+        
+        // 選択済みのtabbar itemの色設定
+//        UITabBar.appearance().tintColor = UIColor.
+        
+        // 未選択のtabbar itemの色設定
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
         
         return true
     }

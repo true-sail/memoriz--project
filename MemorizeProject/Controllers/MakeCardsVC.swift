@@ -17,6 +17,9 @@ class MakeCardsVC: UIViewController {
     // 編集する時に飛んでくる値を受け取る
     var editCard: Card? = nil
     
+    // 追加する時に飛んでくる値を受け取る
+    var selectedCategory: String = ""
+    
     // alertに表示するmessage
     var alertMessage = ""
     var alertTitle = ""
@@ -41,8 +44,7 @@ class MakeCardsVC: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
         // tabbarの色設定
-//        tabBarController?.tabBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
-        
+        tabBarController?.tabBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
         // おまじない
         textViewQ.delegate = self
@@ -85,19 +87,33 @@ class MakeCardsVC: UIViewController {
             
             // アラートのtitle設定
             alertTitle = "作成"
-            
+
             // textViewQ,textViewAにplaceholderを表示
             textViewQ.text = "問題"
             textViewQ.textColor = UIColor.lightGray
             textViewA.text = "解答"
             textViewA.textColor = UIColor.lightGray
             
+            if selectedCategory != "" {
+                textField.text = selectedCategory
+            }
+            
             // buttonの文字を「作成」にする
             button.setTitle("作成", for: .normal)
         }
         
     }
+
     
+       func setTabBarItem(index: Int, titile: String, image: UIImage, selectedImage: UIImage,  offColor: UIColor, onColor: UIColor) -> Void {
+           let tabBarItem = self.tabBarController?.tabBar.items![index]
+           tabBarItem!.title = titile
+           tabBarItem!.image = image.withRenderingMode(.alwaysOriginal)
+           tabBarItem!.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
+           tabBarItem!.setTitleTextAttributes([ .foregroundColor : offColor], for: .normal)
+           tabBarItem!.setTitleTextAttributes([ .foregroundColor : onColor], for: .selected)
+       }
+        
     // カードを編集するためのメソッド
     fileprivate func updateCard(newQ: String, newA: String, newCategory: String, createdCard: Card) {
         
