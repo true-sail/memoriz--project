@@ -15,27 +15,16 @@ class SplashVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        self.view.backgroundColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
+                    
+        // labelの色設定
+        self.label.textColor = .white
         
-        
-        UILabel.animate(
-            withDuration: 2.5, // splashの時間
-//            delay: 0.0, // 画面表示から何秒後に実行するか
-        animations: { // アニメーションの設定
-        
-                        // 背景の色設定
-            self.view.backgroundColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
-                        
-                        // labelの色設定
-            self.label.textColor = .white
-            
-        }) {(Bool) in
-            // アニメーション完了後の処理
+        // 遅延処理
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
             self.performSegue(withIdentifier: "toStart", sender: nil)
         }
-
-
+        
     }
+    
 }
