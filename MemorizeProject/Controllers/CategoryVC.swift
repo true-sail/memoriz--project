@@ -27,8 +27,6 @@ class CategoryVC: UIViewController {
         }
     }
     
-    // そのカテゴリのカードが何枚あるか数えるための変数
-//    var cardCount = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -44,6 +42,8 @@ class CategoryVC: UIViewController {
         // おまじない
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        setUpCollectionViewLayout()
         
     }
     
@@ -84,6 +84,9 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         // セルの取得
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         
+        // セルの丸角
+        cell.layer.cornerRadius = 20
+        
         // セルの中のlabelをタグ番号で取得し、文字の設定をする。
         let label = cell.viewWithTag(1) as! UILabel
         
@@ -91,9 +94,18 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let selectedCategory = categories[indexPath.row]
         
+        // cellの影
         label.text = selectedCategory
-        
-//        numberLabel.text = "全\(cardCount)枚"
+        cell.contentView.layer.cornerRadius = 2.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = true
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOpacity = 0.16
+        cell.layer.masksToBounds = false
+
         
         return cell
         
@@ -126,15 +138,24 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         // 画像の幅を取得
-        let screenSize = self.view.bounds.width
+        let screenWidth = self.view.bounds.width
+        let screenHeight = self.view.bounds.height
 
         // 画面の幅の半分を計算
-        let cellSize = screenSize / 3 + 5
+        let width = screenWidth - 80
+        let height = screenHeight / 8
 
-
-        return CGSize(width: cellSize, height: cellSize)
+        return CGSize(width: width, height: height)
 
     }
 }
 
-
+extension CategoryVC {
+    func setUpCollectionViewLayout() {
+        // collectionViewのcellサイズと余白の設定
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 40
+        layout.sectionInset = UIEdgeInsets(top: 50, left: 40, bottom: 0, right: 40)
+        collectionView.collectionViewLayout = layout
+    }
+}

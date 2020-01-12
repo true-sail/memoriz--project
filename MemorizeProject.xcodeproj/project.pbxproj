@@ -17,6 +17,7 @@
 		174EC90C239E97B40075B28F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 174EC90B239E97B40075B28F /* GoogleService-Info.plist */; };
 		174EC90F239E9FDD0075B28F /* MakeCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */; };
 		17557EAC23AF49FC0054693B /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17557EAB23AF49FC0054693B /* CardVC.swift */; };
+		178BE7EE23C851EB00B38817 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7ED23C851EB00B38817 /* SplashVC.swift */; };
 		17F9337023A0F2850015E2D6 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9336F23A0F2850015E2D6 /* CategoryVC.swift */; };
 		17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9337123A0F5550015E2D6 /* SearchVC.swift */; };
 		17F9337723A0FAC60015E2D6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9337623A0FAC60015E2D6 /* Card.swift */; };
@@ -36,6 +37,7 @@
 		174EC90B239E97B40075B28F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCardsVC.swift; sourceTree = "<group>"; };
 		17557EAB23AF49FC0054693B /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
+		178BE7ED23C851EB00B38817 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		17F9336F23A0F2850015E2D6 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		17F9337123A0F5550015E2D6 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		17F9337623A0FAC60015E2D6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				17557EAB23AF49FC0054693B /* CardVC.swift */,
 				171EB40623BA75FB00DE67E0 /* DownloadVC.swift */,
 				1714DBB323C5B7D500147503 /* StudyVC.swift */,
+				178BE7ED23C851EB00B38817 /* SplashVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				174EC90F239E9FDD0075B28F /* MakeCardsVC.swift in Sources */,
+				178BE7EE23C851EB00B38817 /* SplashVC.swift in Sources */,
 				1714DBB423C5B7D500147503 /* StudyVC.swift in Sources */,
 				17F9337723A0FAC60015E2D6 /* Card.swift in Sources */,
 				17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */,
