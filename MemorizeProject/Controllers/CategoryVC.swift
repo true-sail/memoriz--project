@@ -29,7 +29,8 @@ class CategoryVC: UIViewController {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +46,7 @@ class CategoryVC: UIViewController {
         
         setUpCollectionViewLayout()
         
+
     }
     
     // 画面を表示した時に毎回実行される
@@ -88,14 +90,19 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.layer.cornerRadius = 20
         
         // セルの中のlabelをタグ番号で取得し、文字の設定をする。
-        let label = cell.viewWithTag(1) as! UILabel
-        
-//        let numberLabel = cell.viewWithTag(2) as! UILabel
+        let categoryLabel = cell.viewWithTag(1) as! UILabel
         
         let selectedCategory = categories[indexPath.row]
         
+        categoryLabel.text = selectedCategory
+        
+        categoryLabel.textColor = UIColor(red: 57/255, green: 88/255, blue: 124/255, alpha: 100)
+        
+        let numberLabel = cell.viewWithTag(2) as! UILabel
+        
+        numberLabel.textColor = .darkGray
+        
         // cellの影
-        label.text = selectedCategory
         cell.contentView.layer.cornerRadius = 2.0
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
@@ -106,6 +113,7 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.layer.shadowOpacity = 0.16
         cell.layer.masksToBounds = false
 
+        
         
         return cell
         
