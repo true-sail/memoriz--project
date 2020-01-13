@@ -98,9 +98,17 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         categoryLabel.textColor = UIColor(red: 57/255, green: 88/255, blue: 124/255, alpha: 100)
         
+        // categoryLabel位置設定
+        categoryLabel.frame = CGRect(x: 0, y: 8, width: 100, height: 100);
+        
         let numberLabel = cell.viewWithTag(2) as! UILabel
         
+        numberLabel.text = "全○件"
+        
         numberLabel.textColor = .darkGray
+        
+        // numberLabel位置設定
+        numberLabel.frame = CGRect(x: 240, y: 8, width: 100, height: 100);
         
         // cellの影
         cell.contentView.layer.cornerRadius = 2.0
