@@ -17,10 +17,10 @@
 		174EC90F239E9FDD0075B28F /* MakeCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */; };
 		17557EAC23AF49FC0054693B /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17557EAB23AF49FC0054693B /* CardVC.swift */; };
 		178BE7EE23C851EB00B38817 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7ED23C851EB00B38817 /* SplashVC.swift */; };
-		178BE7F223CC417500B38817 /* Study2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7F123CC417500B38817 /* Study2VC.swift */; };
 		178BE7F423CC56D800B38817 /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7F323CC56D800B38817 /* AnswerVC.swift */; };
 		178BE7F623CCC6AA00B38817 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7F523CCC6AA00B38817 /* ResultVC.swift */; };
 		178BE7F823CDA0F800B38817 /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7F723CDA0F800B38817 /* QuestionVC.swift */; };
+		178BE7FA23CF37CD00B38817 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BE7F923CF37CD00B38817 /* UserVC.swift */; };
 		17F9337023A0F2850015E2D6 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9336F23A0F2850015E2D6 /* CategoryVC.swift */; };
 		17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9337123A0F5550015E2D6 /* SearchVC.swift */; };
 		17F9337723A0FAC60015E2D6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9337623A0FAC60015E2D6 /* Card.swift */; };
@@ -40,10 +40,10 @@
 		174EC90E239E9FDD0075B28F /* MakeCardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCardsVC.swift; sourceTree = "<group>"; };
 		17557EAB23AF49FC0054693B /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		178BE7ED23C851EB00B38817 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
-		178BE7F123CC417500B38817 /* Study2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Study2VC.swift; sourceTree = "<group>"; };
 		178BE7F323CC56D800B38817 /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
 		178BE7F523CCC6AA00B38817 /* ResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		178BE7F723CDA0F800B38817 /* QuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
+		178BE7F923CF37CD00B38817 /* UserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		17F9336F23A0F2850015E2D6 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		17F9337123A0F5550015E2D6 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		17F9337623A0FAC60015E2D6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -107,10 +107,10 @@
 				17557EAB23AF49FC0054693B /* CardVC.swift */,
 				171EB40623BA75FB00DE67E0 /* DownloadVC.swift */,
 				178BE7ED23C851EB00B38817 /* SplashVC.swift */,
-				178BE7F123CC417500B38817 /* Study2VC.swift */,
 				178BE7F323CC56D800B38817 /* AnswerVC.swift */,
 				178BE7F523CCC6AA00B38817 /* ResultVC.swift */,
 				178BE7F723CDA0F800B38817 /* QuestionVC.swift */,
+				178BE7F923CF37CD00B38817 /* UserVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				174EC90F239E9FDD0075B28F /* MakeCardsVC.swift in Sources */,
-				178BE7F223CC417500B38817 /* Study2VC.swift in Sources */,
 				178BE7EE23C851EB00B38817 /* SplashVC.swift in Sources */,
 				17F9337723A0FAC60015E2D6 /* Card.swift in Sources */,
 				17F9337223A0F5550015E2D6 /* SearchVC.swift in Sources */,
@@ -267,6 +266,7 @@
 				178BE7F823CDA0F800B38817 /* QuestionVC.swift in Sources */,
 				17557EAC23AF49FC0054693B /* CardVC.swift in Sources */,
 				17F9337023A0F2850015E2D6 /* CategoryVC.swift in Sources */,
+				178BE7FA23CF37CD00B38817 /* UserVC.swift in Sources */,
 				174EC8FA239E97560075B28F /* SceneDelegate.swift in Sources */,
 				178BE7F623CCC6AA00B38817 /* ResultVC.swift in Sources */,
 			);

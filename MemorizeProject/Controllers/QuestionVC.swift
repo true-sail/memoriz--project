@@ -31,7 +31,8 @@ class QuestionVC: UIViewController {
             // nuvbaritemを消す
             self.navigationItem.setHidesBackButton(true, animated:true);
             
-            self.title = "学習"
+            // navbarタイトル
+            self.title = "問題\(QNum + 1)"
             
           
             let question = studyCards[QNum].Q

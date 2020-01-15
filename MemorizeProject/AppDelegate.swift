@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         
         // 選択済みのtabbar itemの色設定
-//        UITabBar.appearance().tintColor = UIColor.
+        UITabBar.appearance().tintColor = UIColor.white
         
         // 未選択のtabbar itemの色設定
         UITabBar.appearance().unselectedItemTintColor = UIColor.white

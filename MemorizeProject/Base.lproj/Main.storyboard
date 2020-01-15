@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="3381.1594202898555" y="15.401785714285714"/>
         </scene>
-        <!--Study2VC-->
+        <!--UserVC-->
         <scene sceneID="fhk-BF-NV5">
             <objects>
-                <viewController id="qlI-0h-APs" customClass="Study2VC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qlI-0h-APs" customClass="UserVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVv-Uy-zYa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -599,7 +599,7 @@
         <scene sceneID="eUz-XJ-Vgr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kac-HF-82e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="学習" image="pencil" catalog="system" id="7d8-rC-soh"/>
+                    <tabBarItem key="tabBarItem" title="学習" image="book" catalog="system" selectedImage="book.fill" id="7d8-rC-soh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DGr-ko-iw7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -618,7 +618,7 @@
         <scene sceneID="nCN-9a-iPG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ry3-Kh-bSf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="作成" image="plus.app" catalog="system" id="xeP-EQ-jLt"/>
+                    <tabBarItem key="tabBarItem" title="作成" image="plus.app" catalog="system" selectedImage="plus.app.fill" id="xeP-EQ-jLt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FOH-rC-BpE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -633,11 +633,11 @@
             </objects>
             <point key="canvasLocation" x="2471.0144927536235" y="15.401785714285714"/>
         </scene>
-        <!--学習-->
+        <!--ユーザー-->
         <scene sceneID="LPO-4s-fa3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1FR-Ob-rNt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="学習" image="book" catalog="system" id="FON-3M-368"/>
+                    <tabBarItem key="tabBarItem" title="ユーザー" image="person" catalog="system" selectedImage="person.fill" id="FON-3M-368"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rz3-aT-Cf8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -674,13 +674,16 @@
     </scenes>
     <resources>
         <image name="book" catalog="system" width="64" height="50"/>
+        <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="pencil" catalog="system" width="64" height="56"/>
+        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="plus.app" catalog="system" width="64" height="56"/>
+        <image name="plus.app.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7am-kZ-AmQ"/>
-        <segue reference="tOx-VQ-DQE"/>
+        <segue reference="Qow-DQ-pDa"/>
         <segue reference="9HO-W0-LuR"/>
         <segue reference="gaU-3S-kY5"/>
     </inferredMetricsTieBreakers>
