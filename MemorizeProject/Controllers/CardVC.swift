@@ -11,10 +11,10 @@ import RealmSwift
 
 class CardVC: UIViewController {
     
-    // 飛んできたカテゴリを受け取る
+    // CategoryVCから受け取る
     var selectedCategory = ""
 
-    // 飛んできたカテゴリのカードのための箱
+    // categoryVCから受け取る
     var categorizedCards: [Card] = [] {
         // categorizedCardsが書き換えられた時に実行
         didSet {
@@ -23,6 +23,9 @@ class CardVC: UIViewController {
             }
         }
     }
+    
+    // CategoryVCから受け取る
+    var studyCards: [Card] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,8 +37,8 @@ class CardVC: UIViewController {
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
-        // 画面の上の方にカテゴリを表示
-        self.title = selectedCategory
+        // navbarのタイトル
+        navigationItem.title = selectedCategory
         
         // おまじない
         tableView.delegate = self
@@ -92,8 +95,17 @@ class CardVC: UIViewController {
     }
     // 学習ボタンを押した時の処理
     @IBAction func didClickStartButton(_ sender: UIButton) {
+        
+        // 勉強するカードをランダムに選択
+        for _ in 0...9 {
+            
+            let i = Int(arc4random_uniform(UInt32(categorizedCards.count)))
+            studyCards.append(categorizedCards[i])
 
-    let studyCards = categorizedCards
+        }
+
+//        let studyCards = categorizedCards
+        
         performSegue(withIdentifier: "toStudy", sender: studyCards)
     }
     
@@ -170,6 +182,7 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "toStudy" {
             let QuestionVC = segue.destination as! QuestionVC
             QuestionVC.studyCards = sender as! [Card]
+            QuestionVC.categorizedCards = categorizedCards
         }
     }
 }

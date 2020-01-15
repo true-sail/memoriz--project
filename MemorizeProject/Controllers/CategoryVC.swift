@@ -53,9 +53,14 @@ class CategoryVC: UIViewController {
         // 最初に表示される画面を作成画面にする
         self.tabBarController?.selectedIndex = 1
         
-        // navbarのタイトル
-        self.title = "カテゴリ"
 
+//        // navbarの文字色
+//        self.navigationController?.navigationBar.titleTextAttributes = [
+//            .foregroundColor: UIColor.white
+//        ]
+        
+        // navbarのタイトル
+        navigationItem.title = "カテゴリ"
         
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)

@@ -275,12 +275,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keK-kA-mS8">
-                                <rect key="frame" x="156" y="747" width="103" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="次へ"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-E8-Wya">
                                 <rect key="frame" x="62" y="618" width="101" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -683,7 +677,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7am-kZ-AmQ"/>
-        <segue reference="Qow-DQ-pDa"/>
+        <segue reference="S9m-Lc-tIl"/>
         <segue reference="9HO-W0-LuR"/>
         <segue reference="gaU-3S-kY5"/>
     </inferredMetricsTieBreakers>

@@ -9,6 +9,9 @@
 import UIKit
 
 class ResultVC: UIViewController {
+    
+    // AnswerVCから受け取る
+    var categorizedCards: [Card] = []
 
     // AnswerVCから受け取る
     var studyCards: [Card] = []
@@ -37,9 +40,7 @@ class ResultVC: UIViewController {
         // nuvbaritemを消す
          self.navigationItem.setHidesBackButton(true, animated:true);
         
-        print("================")
-        print(retryCards)
-        print("================")
+       
         titleLabel.backgroundColor = UIColor(red: 57/255, green: 101/255, blue: 152/255, alpha: 100)
         
         sheetLabel.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 100)
@@ -102,7 +103,7 @@ class ResultVC: UIViewController {
     
     @IBAction func didClickReturnButton(_ sender: UIButton) {
                
-        performSegue(withIdentifier: "returnToCard", sender: studyCards)
+        performSegue(withIdentifier: "returnToCard", sender: categorizedCards)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

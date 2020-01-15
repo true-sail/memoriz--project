@@ -12,8 +12,9 @@ class AnswerVC: UIViewController {
 
     // QuestionVCから受け取る
     var studyCards: [Card] = []
-    var QNum: Int = 0
+    var QNum: Int = 0  // 問題番号 - 1
     var retryCards: [Card] = []
+    var categorizedCards: [Card] = []
     
         
     @IBOutlet weak var label: UILabel!
@@ -28,8 +29,8 @@ class AnswerVC: UIViewController {
         // nuvbaritemを消す
         self.navigationItem.setHidesBackButton(true, animated:true);
         
-        // navbarタイトル
-        self.title = "解答\(QNum + 1)"
+        // navbarのタイトル
+        navigationItem.title = "解答\(QNum + 1)"
         
         let answer = studyCards[QNum].A
         label.text = "\(answer)"
@@ -83,8 +84,8 @@ class AnswerVC: UIViewController {
         let QNums = studyCards.count
        
         if QNum < QNums - 1 {
-            QNum += 1
-            performSegue(withIdentifier: "backToQuestion", sender: QNum)
+                QNum += 1
+                performSegue(withIdentifier: "backToQuestion", sender: QNum)
             } else {
                performSegue(withIdentifier: "toResult", sender: studyCards)
             }
@@ -93,16 +94,15 @@ class AnswerVC: UIViewController {
     // 難しいボタンを押した時の処理
     @IBAction func didClickButtonL(_ sender: UIButton) {
     
-        let QNums = studyCards.count
+//        let QNums = studyCards.count
 
         retryCards.append(studyCards[QNum])
        
-                     
-        if QNum < QNums - 1 {
+        if QNum < studyCards.count - 1 {
             QNum += 1
-           performSegue(withIdentifier: "backToQuestion", sender: QNum)
+            performSegue(withIdentifier: "backToQuestion", sender: QNum)
            } else {
-              performSegue(withIdentifier: "toResult", sender: studyCards)
+            performSegue(withIdentifier: "toResult", sender: studyCards)
         }
     }
 
@@ -118,7 +118,7 @@ class AnswerVC: UIViewController {
             let ResultVC = segue.destination as! ResultVC
             ResultVC.studyCards = studyCards
             ResultVC.retryCards = retryCards
-            print(retryCards)
+            ResultVC.categorizedCards = categorizedCards
         }
     }
     

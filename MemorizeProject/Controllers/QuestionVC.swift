@@ -9,8 +9,15 @@
 import UIKit
 
 class QuestionVC: UIViewController {
-        // AnswerVCから受け取る
+    
+        // CardVCから受け取る
+        var categorizedCards: [Card] = []
+    
+        // CardVCとAnswerVCから受け取る
         var studyCards: [Card] = []
+    
+//        // AnswerVCから受け取る
+//        var studyCards: [Card] = []
         // AnswerVCとResultVCから受け取る
         var retryCards: [Card] = []
     
@@ -19,7 +26,9 @@ class QuestionVC: UIViewController {
         
         @IBOutlet weak var button: UIButton!
         
-        var QNums:Int = 0
+//        // 問題数
+//        var QNums:Int = 0
+        // 問題番号 - 1
         var QNum:Int = 0
         
         override func viewDidLoad() {
@@ -31,8 +40,8 @@ class QuestionVC: UIViewController {
             // nuvbaritemを消す
             self.navigationItem.setHidesBackButton(true, animated:true);
             
-            // navbarタイトル
-            self.title = "問題\(QNum + 1)"
+            // navbarのタイトル
+            navigationItem.title = "問題\(QNum + 1)"
             
           
             let question = studyCards[QNum].Q
@@ -77,6 +86,7 @@ class QuestionVC: UIViewController {
                 AnswerVC.QNum = self.QNum
                 AnswerVC.studyCards = sender as! [Card]
                 AnswerVC.retryCards = retryCards
+                AnswerVC.categorizedCards = categorizedCards
             }
         }
     }
