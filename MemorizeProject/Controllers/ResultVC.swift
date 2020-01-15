@@ -10,6 +10,12 @@ import UIKit
 
 class ResultVC: UIViewController {
 
+    // AnswerVCから受け取る
+    var studyCards: [Card] = []
+    
+    // AnswerVCとResultVCから受け取る
+    var retryCards: [Card] = []
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sheetLabel: UILabel!
     
@@ -21,12 +27,14 @@ class ResultVC: UIViewController {
     @IBOutlet weak var result2Label: UILabel!
     @IBOutlet weak var result3Label: UILabel!
     
-    var studyCards: [Card] = []
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("================")
-        print(studyCards)
+        print(retryCards)
         print("================")
         titleLabel.backgroundColor = UIColor(red: 57/255, green: 101/255, blue: 152/255, alpha: 100)
         
@@ -42,37 +50,69 @@ class ResultVC: UIViewController {
         result3Label.textColor = UIColor(red: 48/255, green: 79/255, blue: 121/255, alpha: 100)
         result3Label.font = UIFont.boldSystemFont(ofSize: 20)
         
-//        result1Label.text = ""
-//        result1Labe2.text = ""
-//        result1Labe3.text = ""
+        result1Label.text = "\(studyCards.count)"
+        result2Label.text = "\(studyCards.count - retryCards.count)"
+        result3Label.text = "\(retryCards.count)"
+        
+        // 「復習」か「もう一度」か
+        if retryCards.count == 0 {
+            button1.setTitle("もう一度", for: .normal)
+        } else {
+            button1.setTitle("復習", for: .normal)
+        }
+        
+        // ボタンの文字の色
+        button1.tintColor = .white
+        button2.tintColor = .white
+       
+        // 角丸設定
+        button1.layer.cornerRadius = 10.0
+        button2.layer.cornerRadius = 10.0
+     
+        // 背景色
+        button1.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+        button2.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+     
+        // 影の設定
+        button1.layer.shadowOpacity = 0.16
+        button2.layer.shadowOpacity = 0.16
+        button1.layer.shadowRadius = 2.0
+        button2.layer.shadowRadius = 2.0
+        button1.layer.shadowColor = UIColor.black.cgColor
+        button2.layer.shadowColor = UIColor.black.cgColor
+        button1.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button2.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button1.layer.borderWidth = 2.0
+        button2.layer.borderWidth = 2.0
+        button1.layer.borderColor = UIColor.clear.cgColor
+        button2.layer.borderColor = UIColor.clear.cgColor
         
     }
     
 
     
     @IBAction func didClickRetryButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "returnToQuestion", sender: studyCards)
-//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+        performSegue(withIdentifier: "returnToQuestion", sender: retryCards)
     }
     
     @IBAction func didClickReturnButton(_ sender: UIButton) {
                
-//        performSegue(withIdentifier: "returnToCard", sender: studyCards)
-        let cardVC = self.storyboard?.instantiateViewController(withIdentifier: "CardVC") as! CardVC
-        cardVC.categorizedCards = studyCards
-        cardVC.selectedCategory = studyCards[0].category
-        self.present(cardVC, animated: true, completion: nil)
-
-   
-
+        performSegue(withIdentifier: "returnToCard", sender: studyCards)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        // retryするとき
         if segue.identifier == "returnToQuestion" {
             let QuestionVC = segue.destination as! QuestionVC
-
-            QuestionVC.studyCards = sender as! [Card]
+            
+            QuestionVC.retryCards = sender as! [Card]
+            QuestionVC.studyCards = studyCards
+       
         }
+        
+        // 最初の画面(CardVC)に戻る時
         if segue.identifier == "returnToCard" {
 
                     let CardVC = segue.destination as! CardVC

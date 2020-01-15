@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MakeCardsVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今日学んだこと" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EM3-sa-qyt">
@@ -127,7 +127,7 @@
             <objects>
                 <viewController id="We8-99-hP4" customClass="SearchVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4WV-lQ-KHK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p1B-k0-Nfs">
@@ -164,7 +164,7 @@
             <objects>
                 <viewController id="Gjc-Xd-O4A" customClass="DownloadVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A00-8g-QZg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリ：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiV-6w-Y9t">
@@ -276,13 +276,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keK-kA-mS8">
-                                <rect key="frame" x="94" y="621" width="226" height="30"/>
+                                <rect key="frame" x="156" y="747" width="103" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="次へ"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-E8-Wya">
+                                <rect key="frame" x="62" y="618" width="101" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="難しい"/>
                                 <connections>
-                                    <action selector="didClickButton:" destination="btd-LP-Ymm" eventType="touchUpInside" id="eFz-KX-efK"/>
-                                    <action selector="didClickButton:" destination="BjS-7m-4XC" eventType="touchUpInside" id="uCq-tc-Eym"/>
+                                    <action selector="didClickButtonL:" destination="BjS-7m-4XC" eventType="touchUpInside" id="goz-AI-lVI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak4-2i-iAW">
+                                <rect key="frame" x="251" y="618" width="101" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="余裕"/>
+                                <connections>
+                                    <action selector="didClickButtonR:" destination="BjS-7m-4XC" eventType="touchUpInside" id="7Cr-6i-ukn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -291,22 +305,23 @@
                     </view>
                     <navigationItem key="navigationItem" id="h2L-WV-Deu"/>
                     <connections>
-                        <outlet property="button" destination="keK-kA-mS8" id="PyU-9P-hgq"/>
+                        <outlet property="buttonL" destination="Uk2-E8-Wya" id="JA8-w3-o5a"/>
+                        <outlet property="buttonR" destination="Ak4-2i-iAW" id="UEU-sn-Ebv"/>
                         <outlet property="label" destination="0Dy-xJ-XgD" id="Xmn-LC-DmW"/>
-                        <segue destination="Muu-ao-dDx" kind="modal" identifier="toResult" modalPresentationStyle="fullScreen" id="6l7-vD-36G"/>
+                        <segue destination="Muu-ao-dDx" kind="show" identifier="toResult" id="6l7-vD-36G"/>
                         <segue destination="btd-LP-Ymm" kind="show" identifier="backToQuestion" id="S9m-Lc-tIl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb5-9a-h0T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7517" y="-1275"/>
+            <point key="canvasLocation" x="7515.9420289855079" y="-1275"/>
         </scene>
         <!--ResultVC-->
         <scene sceneID="OXE-6j-T7r">
             <objects>
                 <viewController id="Muu-ao-dDx" customClass="ResultVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WTN-uv-odP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmw-S0-pBZ">
@@ -366,20 +381,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-rT-ic7">
-                                <rect key="frame" x="172" y="509" width="70" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="復習"/>
-                                <connections>
-                                    <action selector="didClickRetryButton:" destination="Muu-ao-dDx" eventType="touchUpInside" id="XOz-Ow-w8P"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTs-ZM-woe">
-                                <rect key="frame" x="135" y="582" width="145" height="49"/>
+                                <rect key="frame" x="109" y="656" width="197" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="最初の画面へ"/>
                                 <connections>
                                     <action selector="didClickReturnButton:" destination="Muu-ao-dDx" eventType="touchUpInside" id="AsP-fg-NWP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-rT-ic7">
+                                <rect key="frame" x="109" y="607" width="197" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="復習"/>
+                                <connections>
+                                    <action selector="didClickRetryButton:" destination="Muu-ao-dDx" eventType="touchUpInside" id="XOz-Ow-w8P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -388,6 +405,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="NVx-Mx-XSH"/>
                     <connections>
+                        <outlet property="button1" destination="uwN-rT-ic7" id="yBa-PS-4gA"/>
+                        <outlet property="button2" destination="fTs-ZM-woe" id="yv4-RM-BU6"/>
                         <outlet property="label1" destination="Gcl-Zx-J8q" id="Xdh-RS-VtB"/>
                         <outlet property="label2" destination="P69-3I-iHo" id="9fo-o7-OC0"/>
                         <outlet property="label3" destination="VPe-FW-L2Q" id="FB6-Ah-io5"/>
@@ -402,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHk-AN-Zeo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8704" y="-1275"/>
+            <point key="canvasLocation" x="8702.898550724638" y="-1275"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="JoZ-dZ-rWJ">
@@ -504,9 +523,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="mpK-9q-fY0">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="XU5-EG-bF0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0pg-GW-k5X">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0pg-GW-k5X">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="追加"/>
                                 <connections>
                                     <action selector="didClickAddButton:" destination="uci-Ji-wl6" eventType="touchUpInside" id="Kd7-32-hcr"/>
@@ -662,6 +682,6 @@
         <segue reference="7am-kZ-AmQ"/>
         <segue reference="Qow-DQ-pDa"/>
         <segue reference="9HO-W0-LuR"/>
-        <segue reference="FxX-Fm-McO"/>
+        <segue reference="gaU-3S-kY5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,14 +9,18 @@
 import UIKit
 
 class QuestionVC: UIViewController {
+        // AnswerVCから受け取る
         var studyCards: [Card] = []
+        // AnswerVCとResultVCから受け取る
+        var retryCards: [Card] = []
+    
         
         @IBOutlet weak var label: UILabel!
         
         @IBOutlet weak var button: UIButton!
         
-        var QNumber:Int = 0
-        var i:Int = 0
+        var QNums:Int = 0
+        var QNum:Int = 0
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -24,12 +28,15 @@ class QuestionVC: UIViewController {
             // navbarの色設定
             navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
             
-            self.title = "問題"
-            print(studyCards)
-            print(i)
-            let question = studyCards[i].Q
+            self.title = "学習"
+            
+          
+            let question = studyCards[QNum].Q
             label.text = "\(question)"
+          
+            
             label.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 100)
+                
             
             // ボタンの文字の色
             button.tintColor = .white
@@ -48,7 +55,6 @@ class QuestionVC: UIViewController {
             button.layer.borderWidth = 2.0
             button.layer.borderColor = UIColor.clear.cgColor
             
-                
             }
             
         
@@ -64,8 +70,9 @@ class QuestionVC: UIViewController {
             
             let AnswerVC = segue.destination as! AnswerVC
                 
-                AnswerVC.i = self.i
+                AnswerVC.QNum = self.QNum
                 AnswerVC.studyCards = sender as! [Card]
+                AnswerVC.retryCards = retryCards
             }
         }
     }
