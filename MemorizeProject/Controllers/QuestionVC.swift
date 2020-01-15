@@ -28,6 +28,9 @@ class QuestionVC: UIViewController {
             // navbarの色設定
             navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
             
+            // nuvbaritemを消す
+            self.navigationItem.setHidesBackButton(true, animated:true);
+            
             self.title = "学習"
             
           

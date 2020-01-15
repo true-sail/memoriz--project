@@ -33,6 +33,10 @@ class ResultVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // nuvbaritemを消す
+         self.navigationItem.setHidesBackButton(true, animated:true);
+        
         print("================")
         print(retryCards)
         print("================")

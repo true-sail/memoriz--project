@@ -25,6 +25,9 @@ class AnswerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // nuvbaritemを消す
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
         self.title = "学習"
         
         let answer = studyCards[QNum].A
