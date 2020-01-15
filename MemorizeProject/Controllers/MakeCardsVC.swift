@@ -13,6 +13,10 @@ import Firebase
 import UserNotifications
 
 class MakeCardsVC: UIViewController {
+    enum Const {
+           static let maxStringCount = 96
+   }
+  
     
     // 編集する時に飛んでくる値を受け取る
     var editCard: Card? = nil
@@ -49,6 +53,7 @@ class MakeCardsVC: UIViewController {
         // おまじない
         textViewQ.delegate = self
         textViewA.delegate = self
+
     
         // textViewQの枠線
         textViewQ.layer.borderWidth = 1
@@ -62,6 +67,20 @@ class MakeCardsVC: UIViewController {
         textViewQ.autocapitalizationType = UITextAutocapitalizationType.none
         textViewA.autocapitalizationType = UITextAutocapitalizationType.none
         textField.autocapitalizationType = UITextAutocapitalizationType.none
+        
+        // 角丸設定
+        button.layer.cornerRadius = 10.0
+      
+        // 背景色
+        button.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+      
+        // 影の設定
+        button.layer.shadowOpacity = 0.16
+        button.layer.shadowRadius = 2.0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.clear.cgColor
         
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
@@ -102,6 +121,8 @@ class MakeCardsVC: UIViewController {
             button.setTitle("作成", for: .normal)
         }
         
+        
+
     }
 
     
@@ -155,6 +176,8 @@ class MakeCardsVC: UIViewController {
             realm.add(createdCard)
         }
     }
+    
+
     
     // スイッチを押した時
     @IBAction func didSwitchButton(_ sender: UISwitch) {
@@ -354,9 +377,9 @@ extension MakeCardsVC: UITextViewDelegate {
             // textViewQの文字が空の場合
             if textViewQ.text.isEmpty {
             // textViewの文字を設定
-             textViewQ.text = "問題"
+            textViewQ.text = "問題"
             // 文字をlightGrayに変更
-             textViewQ.textColor = UIColor.lightGray
+            textViewQ.textColor = UIColor.lightGray
             }
         }
         
@@ -371,6 +394,26 @@ extension MakeCardsVC: UITextViewDelegate {
         }
     }
     
-
+    // textViewの文字制限
+    func textViewDidChange(_ textView: UITextView) {
+        
+           guard let text = textView.text,
+               let isUndoing = textView.undoManager?.isUndoing,
+               let isRedoing = textView.undoManager?.isRedoing else { return }
     
+
+           if !isUndoing
+               && !isRedoing
+               && textView.markedTextRange == nil
+               && textView.text.count > Const.maxStringCount {
+               let endIndex = text.index(text.startIndex, offsetBy: Const.maxStringCount)
+               textView.text = String(text[..<endIndex])
+           }
+       }
+    
+      
+
 }
+
+
+

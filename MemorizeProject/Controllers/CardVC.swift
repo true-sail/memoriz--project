@@ -18,13 +18,15 @@ class CardVC: UIViewController {
     var categorizedCards: [Card] = [] {
         // categorizedCardsが書き換えられた時に実行
         didSet {
-            tableView.reloadData()
+            if (tableView != nil) {
+                tableView.reloadData()
+            }
         }
     }
     
-   
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +40,30 @@ class CardVC: UIViewController {
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        // buttonの文字の色
+        button.tintColor = .white
+        
+        // 角丸設定
+        button.layer.cornerRadius = 10.0
+      
+        // 背景色
+        button.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+      
+        // 影の設定
+        button.layer.shadowOpacity = 0.16
+        button.layer.shadowRadius = 2.0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.clear.cgColor
+        
+        
     }
     
     // 画面を表示した時に毎回実行される
     override func viewWillAppear(_ animated: Bool) {
+    
           print(selectedCategory)
         
         // Realmに接続
@@ -50,29 +71,38 @@ class CardVC: UIViewController {
         
         // realmから選択されたカテゴリのカードを取得
         let cards = realm.objects(Card.self).filter("category == '\(selectedCategory)'")
-        
+
         // 配列results
         var results: [Card] = []
-        
+
         // 配列resultsにcardを追加
         for card in cards {
             results.append(card)
         }
-        
+
         // categorizedCardsにresultsを代入
         categorizedCards = results
+        
     }
 
     // 追加ボタンを押した時の処理
-    @IBAction func didClickButton(_ sender: UIButton) {
+    @IBAction func didClickAddButton(_ sender: UIButton) {
         performSegue(withIdentifier: "toMain", sender: selectedCategory)
+        
     }
+    // 学習ボタンを押した時の処理
+    @IBAction func didClickStartButton(_ sender: UIButton) {
+
+    let studyCards = categorizedCards
+        performSegue(withIdentifier: "toStudy", sender: studyCards)
+    }
+    
     
     // 左にスワイプしたらdeleteが出てくる
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          // 選択されたボタンがdeleteの場合
         if editingStyle == .delete {
-           // Realmに接続する
+            // Realmに接続する
             let realm = try! Realm()
             
             // 該当のタスクをRealmから削除
@@ -134,6 +164,12 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
             
             MakeCardsVC.selectedCategory = sender as! String
             
+        }
+        
+        
+        if segue.identifier == "toStudy" {
+            let QuestionVC = segue.destination as! QuestionVC
+            QuestionVC.studyCards = sender as! [Card]
         }
     }
 }

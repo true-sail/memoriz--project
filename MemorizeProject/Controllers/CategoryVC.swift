@@ -11,6 +11,14 @@ import RealmSwift
 
 class CategoryVC: UIViewController {
     
+    var number = 1
+    
+    var category = ""
+    
+    var categoryNums: [Int] = []
+    
+    var categoryNum: Int = 0
+    
     // カードの一覧を持つ配列
     var createdCards: [Card] = [] {
         // cardsが書き換えられた時に実行
@@ -26,6 +34,14 @@ class CategoryVC: UIViewController {
             collectionView.reloadData()
         }
     }
+    
+    // 飛んできたカテゴリのカードのための箱
+       var categorizedCards: [Card] = [] {
+           // categorizedCardsが書き換えられた時に実行
+           didSet {
+               collectionView.reloadData()
+           }
+       }
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -59,17 +75,23 @@ class CategoryVC: UIViewController {
         // realm.objects(クラス名.self) : Realmから同じクラスの全データを取得
         createdCards = realm.objects(Card.self).reversed()
         
+        // カテゴリの配列(categories)
         for createdCard in createdCards {
-            
-            
-            let category = createdCard.category
+            category = createdCard.category
             
             if !categories.contains(category) {
                 self.categories.append(category)
+                categoryNums.append(1)
+            } else {
+                let i = categories.count - 1
+//                let i = categoryNums.count - 1
+                categoryNum = categoryNums[i] + 1
+                                  categoryNums[i] = categoryNum
+                print(categoryNum)
+              print(categoryNums)
             }
         }
     }
-
 
 }
 
@@ -103,7 +125,7 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let numberLabel = cell.viewWithTag(2) as! UILabel
         
-        numberLabel.text = "全○件"
+        numberLabel.text = "全\(categoryNum)件"
         
         numberLabel.textColor = .darkGray
         
