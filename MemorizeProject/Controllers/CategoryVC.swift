@@ -35,8 +35,8 @@ class CategoryVC: UIViewController {
         }
     }
     
-    // こんにちは
-    var categoriesMap: Dictionary<String, Int> = [:]
+    // CategoryVCから受け取る
+    var categoryNums: Dictionary<String, Int> = [:]
     
     // 飛んできたカテゴリのカードのための箱
        var categorizedCards: [Card] = [] {
@@ -75,7 +75,6 @@ class CategoryVC: UIViewController {
         
         setUpCollectionViewLayout()
         
-
     }
     
     // 画面を表示した時に毎回実行される
@@ -87,49 +86,30 @@ class CategoryVC: UIViewController {
         // realmからcardの一覧を取得
         // realm.objects(クラス名.self) : Realmから同じクラスの全データを取得
         createdCards = realm.objects(Card.self).reversed()
+        
         var categoryResults: [String] = []
-        var categoryResultsMap: Dictionary<String, Int> = [:]
+        var categoryNumsResults: Dictionary<String, Int> = [:]
         for createdCard in createdCards {
 
             category = createdCard.category
             
-            if (categoryResultsMap.index(forKey: category) == nil) { // 含まれてないとき
-                categoryResultsMap[category] = 1
+            // カテゴリがまだない時
+            if (categoryNumsResults.index(forKey: category) == nil) {
+                categoryNumsResults[category] = 1
                 categoryResults.append(category)
-            } else {                                          // ある！
-                categoryResultsMap[category]! += 1
-//                print(categoriesMap)
+            } else {  // カテゴリがすでにある時
+                categoryNumsResults[category]! += 1
             }
+            
             self.categories = categoryResults
-            self.categoriesMap = categoryResultsMap
-            print("sasasa\(categoriesMap)")
+            self.categoryNums = categoryNumsResults
+            print("sasasa\(categoryNums)")
         }
-//        // カテゴリの配列(categories)
-//        for createdCard in createdCards {
-//
-//            category = createdCard.category
-//
-//            // カテゴリがcategoriesに含まれていない場合
-//            if !categories.contains(category) {
-//                // categoriesに追加する
-//                self.categories.append(category)
-//                categoryNums.append(1) //?
-//            } else {
-//                // カテゴリ名がすでに存在する場合
-//                categoryNum = categoryNums.count - 1
-//                categoryNums[categoryNum] += 1
-//
-//                print(categoryNums)
-//            }
-//        }
-        
-        
-      
     }
 
 }
 
-extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // collectionViewに表示するセルの数
 //        cards.count
@@ -159,7 +139,7 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let numberLabel = cell.viewWithTag(2) as! UILabel
         
-        numberLabel.text = "全\(categoriesMap[selectedCategory]!)件"
+        numberLabel.text = "全\(categoryNums[selectedCategory]!)件"
         
         numberLabel.textColor = .darkGray
         
@@ -201,28 +181,20 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
-}
-
-
-// コレクションビューのデザインを調整するための拡張
-extension CategoryVC: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        // 画像の幅を取得
-        let screenWidth = self.view.bounds.width
-        let screenHeight = self.view.bounds.height
+           // 画像の幅を取得
+           let screenWidth = self.view.bounds.width
+           let screenHeight = self.view.bounds.height
 
-        // 画面の幅の半分を計算
-        let width = screenWidth - 80
-        let height = screenHeight / 8
+           // 画面の幅の半分を計算
+           let width = screenWidth - 80
+           let height = screenHeight / 8
 
-        return CGSize(width: width, height: height)
+           return CGSize(width: width, height: height)
 
     }
-}
-
-extension CategoryVC {
+    
     func setUpCollectionViewLayout() {
         // collectionViewのcellサイズと余白の設定
         let layout = UICollectionViewFlowLayout()
@@ -230,6 +202,23 @@ extension CategoryVC {
         layout.sectionInset = UIEdgeInsets(top: 50, left: 40, bottom: 0, right: 40)
         collectionView.collectionViewLayout = layout
     }
+
 }
+
+
+
+
+   
+
+
+//extension CategoryVC {
+//    func setUpCollectionViewLayout() {
+//        // collectionViewのcellサイズと余白の設定
+//        let layout = UICollectionViewFlowLayout()
+//        layout.minimumLineSpacing = 40
+//        layout.sectionInset = UIEdgeInsets(top: 50, left: 40, bottom: 0, right: 40)
+//        collectionView.collectionViewLayout = layout
+//    }
+//}
 
 

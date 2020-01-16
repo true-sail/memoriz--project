@@ -197,18 +197,11 @@ class MakeCardsVC: UIViewController {
     // ボタンを押した時
     @IBAction func didClickButton(_ sender: UIButton) {
         
-//        var field = ""
-//
-//        var alert = UIAlertController(title:  "\(field)を入力して下さい", message: "", preferredStyle: .alert)
-//
-//        var okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-//            print("okを押しました")
-//        }
-//
-//        alert.addAction(okAction)
-//
-//        present(alert, animated: true, completion: nil)
-//
+        var field = ""
+
+        
+        
+
         // textViewQがnilの場合
         guard let inputQ = textViewQ.text else {
             // return:このメソッド(didClickButton)を中断する
@@ -235,11 +228,17 @@ class MakeCardsVC: UIViewController {
             return
         }
         
-        // textFieldが空の場合
-        if inputCategory.isEmpty {
-            return
-        }
+        // textViewQ, textViewA, textFieldに何も入力されていない場合
+        if textViewQ.textColor != .black || textViewA.textColor != .black || inputCategory.isEmpty {
         
+            // 入力を促すアラート
+            let alert = UIAlertController(title:  "空欄を入力して下さい", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+            }
         
         if let c = editCard {
             // 変数editCardがnilでない場合
@@ -290,7 +289,6 @@ class MakeCardsVC: UIViewController {
 
         // okボタンの作成
         let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-                print("okを押しました")
             }
 
         // alertにokボタンを追加
