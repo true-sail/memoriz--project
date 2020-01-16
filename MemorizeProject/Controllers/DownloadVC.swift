@@ -34,6 +34,9 @@ class DownloadVC: UIViewController {
         labelA.layer.borderWidth = 1
         labelA.layer.borderColor = UIColor.lightGray.cgColor
         
+        // おまじない
+        textField.delegate = self
+        
         // firebaseの選択したデータを反映
         labelQ.text = selectedCard?.Q
         labelA.text = selectedCard?.A
@@ -42,6 +45,24 @@ class DownloadVC: UIViewController {
     }
     
     @IBAction func didClickButton(_ sender: UIButton) {
+        
+        // textFieldがnilの場合
+        guard let inputCategory = textField.text else {
+            return
+        }
+        
+        // textFieldが空の場合
+        if inputCategory.isEmpty {
+        
+            // 入力を促すアラート
+            let alert = UIAlertController(title:  "空欄を入力して下さい", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         
         // Realmに接続
         let realm = try! Realm()
@@ -88,5 +109,17 @@ class DownloadVC: UIViewController {
     
 }
 
-    
+extension DownloadVC: UITextFieldDelegate {
 
+    // textField文字制限
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+            let currentText = textField.text ?? ""
+
+            guard let stringRange = Range(range, in: currentText) else { return false }
+
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+            return updatedText.count <= 8
+    }
+}

@@ -13,9 +13,6 @@ import Firebase
 import UserNotifications
 
 class MakeCardsVC: UIViewController {
-    enum Const {
-           static let maxStringCount = 96
-   }
 
     // 編集する時に飛んでくる値を受け取る
     var editCard: Card? = nil
@@ -26,8 +23,6 @@ class MakeCardsVC: UIViewController {
     // alertに表示するmessage
     var alertMessage = ""
     var alertTitle = ""
- 
-    @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var textViewQ: UITextView!
     
@@ -39,10 +34,7 @@ class MakeCardsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // textViewQに最初カーソルが置かれた状態にする
-//        textViewQ.becomeFirstResponder()
-       
+
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
@@ -85,10 +77,7 @@ class MakeCardsVC: UIViewController {
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
             // nilでない場合（編集の場合）
-            
-            // labelに「編集」と表示
-            label.text = "編集"
-            
+                
             // アラートのtitle設定
             alertTitle = "編集"
             
@@ -100,10 +89,7 @@ class MakeCardsVC: UIViewController {
             
         } else {
             // nilの場合（作成の場合）
-            
-            // labelに「今日学んだこと」と表示
-            label.text = "今日学んだこと"
-            
+
             // アラートのtitle設定
             alertTitle = "作成"
 
@@ -196,11 +182,6 @@ class MakeCardsVC: UIViewController {
     
     // ボタンを押した時
     @IBAction func didClickButton(_ sender: UIButton) {
-        
-        var field = ""
-
-        
-        
 
         // textViewQがnilの場合
         guard let inputQ = textViewQ.text else {
@@ -391,24 +372,7 @@ extension MakeCardsVC: UITextViewDelegate, UITextFieldDelegate {
             }
         }
     }
-    
-    // textViewの文字制限
-//    func textViewDidChange(_ textView: UITextView) {
-//
-//           guard let text = textView.text,
-//               let isUndoing = textView.undoManager?.isUndoing,
-//               let isRedoing = textView.undoManager?.isRedoing else { return }
-//
-//
-//           if !isUndoing
-//               && !isRedoing
-//               && textView.markedTextRange == nil
-//               && textView.text.count > Const.maxStringCount {
-//               let endIndex = text.index(text.startIndex, offsetBy: Const.maxStringCount)
-//               textView.text = String(text[..<endIndex])
-//           }
-//       }
-    
+        
     // textView文字制限
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     
@@ -421,7 +385,7 @@ extension MakeCardsVC: UITextViewDelegate, UITextFieldDelegate {
         return updatedText.count <= 96
     }
     
-    // textFiewld文字制限
+    // textField文字制限
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     
             let currentText = textField.text ?? ""
