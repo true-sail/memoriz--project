@@ -40,6 +40,9 @@ class CardVC: UIViewController {
         // navbarのタイトル
         navigationItem.title = selectedCategory
         
+        // naigationBarの色設定
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self
@@ -97,12 +100,19 @@ class CardVC: UIViewController {
     @IBAction func didClickStartButton(_ sender: UIButton) {
         
         // 勉強するカードをランダムに選択
-        for _ in 0...9 {
+        if 10 <= categorizedCards.count {
             
-            let i = Int(arc4random_uniform(UInt32(categorizedCards.count)))
-            studyCards.append(categorizedCards[i])
-
+            for _ in 0...9 {
+                
+                let i = Int(arc4random_uniform(UInt32(categorizedCards.count)))
+                studyCards.append(categorizedCards[i])
+                categorizedCards.remove(at: i)  // 重複をなくすために消す
+            }
+            
+        } else {
+            studyCards = categorizedCards
         }
+                
 
 //        let studyCards = categorizedCards
         

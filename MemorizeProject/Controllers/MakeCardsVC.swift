@@ -16,8 +16,7 @@ class MakeCardsVC: UIViewController {
     enum Const {
            static let maxStringCount = 96
    }
-  
-    
+
     // 編集する時に飛んでくる値を受け取る
     var editCard: Card? = nil
     
@@ -53,6 +52,7 @@ class MakeCardsVC: UIViewController {
         // おまじない
         textViewQ.delegate = self
         textViewA.delegate = self
+        textField.delegate = self
 
     
         // textViewQの枠線
@@ -121,19 +121,19 @@ class MakeCardsVC: UIViewController {
             button.setTitle("作成", for: .normal)
         }
         
-        
 
     }
-
     
-       func setTabBarItem(index: Int, titile: String, image: UIImage, selectedImage: UIImage,  offColor: UIColor, onColor: UIColor) -> Void {
-           let tabBarItem = self.tabBarController?.tabBar.items![index]
-           tabBarItem!.title = titile
-           tabBarItem!.image = image.withRenderingMode(.alwaysOriginal)
-           tabBarItem!.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
-           tabBarItem!.setTitleTextAttributes([ .foregroundColor : offColor], for: .normal)
-           tabBarItem!.setTitleTextAttributes([ .foregroundColor : onColor], for: .selected)
-       }
+    
+    func setTabBarItem(index: Int, titile: String, image: UIImage, selectedImage: UIImage,  offColor: UIColor, onColor: UIColor) -> Void {
+        
+        let tabBarItem = self.tabBarController?.tabBar.items![index]
+        tabBarItem!.title = titile
+        tabBarItem!.image = image.withRenderingMode(.alwaysOriginal)
+        tabBarItem!.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
+        tabBarItem!.setTitleTextAttributes([ .foregroundColor : offColor], for: .normal)
+        tabBarItem!.setTitleTextAttributes([ .foregroundColor : onColor], for: .selected)
+    }
         
     // カードを編集するためのメソッド
     fileprivate func updateCard(newQ: String, newA: String, newCategory: String, createdCard: Card) {
@@ -323,6 +323,7 @@ class MakeCardsVC: UIViewController {
     
         // 通知を登録
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
     
         // textViewを最初の状態に戻す
         textViewQ.text = "問題"
@@ -344,7 +345,7 @@ class MakeCardsVC: UIViewController {
 }
 
 // placeholderを使えるように拡張
-extension MakeCardsVC: UITextViewDelegate {
+extension MakeCardsVC: UITextViewDelegate, UITextFieldDelegate {
     
     // textViewを編集し始めた時のメソッド
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -395,25 +396,49 @@ extension MakeCardsVC: UITextViewDelegate {
     }
     
     // textViewの文字制限
-    func textViewDidChange(_ textView: UITextView) {
-        
-           guard let text = textView.text,
-               let isUndoing = textView.undoManager?.isUndoing,
-               let isRedoing = textView.undoManager?.isRedoing else { return }
+//    func textViewDidChange(_ textView: UITextView) {
+//
+//           guard let text = textView.text,
+//               let isUndoing = textView.undoManager?.isUndoing,
+//               let isRedoing = textView.undoManager?.isRedoing else { return }
+//
+//
+//           if !isUndoing
+//               && !isRedoing
+//               && textView.markedTextRange == nil
+//               && textView.text.count > Const.maxStringCount {
+//               let endIndex = text.index(text.startIndex, offsetBy: Const.maxStringCount)
+//               textView.text = String(text[..<endIndex])
+//           }
+//       }
     
-
-           if !isUndoing
-               && !isRedoing
-               && textView.markedTextRange == nil
-               && textView.text.count > Const.maxStringCount {
-               let endIndex = text.index(text.startIndex, offsetBy: Const.maxStringCount)
-               textView.text = String(text[..<endIndex])
-           }
-       }
+    // textView文字制限
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     
-      
+        let currentText = textView.text ?? ""
 
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+
+        return updatedText.count <= 96
+    }
+    
+    // textFiewld文字制限
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
+            let currentText = textField.text ?? ""
+
+            guard let stringRange = Range(range, in: currentText) else { return false }
+
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+            return updatedText.count <= 8
+    }
+    
 }
+
+
 
 
 

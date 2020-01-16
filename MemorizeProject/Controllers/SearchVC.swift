@@ -29,6 +29,9 @@ class SearchVC: UIViewController {
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
+        // naigationBarの色設定
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self

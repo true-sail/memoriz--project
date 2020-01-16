@@ -15,7 +15,7 @@ class CategoryVC: UIViewController {
     
     var category = ""
     
-    var categoryNums: [Int] = []
+//    var categoryNums: [Int] = []   // delete
     
     var categoryNum: Int = 0
     
@@ -27,13 +27,16 @@ class CategoryVC: UIViewController {
         }
     }
     
-    // 全カテゴリの配列
+    // 全カテゴリの配列                 // delete
     var categories: [String] = [] {
         // cardsが書き換えられた時に実行
         didSet {
             collectionView.reloadData()
         }
     }
+    
+    // こんにちは
+    var categoriesMap: Dictionary<String, Int> = [:]
     
     // 飛んできたカテゴリのカードのための箱
        var categorizedCards: [Card] = [] {
@@ -49,15 +52,16 @@ class CategoryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         // 最初に表示される画面を作成画面にする
         self.tabBarController?.selectedIndex = 1
         
 
-//        // navbarの文字色
-//        self.navigationController?.navigationBar.titleTextAttributes = [
-//            .foregroundColor: UIColor.white
-//        ]
+        // navbarの文字色
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
         
         // navbarのタイトル
         navigationItem.title = "カテゴリ"
@@ -83,23 +87,44 @@ class CategoryVC: UIViewController {
         // realmからcardの一覧を取得
         // realm.objects(クラス名.self) : Realmから同じクラスの全データを取得
         createdCards = realm.objects(Card.self).reversed()
-        
-        // カテゴリの配列(categories)
+        var categoryResults: [String] = []
+        var categoryResultsMap: Dictionary<String, Int> = [:]
         for createdCard in createdCards {
+
             category = createdCard.category
             
-            if !categories.contains(category) {
-                self.categories.append(category)
-                categoryNums.append(1)
-            } else {
-                let i = categories.count - 1
-//                let i = categoryNums.count - 1
-                categoryNum = categoryNums[i] + 1
-                                  categoryNums[i] = categoryNum
-                print(categoryNum)
-              print(categoryNums)
+            if (categoryResultsMap.index(forKey: category) == nil) { // 含まれてないとき
+                categoryResultsMap[category] = 1
+                categoryResults.append(category)
+            } else {                                          // ある！
+                categoryResultsMap[category]! += 1
+//                print(categoriesMap)
             }
+            self.categories = categoryResults
+            self.categoriesMap = categoryResultsMap
+            print("sasasa\(categoriesMap)")
         }
+//        // カテゴリの配列(categories)
+//        for createdCard in createdCards {
+//
+//            category = createdCard.category
+//
+//            // カテゴリがcategoriesに含まれていない場合
+//            if !categories.contains(category) {
+//                // categoriesに追加する
+//                self.categories.append(category)
+//                categoryNums.append(1) //?
+//            } else {
+//                // カテゴリ名がすでに存在する場合
+//                categoryNum = categoryNums.count - 1
+//                categoryNums[categoryNum] += 1
+//
+//                print(categoryNums)
+//            }
+//        }
+        
+        
+      
     }
 
 }
@@ -134,7 +159,7 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let numberLabel = cell.viewWithTag(2) as! UILabel
         
-        numberLabel.text = "全\(categoryNum)件"
+        numberLabel.text = "全\(categoriesMap[selectedCategory]!)件"
         
         numberLabel.textColor = .darkGray
         
@@ -206,3 +231,5 @@ extension CategoryVC {
         collectionView.collectionViewLayout = layout
     }
 }
+
+
