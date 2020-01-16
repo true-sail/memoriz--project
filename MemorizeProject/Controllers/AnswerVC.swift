@@ -81,6 +81,17 @@ class AnswerVC: UIViewController {
     // 余裕ボタンを押した時の処理
     @IBAction func didClickButtonR(_ sender: UIButton) {
         
+        let center = UNUserNotificationCenter.current()
+
+        // notification.requestのIDで絞って消す
+        center.getDeliveredNotifications { notifications in
+            let identifiers = notifications
+                .filter { $0.request.identifier == "foobar"}
+                .map { $0.request.identifier }
+            center.removeDeliveredNotifications(withIdentifiers: identifiers)
+        }
+        
+        // 問題番号
         let QNums = studyCards.count
        
         if QNum < QNums - 1 {
@@ -89,6 +100,8 @@ class AnswerVC: UIViewController {
             } else {
                performSegue(withIdentifier: "toResult", sender: studyCards)
             }
+        
+        
     }
     
     // 難しいボタンを押した時の処理

@@ -322,7 +322,6 @@ class MakeCardsVC: UIViewController {
         // 通知を登録
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
-    
         // textViewを最初の状態に戻す
         textViewQ.text = "問題"
         textViewQ.textColor = UIColor.lightGray

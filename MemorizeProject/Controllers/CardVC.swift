@@ -99,6 +99,16 @@ class CardVC: UIViewController {
     // 学習ボタンを押した時の処理
     @IBAction func didClickStartButton(_ sender: UIButton) {
         
+        // もしカードが0枚の時、アラートを表示し処理を中断する
+        if categorizedCards.count == 0 {
+            let alert = UIAlertController(title:  "カードがありません", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         // 勉強するカードをランダムに選択
         if 10 <= categorizedCards.count {
             
@@ -114,7 +124,7 @@ class CardVC: UIViewController {
         }
                 
 
-//        let studyCards = categorizedCards
+
         
         performSegue(withIdentifier: "toStudy", sender: studyCards)
     }

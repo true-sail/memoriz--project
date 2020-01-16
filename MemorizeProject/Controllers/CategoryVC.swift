@@ -105,6 +105,8 @@ class CategoryVC: UIViewController {
             self.categoryNums = categoryNumsResults
             print("sasasa\(categoryNums)")
         }
+        
+        
     }
 
 }
@@ -129,6 +131,11 @@ extension CategoryVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let categoryLabel = cell.viewWithTag(1) as! UILabel
         
         let selectedCategory = categories[indexPath.row]
+        
+        // カードが0枚になったらのそのカテゴリを消す。
+        if categoryNums[selectedCategory] == 0 {
+            categories.remove(at: categoryNum)
+        }
         
         categoryLabel.text = selectedCategory
         
