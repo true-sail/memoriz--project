@@ -16,6 +16,9 @@ class AnswerVC: UIViewController {
     var retryCards: [Card] = []
     var categorizedCards: [Card] = []
     
+    // AnswerVCから受け取る
+    var cardID = 0
+    var check = false  // notificationの状態
         
     @IBOutlet weak var label: UILabel!
     
@@ -65,62 +68,109 @@ class AnswerVC: UIViewController {
                 
     }
     
-//    @IBAction func didClickButton(_ sender: UIButton) {
-//
-//        let QNumbers = studyCards.count
-//
-//        if i! < QNumbers - 1 {
-//            i! += 1
-//            performSegue(withIdentifier: "backToQuestion", sender: i)
-//             } else {
-//                 performSegue(withIdentifier: "toResult", sender: studyCards)
-//             }
-//    }
-    
-
     // 余裕ボタンを押した時の処理
     @IBAction func didClickButtonR(_ sender: UIButton) {
         print(categorizedCards)
         
-        // 通知をnotification.requestのIDで消す
-        let center = UNUserNotificationCenter.current()
-//        center.getDeliveredNotifications { notifications in
-//            let identifiers = notifications
-//                .filter { $0.request.identifier == "\(self.studyCards[self.QNum].id)"}
-//                .map { $0.request.identifier }
-//            center.removeDeliveredNotifications(withIdentifiers: identifiers)
-//        }
-        let qId = self.studyCards[self.QNum].id
-        center.getPendingNotificationRequests { requests in
-            let identifiers = requests
-                .filter { $0.identifier == "\(qId)"}
-                .map { $0.identifier }
-            center.removePendingNotificationRequests(withIdentifiers: identifiers)
+        check = studyCards[QNum].check
+        
+        // 通知が設定されている場合
+        if check == true {
+            // 通知をnotification.requestのIDで消す
+            let center = UNUserNotificationCenter.current()
+
+            let qId = self.studyCards[self.QNum].id
+            center.getPendingNotificationRequests { requests in
+                let identifiers = requests
+                    .filter { $0.identifier == "\(qId)"}
+                    .map { $0.identifier }
+                center.removePendingNotificationRequests(withIdentifiers: identifiers)
+            }
+            
+            // 通知設定の状態を変える
+            check = false
+            
+            // 問題数
+             let QNums = studyCards.count
+            
+             if QNum < QNums - 1 {
+                 QNum += 1
+                 performSegue(withIdentifier: "backToQuestion", sender: QNum)
+             } else {
+                 performSegue(withIdentifier: "toResult", sender: studyCards)
+             }
+            
+        } else {  // 通知が設定されていない場合
+        
+            // 問題数
+            let QNums = studyCards.count
+           
+            if QNum < QNums - 1 {
+                QNum += 1
+                performSegue(withIdentifier: "backToQuestion", sender: QNum)
+            } else {
+                performSegue(withIdentifier: "toResult", sender: studyCards)
+            }
+        
         }
-        
-        // 問題数
-        let QNums = studyCards.count
-       
-        if QNum < QNums - 1 {
-            QNum += 1
-            performSegue(withIdentifier: "backToQuestion", sender: QNum)
-        } else {
-            performSegue(withIdentifier: "toResult", sender: studyCards)
-        }
-        
-        
     }
     
     // 難しいボタンを押した時の処理
     @IBAction func didClickButtonL(_ sender: UIButton) {
+        
+        check = studyCards[QNum].check
+        
+        // もし通知設定がされていない場合
+        if check == false {
+            
+        // 通知の作成
+        let notificationContent = UNMutableNotificationContent()
+
+        // 通知のタイトルに問題を設定
+        notificationContent.title = studyCards[QNum].Q
+        // 通知の本文に答えを設定
+        notificationContent.body = studyCards[QNum].Q
+
+        // 通知音にデフォルト音声を設定
+        notificationContent.sound = .default
+                
+        // 通知時間の作成
+        //            var notificationTime = DateComponents()
+                let trigger: UNNotificationTrigger
+        //            let calendar = Calendar.current  // 現在時間を取得
+            
+        cardID = studyCards[QNum].id
+        
+        // 時間の設定
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let uuid = NSUUID().uuidString
+        let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
+    
+        // 通知を登録
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
+        // 通知設定の状態を変える
+        check = true
+        
+        retryCards.append(studyCards[QNum])
+        
+        if QNum < studyCards.count - 1 {
+            QNum += 1
+            performSegue(withIdentifier: "backToQuestion", sender: QNum)
+            } else {
+            performSegue(withIdentifier: "toResult", sender: studyCards)
+            }
+             
+        } else {  // 通知設定がされている場合
     
         retryCards.append(studyCards[QNum])
        
         if QNum < studyCards.count - 1 {
             QNum += 1
             performSegue(withIdentifier: "backToQuestion", sender: QNum)
-           } else {
+            } else {
             performSegue(withIdentifier: "toResult", sender: studyCards)
+            }
         }
     }
 

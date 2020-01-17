@@ -38,6 +38,11 @@ class MakeCardsVC: UIViewController {
         // navbarの色設定
         navigationController?.navigationBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
+        // navbarの文字色
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        
         // tabbarの色設定
         tabBarController?.tabBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
@@ -77,6 +82,8 @@ class MakeCardsVC: UIViewController {
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
             // nilでない場合（編集の場合）
+            // navbarのタイトル
+            navigationItem.title = "編集画面"
                 
             // アラートのtitle設定
             alertTitle = "編集"
@@ -89,6 +96,9 @@ class MakeCardsVC: UIViewController {
             
         } else {
             // nilの場合（作成の場合）
+            
+            // navbarのタイトル
+            navigationItem.title = "作成画面"
 
             // アラートのtitle設定
             alertTitle = "作成"
@@ -156,6 +166,8 @@ class MakeCardsVC: UIViewController {
         // 現在あるidの最大値+1の値を取得(AutoIncrement)
         let id = (realm.objects(Card.self).max(ofProperty: "id") as Int? ?? 0) + 1
         createdCard.id = id
+        
+        //
         
         //Realmに新規カードを書き込む(追加)
         try! realm.write {
@@ -306,7 +318,7 @@ class MakeCardsVC: UIViewController {
     
         // 通知を登録
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-
+        
         // textViewを最初の状態に戻す
         textViewQ.text = "問題"
         textViewQ.textColor = UIColor.lightGray
@@ -317,6 +329,7 @@ class MakeCardsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "backToCard" {
+            
             
             let CardVC = segue.destination as! CardVC
             

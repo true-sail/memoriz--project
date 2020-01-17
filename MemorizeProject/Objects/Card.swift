@@ -14,6 +14,8 @@ class Card: Object {
 
     // 各カードのID
     @objc dynamic var id: Int = 0
+    
+    @objc dynamic var check: Bool = false
 
     // カードの問題
     @objc dynamic var Q: String = ""

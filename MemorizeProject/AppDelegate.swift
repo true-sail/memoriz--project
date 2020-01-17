@@ -14,9 +14,12 @@ import IQKeyboardManagerSwift
 // スイッチの状態確認
 var didCheckSwitch = true
 
+// 通知の状態確認
+//var notificationCheck = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
 
     var window: UIWindow?
 
