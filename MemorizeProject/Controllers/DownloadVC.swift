@@ -20,6 +20,8 @@ class DownloadVC: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,21 @@ class DownloadVC: UIViewController {
         labelA.layer.borderWidth = 1
         labelA.layer.borderColor = UIColor.lightGray.cgColor
         
+        // 角丸設定
+        button.layer.cornerRadius = 10.0
+        
+        // 背景色
+        button.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+    
+        // 影の設定
+        button.layer.shadowOpacity = 0.16
+        button.layer.shadowRadius = 2.0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.clear.cgColor
+      
+    
         // おまじない
         textField.delegate = self
         
@@ -41,6 +58,7 @@ class DownloadVC: UIViewController {
         labelQ.text = selectedCard?.Q
         labelA.text = selectedCard?.A
         textField.text = selectedCard?.category
+        
         
     }
     
@@ -102,6 +120,7 @@ class DownloadVC: UIViewController {
         
         // アラートを表示
         present(alert, animated: true, completion: nil)
+        
         
     }
     

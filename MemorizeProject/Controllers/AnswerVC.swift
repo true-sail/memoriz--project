@@ -80,26 +80,33 @@ class AnswerVC: UIViewController {
 
     // 余裕ボタンを押した時の処理
     @IBAction func didClickButtonR(_ sender: UIButton) {
+        print(categorizedCards)
         
+        // 通知をnotification.requestのIDで消す
         let center = UNUserNotificationCenter.current()
-
-        // notification.requestのIDで絞って消す
-        center.getDeliveredNotifications { notifications in
-            let identifiers = notifications
-                .filter { $0.request.identifier == "foobar"}
-                .map { $0.request.identifier }
-            center.removeDeliveredNotifications(withIdentifiers: identifiers)
+//        center.getDeliveredNotifications { notifications in
+//            let identifiers = notifications
+//                .filter { $0.request.identifier == "\(self.studyCards[self.QNum].id)"}
+//                .map { $0.request.identifier }
+//            center.removeDeliveredNotifications(withIdentifiers: identifiers)
+//        }
+        let qId = self.studyCards[self.QNum].id
+        center.getPendingNotificationRequests { requests in
+            let identifiers = requests
+                .filter { $0.identifier == "\(qId)"}
+                .map { $0.identifier }
+            center.removePendingNotificationRequests(withIdentifiers: identifiers)
         }
         
-        // 問題番号
+        // 問題数
         let QNums = studyCards.count
        
         if QNum < QNums - 1 {
-                QNum += 1
-                performSegue(withIdentifier: "backToQuestion", sender: QNum)
-            } else {
-               performSegue(withIdentifier: "toResult", sender: studyCards)
-            }
+            QNum += 1
+            performSegue(withIdentifier: "backToQuestion", sender: QNum)
+        } else {
+            performSegue(withIdentifier: "toResult", sender: studyCards)
+        }
         
         
     }
@@ -107,8 +114,6 @@ class AnswerVC: UIViewController {
     // 難しいボタンを押した時の処理
     @IBAction func didClickButtonL(_ sender: UIButton) {
     
-//        let QNums = studyCards.count
-
         retryCards.append(studyCards[QNum])
        
         if QNum < studyCards.count - 1 {

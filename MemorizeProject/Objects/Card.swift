@@ -9,12 +9,6 @@
 import Foundation
 import RealmSwift
 
-//struct Card {
-//    let Q: String
-//    let A: String
-//
-//}
-
 class Card: Object {
     // データを管理するテーブルの作成
 

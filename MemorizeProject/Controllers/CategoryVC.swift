@@ -15,8 +15,6 @@ class CategoryVC: UIViewController {
     
     var category = ""
     
-//    var categoryNums: [Int] = []   // delete
-    
     var categoryNum: Int = 0
     
     // カードの一覧を持つ配列
@@ -49,7 +47,8 @@ class CategoryVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
-
+    @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -88,6 +87,7 @@ class CategoryVC: UIViewController {
         createdCards = realm.objects(Card.self).reversed()
         
         var categoryResults: [String] = []
+        self.categories = []
         var categoryNumsResults: Dictionary<String, Int> = [:]
         for createdCard in createdCards {
 
@@ -105,7 +105,6 @@ class CategoryVC: UIViewController {
             self.categoryNums = categoryNumsResults
             print("sasasa\(categoryNums)")
         }
-        
         
     }
 

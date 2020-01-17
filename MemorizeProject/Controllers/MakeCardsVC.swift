@@ -135,7 +135,7 @@ class MakeCardsVC: UIViewController {
     }
 
     // 作成ボタンを押した時にカードをRealmに追加するメソッド
-    fileprivate func makeNewCards(_ inputQ: String, _ inputA: String, _ inputCategory: String) {
+    fileprivate func makeNewCards(_ inputQ: String, _ inputA: String, _ inputCategory: String) -> Int {
         
         // Realmに接続
         let realm = try! Realm()
@@ -161,6 +161,8 @@ class MakeCardsVC: UIViewController {
         try! realm.write {
             realm.add(createdCard)
         }
+        
+        return createdCard.id
     }
     
 
@@ -221,6 +223,8 @@ class MakeCardsVC: UIViewController {
             return
             }
         
+        var cardID = 0
+        
         if let c = editCard {
             // 変数editCardがnilでない場合
             // 更新する場合
@@ -234,7 +238,7 @@ class MakeCardsVC: UIViewController {
         } else {
             // 変数cardがnilの場合
             // 新規作成の場合
-            makeNewCards(inputQ, inputA, inputCategory)
+            cardID = makeNewCards(inputQ, inputA, inputCategory)
         }
         
         // スイッチがオンの状態の時、databaseに接続
@@ -296,9 +300,9 @@ class MakeCardsVC: UIViewController {
 //            let calendar = Calendar.current  // 現在時間を取得
     
         // 時間の設定
-        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 720, repeats: true)
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
         let uuid = NSUUID().uuidString
-        let request = UNNotificationRequest(identifier: uuid, content: notificationContent, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
     
         // 通知を登録
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)

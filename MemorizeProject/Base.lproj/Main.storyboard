@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MakeCardsVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czo-4b-cWT">
@@ -120,7 +120,7 @@
             <objects>
                 <viewController id="We8-99-hP4" customClass="SearchVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4WV-lQ-KHK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p1B-k0-Nfs">
@@ -157,7 +157,7 @@
             <objects>
                 <viewController id="Gjc-Xd-O4A" customClass="DownloadVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A00-8g-QZg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリ：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiV-6w-Y9t">
@@ -205,6 +205,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5eF-U2-7Bo"/>
                     <connections>
+                        <outlet property="button" destination="hnl-36-QSY" id="Ynk-Rn-5tW"/>
                         <outlet property="labelA" destination="aB4-CQ-kyE" id="doc-Jv-qHu"/>
                         <outlet property="labelQ" destination="G9L-vM-s6X" id="Yg4-EJ-ewZ"/>
                         <outlet property="textField" destination="gRA-rb-5SW" id="MEs-YP-h9T"/>
@@ -219,7 +220,7 @@
             <objects>
                 <viewController id="btd-LP-Ymm" customClass="QuestionVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IVo-UB-7J6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRo-GN-Zz7">
@@ -258,7 +259,7 @@
             <objects>
                 <viewController id="BjS-7m-4XC" customClass="AnswerVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I7E-RD-FFv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dy-xJ-XgD">
@@ -308,7 +309,7 @@
             <objects>
                 <viewController id="Muu-ao-dDx" customClass="ResultVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WTN-uv-odP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-rT-ic7">
@@ -476,7 +477,7 @@
             <objects>
                 <viewController storyboardIdentifier="CardVC" id="uci-Ji-wl6" customClass="CardVC" customModule="MemorizeProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tfx-qT-gkH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iLr-LT-Ni0">
@@ -622,11 +623,11 @@
             </objects>
             <point key="canvasLocation" x="2471.0144927536235" y="15.401785714285714"/>
         </scene>
-        <!--ユーザー-->
+        <!--その他-->
         <scene sceneID="LPO-4s-fa3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1FR-Ob-rNt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ユーザー" image="person" catalog="system" selectedImage="person.fill" id="FON-3M-368"/>
+                    <tabBarItem key="tabBarItem" title="その他" image="ellipsis.circle" catalog="system" selectedImage="ellipsis.circle.fill" id="FON-3M-368"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rz3-aT-Cf8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -664,14 +665,14 @@
     <resources>
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="book.fill" catalog="system" width="64" height="50"/>
+        <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="64" height="60"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="person" catalog="system" width="64" height="58"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="plus.app" catalog="system" width="64" height="56"/>
         <image name="plus.app.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nv2-5w-zbP"/>
+        <segue reference="yyR-Ip-BOO"/>
         <segue reference="tOx-VQ-DQE"/>
         <segue reference="9HO-W0-LuR"/>
         <segue reference="FxX-Fm-McO"/>
