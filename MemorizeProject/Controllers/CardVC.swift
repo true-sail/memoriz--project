@@ -24,12 +24,14 @@ class CardVC: UIViewController {
         }
     }
     
-    // CategoryVCから受け取る
+    // CardVCから受け取る
+//    var difficultCards: [Card] = []
     var studyCards: [Card] = []
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,21 +50,30 @@ class CardVC: UIViewController {
         tableView.dataSource = self
         
         // buttonの文字の色
-        button.tintColor = .white
+        button1.tintColor = .white
+        button2.tintColor = .white
         
         // 角丸設定
-        button.layer.cornerRadius = 10.0
+        button1.layer.cornerRadius = 10.0
+        button2.layer.cornerRadius = 10.0
       
         // 背景色
-        button.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+        button1.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
+        button2.backgroundColor = UIColor(red: 77/255, green: 147/255, blue: 182/255, alpha: 100)
       
         // 影の設定
-        button.layer.shadowOpacity = 0.16
-        button.layer.shadowRadius = 2.0
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 3.0)
-        button.layer.borderWidth = 2.0
-        button.layer.borderColor = UIColor.clear.cgColor
+        button1.layer.shadowOpacity = 0.16
+        button1.layer.shadowRadius = 2.0
+        button1.layer.shadowColor = UIColor.black.cgColor
+        button1.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button1.layer.borderWidth = 2.0
+        button1.layer.borderColor = UIColor.clear.cgColor
+        button2.layer.shadowOpacity = 0.16
+        button2.layer.shadowRadius = 2.0
+        button2.layer.shadowColor = UIColor.black.cgColor
+        button2.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        button2.layer.borderWidth = 2.0
+        button2.layer.borderColor = UIColor.clear.cgColor
         
         
     }
@@ -96,18 +107,61 @@ class CardVC: UIViewController {
         performSegue(withIdentifier: "toMain", sender: selectedCategory)
         
     }
-    // 学習ボタンを押した時の処理
-    @IBAction func didClickStartButton(_ sender: UIButton) {
+    
+    // 苦手のみ学習するボタンを押した時の処理
+    @IBAction func didClickStartButton1(_ sender: UIButton) {
         
         // もしカードが0枚の時、アラートを表示し処理を中断する
         if categorizedCards.count == 0 {
-            let alert = UIAlertController(title:  "カードがありません", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title:  "カードがありません", message: "カードを作成して下さい", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
             }
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
             return
         }
+        
+//        let realm = try! Realm()
+        
+        // 通知オンのカードを絞り出す
+        for categorizedCard in categorizedCards {
+            if categorizedCard.notification == true {
+                studyCards.append(categorizedCard)
+            }
+                print("==============")
+                print(studyCards)
+                print("==============")
+        }
+        
+        // 苦手カードが0枚の場合
+        if studyCards.count == 0 {
+            let alert = UIAlertController(title:  "このカテゴリに苦手な問題はありません", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        } else {
+            performSegue(withIdentifier: "toQuestion", sender: studyCards)
+        }
+        
+    }
+    
+    
+    // 学習ボタンを押した時の処理
+    @IBAction func didClickStartButton2(_ sender: UIButton) {
+        
+        // もしカードが0枚の時、アラートを表示し処理を中断する
+        if categorizedCards.count == 0 {
+            let alert = UIAlertController(title:  "カードがありません", message: "カードを作成して下さい", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        
         
         // 勉強するカードをランダムに選択
         if 10 <= categorizedCards.count {
@@ -121,12 +175,11 @@ class CardVC: UIViewController {
             
         } else {
             studyCards = categorizedCards
+//            studyCards.append(selectedCards)
+    
         }
-                
-
-
-        
-        performSegue(withIdentifier: "toStudy", sender: studyCards)
+            
+        performSegue(withIdentifier: "toQuestion", sender: studyCards)
     }
     
     
@@ -199,7 +252,7 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        if segue.identifier == "toStudy" {
+        if segue.identifier == "toQuestion" {
             let QuestionVC = segue.destination as! QuestionVC
             QuestionVC.studyCards = sender as! [Card]
             QuestionVC.categorizedCards = categorizedCards

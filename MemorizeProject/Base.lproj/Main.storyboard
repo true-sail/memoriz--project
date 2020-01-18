@@ -497,13 +497,22 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boF-ws-zK2">
-                                <rect key="frame" x="105" y="723" width="203" height="34"/>
+                                <rect key="frame" x="106" y="765" width="203" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="学習スタート"/>
+                                <state key="normal" title="学習する"/>
                                 <connections>
-                                    <action selector="didClickStartButton:" destination="uci-Ji-wl6" eventType="touchUpInside" id="HGl-t1-FSJ"/>
+                                    <action selector="didClickStartButton2:" destination="uci-Ji-wl6" eventType="touchUpInside" id="HGl-t1-FSJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptv-hX-gkB">
+                                <rect key="frame" x="106" y="727" width="203" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="苦手のみ学習する"/>
+                                <connections>
+                                    <action selector="didClickStartButton1:" destination="uci-Ji-wl6" eventType="touchUpInside" id="64y-OR-Xci"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -526,11 +535,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="boF-ws-zK2" id="myH-YK-dkI"/>
+                        <outlet property="button1" destination="Ptv-hX-gkB" id="ho9-ZA-3AV"/>
+                        <outlet property="button2" destination="boF-ws-zK2" id="myH-YK-dkI"/>
                         <outlet property="tableView" destination="iLr-LT-Ni0" id="m0D-x9-I9Y"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toEdit" id="WYJ-Hy-W7J"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toMain" id="FxX-Fm-McO"/>
-                        <segue destination="btd-LP-Ymm" kind="show" identifier="toStudy" id="tOx-VQ-DQE"/>
+                        <segue destination="btd-LP-Ymm" kind="show" identifier="toQuestion" id="tOx-VQ-DQE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeA-Vf-dqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -674,7 +684,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nv2-5w-zbP"/>
-        <segue reference="S9m-Lc-tIl"/>
+        <segue reference="tOx-VQ-DQE"/>
         <segue reference="9HO-W0-LuR"/>
         <segue reference="FxX-Fm-McO"/>
     </inferredMetricsTieBreakers>
