@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AnswerVC: UIViewController {
 
@@ -82,8 +83,11 @@ class AnswerVC: UIViewController {
                 center.removePendingNotificationRequests(withIdentifiers: identifiers)
             }
         
-            didCheckSwitch = studyCards[QNum].notification
-            didCheckSwitch = false
+            // realmに接続し通知オフを保存する
+            let realm = try! Realm()
+            try! realm.write {
+                studyCards[QNum].notification = false
+            }
             
             // 問題数
              let QNums = studyCards.count
@@ -126,8 +130,11 @@ class AnswerVC: UIViewController {
         // 通知を登録
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        didCheckSwitch = studyCards[QNum].notification
-        didCheckSwitch = true
+        // realmに接続し通知オンを保存する
+        let realm = try! Realm()
+        try! realm.write {
+            studyCards[QNum].notification = true
+        }
         
         retryCards.append(studyCards[QNum])
         
