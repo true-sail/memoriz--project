@@ -12,10 +12,7 @@ import Firebase
 import IQKeyboardManagerSwift
 
 // スイッチの状態確認
-var didCheckSwitch = true
-
-// 通知の状態確認
-//var notificationCheck = false
+var didCheckSwitch: Bool = true
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {

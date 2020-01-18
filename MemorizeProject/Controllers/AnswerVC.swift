@@ -18,8 +18,7 @@ class AnswerVC: UIViewController {
     
     // AnswerVCから受け取る
     var cardID = 0
-    var check = false  // notificationの状態
-        
+   
     @IBOutlet weak var label: UILabel!
     
     
@@ -72,10 +71,6 @@ class AnswerVC: UIViewController {
     @IBAction func didClickButtonR(_ sender: UIButton) {
         print(categorizedCards)
         
-        check = studyCards[QNum].check
-        
-        // 通知が設定されている場合
-        if check == true {
             // 通知をnotification.requestのIDで消す
             let center = UNUserNotificationCenter.current()
 
@@ -86,9 +81,9 @@ class AnswerVC: UIViewController {
                     .map { $0.identifier }
                 center.removePendingNotificationRequests(withIdentifiers: identifiers)
             }
-            
-            // 通知設定の状態を変える
-            check = false
+        
+            didCheckSwitch = studyCards[QNum].notification
+            didCheckSwitch = false
             
             // 問題数
              let QNums = studyCards.count
@@ -99,30 +94,12 @@ class AnswerVC: UIViewController {
              } else {
                  performSegue(withIdentifier: "toResult", sender: studyCards)
              }
-            
-        } else {  // 通知が設定されていない場合
-        
-            // 問題数
-            let QNums = studyCards.count
-           
-            if QNum < QNums - 1 {
-                QNum += 1
-                performSegue(withIdentifier: "backToQuestion", sender: QNum)
-            } else {
-                performSegue(withIdentifier: "toResult", sender: studyCards)
-            }
-        
-        }
+
     }
     
     // 難しいボタンを押した時の処理
     @IBAction func didClickButtonL(_ sender: UIButton) {
         
-        check = studyCards[QNum].check
-        
-        // もし通知設定がされていない場合
-        if check == false {
-            
         // 通知の作成
         let notificationContent = UNMutableNotificationContent()
 
@@ -148,9 +125,9 @@ class AnswerVC: UIViewController {
     
         // 通知を登録
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
-        // 通知設定の状態を変える
-        check = true
+        
+        didCheckSwitch = studyCards[QNum].notification
+        didCheckSwitch = true
         
         retryCards.append(studyCards[QNum])
         
@@ -161,17 +138,6 @@ class AnswerVC: UIViewController {
             performSegue(withIdentifier: "toResult", sender: studyCards)
             }
              
-        } else {  // 通知設定がされている場合
-    
-        retryCards.append(studyCards[QNum])
-       
-        if QNum < studyCards.count - 1 {
-            QNum += 1
-            performSegue(withIdentifier: "backToQuestion", sender: QNum)
-            } else {
-            performSegue(withIdentifier: "toResult", sender: studyCards)
-            }
-        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

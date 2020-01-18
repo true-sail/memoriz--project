@@ -14,8 +14,6 @@ class Card: Object {
 
     // 各カードのID
     @objc dynamic var id: Int = 0
-    
-    @objc dynamic var check: Bool = false
 
     // カードの問題
     @objc dynamic var Q: String = ""
@@ -25,6 +23,9 @@ class Card: Object {
     
     // カードのカテゴリ
     @objc dynamic var category: String = ""
+    
+    // 通知設定
+    @objc dynamic var notification: Bool = true
 
     // カードの作成日
     @objc dynamic var date: Date = Date()

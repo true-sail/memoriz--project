@@ -20,6 +20,9 @@ class MakeCardsVC: UIViewController {
     // 追加する時に飛んでくる値を受け取る
     var selectedCategory: String = ""
     
+    // 通知に使う
+    var cardID = 0
+    
     // alertに表示するmessage
     var alertMessage = ""
     var alertTitle = ""
@@ -29,6 +32,8 @@ class MakeCardsVC: UIViewController {
     @IBOutlet weak var textViewA: UITextView!
    
     @IBOutlet weak var textField: UITextField!
+
+    @IBOutlet weak var notificationSwitch: UISwitch!
     
     @IBOutlet weak var button: UIButton!
     
@@ -92,6 +97,14 @@ class MakeCardsVC: UIViewController {
             textViewQ.text = e.Q
             textViewA.text = e.A
             textField.text = e.category
+            didCheckSwitch = e.notification
+            if didCheckSwitch == true {
+                notificationSwitch.isOn = true
+            } else {
+                notificationSwitch.isOn = false
+            }
+            
+            
             button.setTitle("変更", for: .normal)
             
         } else {
@@ -113,6 +126,8 @@ class MakeCardsVC: UIViewController {
                 textField.text = selectedCategory
             }
             
+//            didCheckSwitch =
+            
             // buttonの文字を「作成」にする
             button.setTitle("作成", for: .normal)
         }
@@ -132,7 +147,7 @@ class MakeCardsVC: UIViewController {
     }
         
     // カードを編集するためのメソッド
-    fileprivate func updateCard(newQ: String, newA: String, newCategory: String, createdCard: Card) {
+    fileprivate func updateCard(newQ: String, newA: String, newCategory: String, newNotification: Bool, createdCard: Card) {
         
         let realm = try! Realm()
         
@@ -140,12 +155,13 @@ class MakeCardsVC: UIViewController {
             createdCard.Q = newQ
             createdCard.A = newA
             createdCard.category = newCategory
+            createdCard.notification = newNotification
         }
         
     }
 
     // 作成ボタンを押した時にカードをRealmに追加するメソッド
-    fileprivate func makeNewCards(_ inputQ: String, _ inputA: String, _ inputCategory: String) -> Int {
+    fileprivate func makeNewCards(_ inputQ: String, _ inputA: String, _ inputCategory: String, inputNotification: Bool) -> Int {
         
         // Realmに接続
         let realm = try! Realm()
@@ -161,6 +177,8 @@ class MakeCardsVC: UIViewController {
         createdCard.Q = inputQ
         createdCard.A = inputA
         createdCard.category = inputCategory
+        createdCard.notification = inputNotification
+//        createdCard.notification = didCheckSwitch
         createdCard.date = Date() // Date() : 現在の日付を入れる
         
         // 現在あるidの最大値+1の値を取得(AutoIncrement)
@@ -178,21 +196,60 @@ class MakeCardsVC: UIViewController {
     }
     
 
+// ----ダウンロード機能 ここから----
+//    // スイッチを押した時
+//    @IBAction func didSwitchButton(_ sender: UISwitch) {
+//
+//        if sender.isOn {
+//        // オンの場合
+//            didCheckSwitch = true
+//            print("オンです")
+//        } else {
+//        // オフの場合
+//            didCheckSwitch = false
+//            print("オフです")
+//        }
+//
+//    }
+// ----ダウンロード機能　ここまで----
     
-    // スイッチを押した時
+    // スイッチを切り替えた時
     @IBAction func didSwitchButton(_ sender: UISwitch) {
-    
-        if sender.isOn {
         // オンの場合
+        if sender.isOn {
             didCheckSwitch = true
             print("オンです")
-        } else {
-        // オフの場合
-            didCheckSwitch = false
-            print("オフです")
+//            createdCard
+        } else {  // オフの場合
+            // アラートの画面作成
+            let alert = UIAlertController(title: "通知オフだと覚える機会が減るよ！", message: "それでも通知オフにしますか？", preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "いいえ", style: .destructive , handler:{
+            (action: UIAlertAction!) -> Void in
+               
+                if #available(iOS 10.0, *) {
+                    // スイッチをオンに戻す
+                    sender.isOn = true
+                    didCheckSwitch = true
+                } else {
+                    // スイッチをオンに戻す
+                    sender.isOn = true
+                    didCheckSwitch = true
+                }
+            })
+            // yesボタンの作成
+            let yesAction = UIAlertAction(title: "はい", style: .default) { (UIAlertAction) in
+                didCheckSwitch = false
+                print("通知オフです")
+                }
+            // alertにnoボタンを追加
+            alert.addAction(noAction)
+            // alertにyesボタンを追加
+            alert.addAction(yesAction)
+            // アラートを表示
+            present(alert, animated: true, completion: nil)
         }
-        
     }
+    
     
     // ボタンを押した時
     @IBAction func didClickButton(_ sender: UIButton) {
@@ -235,12 +292,10 @@ class MakeCardsVC: UIViewController {
             return
             }
         
-        var cardID = 0
-        
         if let c = editCard {
             // 変数editCardがnilでない場合
             // 更新する場合
-            updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, createdCard: c)
+            updateCard(newQ: inputQ, newA: inputA, newCategory: inputCategory, newNotification: didCheckSwitch, createdCard: c)
             
             let selectedCategory = editCard?.category
             
@@ -250,43 +305,92 @@ class MakeCardsVC: UIViewController {
         } else {
             // 変数cardがnilの場合
             // 新規作成の場合
-            cardID = makeNewCards(inputQ, inputA, inputCategory)
+            cardID = makeNewCards(inputQ, inputA, inputCategory, inputNotification: didCheckSwitch)
         }
-        
-        // スイッチがオンの状態の時、databaseに接続
+      
+        // スイッチがオンの時、通知を設定
         if didCheckSwitch == true {
+                // 通知の作成
+                let notificationContent = UNMutableNotificationContent()
+
+                // 通知のタイトルに問題を設定
+                notificationContent.title = inputQ
+                // 通知の本文に答えを設定
+                notificationContent.body = inputA
+
+                // 通知音にデフォルト音声を設定
+                notificationContent.sound = .default
+                        
+                // 通知時間の作成
+                //            var notificationTime = DateComponents()
+                        let trigger: UNNotificationTrigger
+                //            let calendar = Calendar.current  // 現在時間を取得
+                    
+//            cardID =
+                
+                // 時間の設定
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+                let uuid = NSUUID().uuidString
+                let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
             
-            // firebaseに接続
-            let db = Firestore.firestore()
+                // 通知を登録
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
-            db.collection("cards").addDocument(data: ["Q": textViewQ.text!, "A": textViewA.text!, "category": textField.text!, "createdAt": FieldValue.serverTimestamp()
-            ]) { error in
-                if let err = error {
-                    // エラーが発生した場合、エラー情報を表示
-                    print("エラーーーーーーーーー")
-                    print(err.localizedDescription)
-                } else {
-                    // エラーがない場合
-                    print("シェアしました")
+                // アラートのメッセージ
+                alertMessage = "分ごとに通知されます。"
+                
+        } else { // スイッチがオフの時、通知設定を削除
+                // 通知をnotification.requestのIDで消す
+                let center = UNUserNotificationCenter.current()
+
+    //            let qId = self.studyCards[self.QNum].id
+                center.getPendingNotificationRequests { requests in
+                let identifiers = requests
+                        .filter { $0.identifier == "\(self.cardID)"}
+                        .map { $0.identifier }
+                center.removePendingNotificationRequests(withIdentifiers: identifiers)
                 }
-            }
             
+                // アラートのメッセージ
+                alertMessage = ""
+                
         }
         
-        // スイッチがオンかどうか
-        if didCheckSwitch == true {
-            self.alertMessage = "カードをシェアしました"
-        } else {
-            self.alertMessage = ""
-        }
-        
+// ----ダウンロード機能　ここから----
+//        // スイッチがオンの状態の時、databaseに接続
+//        if didCheckSwitch == true {
+//
+//            // firebaseに接続
+//            let db = Firestore.firestore()
+//
+//            db.collection("cards").addDocument(data: ["Q": textViewQ.text!, "A": textViewA.text!, "category": textField.text!, "createdAt": FieldValue.serverTimestamp()
+//            ]) { error in
+//                if let err = error {
+//                    // エラーが発生した場合、エラー情報を表示
+//                    print("エラーーーーーーーーー")
+//                    print(err.localizedDescription)
+//                } else {
+//                    // エラーがない場合
+//                    print("シェアしました")
+//                }
+//            }
+//
+//        }
+//
+//        // スイッチがオンかどうか
+//        if didCheckSwitch == true {
+//            self.alertMessage = "カードをシェアしました"
+//        } else {
+//            self.alertMessage = ""
+//        }
+// ----ダウンロード機能 ここまで----
 
         // アラートの画面作成
         let alert = UIAlertController(title: "カード\(alertTitle)完了！", message: "\(alertMessage)", preferredStyle: .alert)
 
         // okボタンの作成
         let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
-            }
+        }
 
         // alertにokボタンを追加
         alert.addAction(okAction)

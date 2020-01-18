@@ -57,20 +57,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="シェアする" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vX-1a-HuY">
-                                <rect key="frame" x="103" y="639" width="127" height="30"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OUS-85-9JE">
+                                <rect key="frame" x="243" y="638" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="didSwitchButton:" destination="BYZ-38-t0r" eventType="valueChanged" id="OYm-iS-Mkr"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vX-1a-HuY">
+                                <rect key="frame" x="130" y="639" width="51" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OUS-85-9JE">
-                                <rect key="frame" x="243" y="638" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="didSwitchButton:" destination="BYZ-38-t0r" eventType="valueChanged" id="cPa-0j-o8E"/>
-                                </connections>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -89,6 +89,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="button" destination="b6y-0a-pmr" id="VN9-ag-NZC"/>
+                        <outlet property="notificationSwitch" destination="OUS-85-9JE" id="odB-PR-fB6"/>
                         <outlet property="textField" destination="xXR-VR-3Yy" id="a22-p7-AQW"/>
                         <outlet property="textViewA" destination="czo-4b-cWT" id="4WK-a4-fIC"/>
                         <outlet property="textViewQ" destination="7oJ-88-UFE" id="lnu-Bv-BCR"/>
@@ -672,7 +673,7 @@
         <image name="plus.app.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7am-kZ-AmQ"/>
+        <segue reference="Nv2-5w-zbP"/>
         <segue reference="S9m-Lc-tIl"/>
         <segue reference="9HO-W0-LuR"/>
         <segue reference="FxX-Fm-McO"/>
