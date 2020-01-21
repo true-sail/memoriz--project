@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0Dy-xJ-XgD"; */
+"0Dy-xJ-XgD.text" = "Label";
+
+/* Class = "UILabel"; text = "結果"; ObjectID = "0Te-3U-60h"; */
+"0Te-3U-60h.text" = "結果";
+
+/* Class = "UIButton"; normalTitle = "追加"; ObjectID = "0pg-GW-k5X"; */
+"0pg-GW-k5X.normalTitle" = "追加";
+
+/* Class = "UITabBarItem"; title = "学習"; ObjectID = "7d8-rC-soh"; */
+"7d8-rC-soh.title" = "学習";
+
+/* Class = "UILabel"; text = "通知"; ObjectID = "7vX-1a-HuY"; */
+"7vX-1a-HuY.text" = "通知";
+
+/* Class = "UILabel"; text = "memorizé"; ObjectID = "A7L-3z-o1s"; */
+"A7L-3z-o1s.text" = "memorizé";
+
+/* Class = "UIButton"; normalTitle = "余裕"; ObjectID = "Ak4-2i-iAW"; */
+"Ak4-2i-iAW.normalTitle" = "余裕";
+
+/* Class = "UIButton"; normalTitle = "検索"; ObjectID = "ELn-iX-Nyw"; */
+"ELn-iX-Nyw.normalTitle" = "検索";
+
+/* Class = "UITabBarItem"; title = "その他"; ObjectID = "FON-3M-368"; */
+"FON-3M-368.title" = "その他";
+
+/* Class = "UILabel"; text = "問題"; ObjectID = "G9L-vM-s6X"; */
+"G9L-vM-s6X.text" = "問題";
+
+/* Class = "UILabel"; text = "問題数："; ObjectID = "Gcl-Zx-J8q"; */
+"Gcl-Zx-J8q.text" = "問題数：";
+
+/* Class = "UILabel"; text = "カテゴリ："; ObjectID = "GiV-6w-Y9t"; */
+"GiV-6w-Y9t.text" = "カテゴリ：";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Oh6-u9-xtx"; */
+"Oh6-u9-xtx.text" = "Label";
+
+/* Class = "UILabel"; text = "余裕："; ObjectID = "P69-3I-iHo"; */
+"P69-3I-iHo.text" = "余裕：";
+
+/* Class = "UIButton"; normalTitle = "苦手のみ学習する"; ObjectID = "Ptv-hX-gkB"; */
+"Ptv-hX-gkB.normalTitle" = "苦手のみ学習する";
+
+/* Class = "UILabel"; text = "カテゴリ"; ObjectID = "SFa-4n-gjv"; */
+"SFa-4n-gjv.text" = "カテゴリ";
+
+/* Class = "UIButton"; normalTitle = "難しい"; ObjectID = "Uk2-E8-Wya"; */
+"Uk2-E8-Wya.normalTitle" = "難しい";
+
+/* Class = "UILabel"; text = "要復習："; ObjectID = "VPe-FW-L2Q"; */
+"VPe-FW-L2Q.text" = "要復習：";
+
+/* Class = "UILabel"; text = "解答"; ObjectID = "aB4-CQ-kyE"; */
+"aB4-CQ-kyE.text" = "解答";
+
+/* Class = "UIButton"; normalTitle = "作成"; ObjectID = "b6y-0a-pmr"; */
+"b6y-0a-pmr.normalTitle" = "作成";
+
+/* Class = "UIButton"; normalTitle = "学習する"; ObjectID = "boF-ws-zK2"; */
+"boF-ws-zK2.normalTitle" = "学習する";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eCd-si-nFT"; */
+"eCd-si-nFT.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "最初の画面へ"; ObjectID = "fTs-ZM-woe"; */
+"fTs-ZM-woe.normalTitle" = "最初の画面へ";
+
+/* Class = "UIButton"; normalTitle = "答えを表示"; ObjectID = "feK-hZ-wdI"; */
+"feK-hZ-wdI.normalTitle" = "答えを表示";
+
+/* Class = "UITextField"; text = "ここにカテゴリが入る"; ObjectID = "gRA-rb-5SW"; */
+"gRA-rb-5SW.text" = "ここにカテゴリが入る";
+
+/* Class = "UILabel"; text = "○問"; ObjectID = "gUh-sY-jRP"; */
+"gUh-sY-jRP.text" = "○問";
+
+/* Class = "UIButton"; normalTitle = "ダウンロード"; ObjectID = "hnl-36-QSY"; */
+"hnl-36-QSY.normalTitle" = "ダウンロード";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rRo-GN-Zz7"; */
+"rRo-GN-Zz7.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "レビュー"; ObjectID = "s4G-sx-sw1"; */
+"s4G-sx-sw1.normalTitle" = "レビュー";
+
+/* Class = "UIButton"; normalTitle = "シェア"; ObjectID = "spX-Na-v5M"; */
+"spX-Na-v5M.normalTitle" = "シェア";
+
+/* Class = "UILabel"; text = "○問"; ObjectID = "uhi-bI-3sY"; */
+"uhi-bI-3sY.text" = "○問";
+
+/* Class = "UIButton"; normalTitle = "復習"; ObjectID = "uwN-rT-ic7"; */
+"uwN-rT-ic7.normalTitle" = "復習";
+
+/* Class = "UILabel"; text = "○問"; ObjectID = "weB-FV-gLR"; */
+"weB-FV-gLR.text" = "○問";
+
+/* Class = "UITabBarItem"; title = "作成"; ObjectID = "xeP-EQ-jLt"; */
+"xeP-EQ-jLt.title" = "作成";

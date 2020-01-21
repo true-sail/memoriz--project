@@ -329,7 +329,7 @@ class MakeCardsVC: UIViewController {
 //            cardID =
                 
                 // 時間の設定
-                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(interval * 60), repeats: true)
                 let uuid = NSUUID().uuidString
                 let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
             
@@ -337,7 +337,7 @@ class MakeCardsVC: UIViewController {
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
                 // アラートのメッセージ
-                alertMessage = "分ごとに通知されます。"
+                alertMessage = "\(interval)時間ごとに通知されます。"
                 
         } else { // スイッチがオフの時、通知設定を削除
                 // 通知をnotification.requestのIDで消す
