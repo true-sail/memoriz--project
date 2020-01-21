@@ -15,7 +15,7 @@ import IQKeyboardManagerSwift
 var didCheckSwitch: Bool = true
 
 // 通知時間設定
-var interval: Int = 12
+var interval: Int = 1
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {

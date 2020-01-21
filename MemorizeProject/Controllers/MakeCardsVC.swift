@@ -27,6 +27,7 @@ class MakeCardsVC: UIViewController {
     var alertMessage = ""
     var alertTitle = ""
     
+    
     @IBOutlet weak var textViewQ: UITextView!
     
     @IBOutlet weak var textViewA: UITextView!
@@ -87,6 +88,7 @@ class MakeCardsVC: UIViewController {
         // 変数editCardがnilでなければ、textViewQ, textViewA, textFieldに文字を表示
         if let e = editCard {
             // nilでない場合（編集の場合）
+            
             // navbarのタイトル
             navigationItem.title = "編集画面"
                 
@@ -230,6 +232,7 @@ class MakeCardsVC: UIViewController {
                     // スイッチをオンに戻す
                     sender.isOn = true
                     didCheckSwitch = true
+                    
                 } else {
                     // スイッチをオンに戻す
                     sender.isOn = true
@@ -237,10 +240,13 @@ class MakeCardsVC: UIViewController {
                 }
             })
             // yesボタンの作成
-            let yesAction = UIAlertAction(title: "はい", style: .default) { (UIAlertAction) in
+            let yesAction = UIAlertAction(title: "はい", style: .default, handler:{
+            (action: UIAlertAction!) -> Void in
+                
                 didCheckSwitch = false
                 print("通知オフです")
-                }
+            })
+            
             // alertにnoボタンを追加
             alert.addAction(noAction)
             // alertにyesボタンを追加
@@ -307,9 +313,13 @@ class MakeCardsVC: UIViewController {
             // 新規作成の場合
             cardID = makeNewCards(inputQ, inputA, inputCategory, inputNotification: didCheckSwitch)
         }
-      
+        print("==========================-")
+      print(didCheckSwitch)
+        print("==========================-")
         // スイッチがオンの時、通知を設定
-        if didCheckSwitch == true {
+        if didCheckSwitch {
+            
+            print("created")
                 // 通知の作成
                 let notificationContent = UNMutableNotificationContent()
 
@@ -320,17 +330,12 @@ class MakeCardsVC: UIViewController {
 
                 // 通知音にデフォルト音声を設定
                 notificationContent.sound = .default
-                        
-                // 通知時間の作成
-                //            var notificationTime = DateComponents()
-                        let trigger: UNNotificationTrigger
-                //            let calendar = Calendar.current  // 現在時間を取得
-                    
-//            cardID =
-                
+              
+                let trigger: UNNotificationTrigger
+     
                 // 時間の設定
-            trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(interval * 60), repeats: true)
-                let uuid = NSUUID().uuidString
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(interval * 60), repeats: true)
+//                let uuid = NSUUID().uuidString
                 let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
             
                 // 通知を登録
@@ -339,11 +344,11 @@ class MakeCardsVC: UIViewController {
                 // アラートのメッセージ
                 alertMessage = "\(interval)時間ごとに通知されます。"
                 
-        } else { // スイッチがオフの時、通知設定を削除
+        } else {
+            
+                // スイッチがオフの時、通知設定を削除
                 // 通知をnotification.requestのIDで消す
                 let center = UNUserNotificationCenter.current()
-
-    //            let qId = self.studyCards[self.QNum].id
                 center.getPendingNotificationRequests { requests in
                 let identifiers = requests
                         .filter { $0.identifier == "\(self.cardID)"}
@@ -398,30 +403,6 @@ class MakeCardsVC: UIViewController {
         // アラートを表示
         present(alert, animated: true, completion: nil)
         
-        // 通知の作成
-        let notificationContent = UNMutableNotificationContent()
-
-        // 通知のタイトルに画面で入力された問題を設定
-        notificationContent.title = textViewQ.text!
-
-        // 通知の本文に画面で入力された答えを設定
-        notificationContent.body = textViewA.text!
-
-        // 通知音にデフォルト音声を設定
-        notificationContent.sound = .default
-        
-        // 通知時間の作成
-//            var notificationTime = DateComponents()
-        let trigger: UNNotificationTrigger
-//            let calendar = Calendar.current  // 現在時間を取得
-    
-        // 時間の設定
-        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
-        let uuid = NSUUID().uuidString
-        let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
-    
-        // 通知を登録
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         // textViewを最初の状態に戻す
         textViewQ.text = "問題"

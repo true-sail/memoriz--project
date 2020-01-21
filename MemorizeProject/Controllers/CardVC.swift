@@ -187,12 +187,24 @@ class CardVC: UIViewController {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          // 選択されたボタンがdeleteの場合
         if editingStyle == .delete {
+            
             // Realmに接続する
             let realm = try! Realm()
             
             // 該当のタスクをRealmから削除
             // indexPath.row： 今回スワイプしたやつの情報
-           let categorizedCard = categorizedCards[indexPath.row]
+            let categorizedCard = categorizedCards[indexPath.row]
+            
+            let cardID = categorizedCard.id
+            
+            // 通知をnotification.requestのIDで消す
+            let center = UNUserNotificationCenter.current()
+            center.getPendingNotificationRequests { requests in
+            let identifiers = requests
+                    .filter { $0.identifier == "\(cardID)"}
+                    .map { $0.identifier }
+            center.removePendingNotificationRequests(withIdentifiers: identifiers)
+            }
             
             try! realm.write {
                 realm.delete(categorizedCard)
