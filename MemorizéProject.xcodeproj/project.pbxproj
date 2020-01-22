@@ -184,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizeProject" */;
+			buildConfigurationList = 174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizéProject" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -427,7 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36LDD999SJ;
+				DEVELOPMENT_TEAM = YMGXADQ9A8;
 				INFOPLIST_FILE = MemorizeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,7 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36LDD999SJ;
+				DEVELOPMENT_TEAM = YMGXADQ9A8;
 				INFOPLIST_FILE = MemorizeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +462,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizeProject" */ = {
+		174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizéProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				174EC906239E97580075B28F /* Debug */,
