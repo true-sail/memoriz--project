@@ -224,7 +224,7 @@ class MakeCardsVC: UIViewController {
 //            createdCard
         } else {  // オフの場合
             // アラートの画面作成
-            let alert = UIAlertController(title: "通知オフだと覚える機会が減るよ！", message: "それでも通知オフにしますか？", preferredStyle: .alert)
+            let alert = UIAlertController(title: "覚える機会が減るよ！", message: "それでも通知オフにしますか？", preferredStyle: .alert)
             let noAction = UIAlertAction(title: "いいえ", style: .destructive , handler:{
             (action: UIAlertAction!) -> Void in
                
