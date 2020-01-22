@@ -25,7 +25,9 @@ class OtherVC: UIViewController {
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self
-       
+        
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
         
         // navbarの文字色
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -81,8 +83,8 @@ extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeView
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
             mailComposerVC.setToRecipients(["idts4869@gmail.com"])
-            mailComposerVC.setSubject("memorizéに関するご意見")
-            mailComposerVC.setMessageBody("ここにご意見を入力し、メールを送信して下さい。", isHTML: false)
+            mailComposerVC.setSubject("memorizéに関するご意見・ご要望")
+            mailComposerVC.setMessageBody("ここにご意見・ご要望を入力し、メールを送信して下さい。", isHTML: false)
             
             return mailComposerVC
         }

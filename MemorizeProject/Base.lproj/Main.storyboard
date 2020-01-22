@@ -117,16 +117,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-Lr-mvK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-Lr-mvK">
+                                <rect key="frame" x="0.0" y="87.666666666666686" width="414" height="720.66666666666652"/>
                                 <color key="backgroundColor" white="0.95775363869999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="7Mq-3I-oAI">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Xde-eT-MRT">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Mq-3I-oAI" id="yPE-Cg-V0y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xde-eT-MRT" id="mzt-t2-JsV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -134,6 +133,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pk4-Lr-mvK" firstAttribute="centerY" secondItem="eVv-Uy-zYa" secondAttribute="centerY" id="LRw-Dn-iEc"/>
+                            <constraint firstItem="pk4-Lr-mvK" firstAttribute="centerX" secondItem="eVv-Uy-zYa" secondAttribute="centerX" id="Thd-bu-5hm"/>
+                            <constraint firstItem="pk4-Lr-mvK" firstAttribute="width" secondItem="eVv-Uy-zYa" secondAttribute="width" id="mrM-gV-n7g"/>
+                            <constraint firstItem="EhO-za-lxb" firstAttribute="top" secondItem="pk4-Lr-mvK" secondAttribute="top" constant="0.33333333333331439" id="omX-sP-pth"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EhO-za-lxb"/>
                     </view>
                     <navigationItem key="navigationItem" id="FfO-E6-9be"/>
