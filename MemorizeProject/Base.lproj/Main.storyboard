@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6y-0a-pmr">
-                                <rect key="frame" x="37.666666666666664" y="695.66666666666663" width="339" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6y-0a-pmr">
+                                <rect key="frame" x="33" y="695.33333333333337" width="348" height="41"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="作成">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -73,19 +73,19 @@
                             <constraint firstItem="czo-4b-cWT" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.16183" id="0ho-lj-DsH"/>
                             <constraint firstItem="7oJ-88-UFE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.16183" id="2ub-nW-XVf"/>
                             <constraint firstItem="7oJ-88-UFE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.51" id="3BQ-ye-AM0"/>
+                            <constraint firstItem="b6y-0a-pmr" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.84" id="4IN-X4-rdG"/>
                             <constraint firstItem="7vX-1a-HuY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.46" id="6hy-IJ-qAy"/>
                             <constraint firstItem="SFa-4n-gjv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.236715" id="7V5-yw-iMJ"/>
                             <constraint firstItem="7vX-1a-HuY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.75" id="CSz-Mm-B1f"/>
                             <constraint firstItem="7oJ-88-UFE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DaG-Xn-8qf"/>
-                            <constraint firstItem="b6y-0a-pmr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nvg-bp-jR9"/>
+                            <constraint firstItem="b6y-0a-pmr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J07-Qy-kCv"/>
                             <constraint firstItem="czo-4b-cWT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.842995" id="PFC-Jb-QUn"/>
-                            <constraint firstItem="b6y-0a-pmr" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.818841" id="QnA-sa-Hvu"/>
                             <constraint firstItem="czo-4b-cWT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.83" id="RmL-Is-86o"/>
                             <constraint firstItem="SFa-4n-gjv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.225" id="TBL-0K-XMO"/>
                             <constraint firstItem="OUS-85-9JE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.46" id="UuL-yo-SD5"/>
                             <constraint firstItem="czo-4b-cWT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W9l-Ew-MJ3"/>
-                            <constraint firstItem="b6y-0a-pmr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.7" constant="-2.533333333333303" id="Wet-Wa-oFm"/>
                             <constraint firstItem="xXR-VR-3Yy" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.463768" id="Z04-tj-zba"/>
+                            <constraint firstItem="b6y-0a-pmr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.7" id="ZXz-zg-eFd"/>
                             <constraint firstItem="xXR-VR-3Yy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.225" id="c1t-RK-mcI"/>
                             <constraint firstItem="7oJ-88-UFE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.842995" id="dsV-D1-If8"/>
                             <constraint firstItem="OUS-85-9JE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.25" id="fku-G5-gDE"/>
@@ -267,9 +267,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feK-hZ-wdI">
-                                <rect key="frame" x="94" y="611" width="226" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feK-hZ-wdI">
+                                <rect key="frame" x="103.66666666666669" y="613.66666666666663" width="207" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="答えを表示"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
@@ -281,13 +281,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="feK-hZ-wdI" firstAttribute="width" secondItem="IVo-UB-7J6" secondAttribute="width" multiplier="0.545894" id="4Nc-ea-7BM"/>
+                            <constraint firstItem="feK-hZ-wdI" firstAttribute="width" secondItem="IVo-UB-7J6" secondAttribute="width" multiplier="0.5" id="C3B-NO-G0J"/>
                             <constraint firstItem="rRo-GN-Zz7" firstAttribute="height" secondItem="IVo-UB-7J6" secondAttribute="height" multiplier="0.285036" id="LjT-Wl-4bK"/>
-                            <constraint firstItem="feK-hZ-wdI" firstAttribute="centerX" secondItem="IVo-UB-7J6" secondAttribute="centerX" id="aep-83-g1s"/>
+                            <constraint firstItem="feK-hZ-wdI" firstAttribute="centerX" secondItem="IVo-UB-7J6" secondAttribute="centerX" id="hBV-17-H5T"/>
                             <constraint firstItem="rRo-GN-Zz7" firstAttribute="centerX" secondItem="IVo-UB-7J6" secondAttribute="centerX" id="j5m-FC-Bqe"/>
                             <constraint firstItem="rRo-GN-Zz7" firstAttribute="width" secondItem="IVo-UB-7J6" secondAttribute="width" multiplier="0.700483" id="ljw-0e-zgT"/>
                             <constraint firstItem="rRo-GN-Zz7" firstAttribute="centerY" secondItem="IVo-UB-7J6" secondAttribute="centerY" multiplier="0.73" id="twT-kk-ohG"/>
-                            <constraint firstItem="feK-hZ-wdI" firstAttribute="centerY" secondItem="IVo-UB-7J6" secondAttribute="centerY" multiplier="1.5" constant="-5.5" id="uqy-H4-eSK"/>
+                            <constraint firstItem="feK-hZ-wdI" firstAttribute="centerY" secondItem="IVo-UB-7J6" secondAttribute="centerY" multiplier="1.5" id="wPa-d3-FLl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Ab-zZ-Mwj"/>
                     </view>
@@ -316,9 +316,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak4-2i-iAW">
-                                <rect key="frame" x="239.33333333333331" y="615.33333333333326" width="101" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak4-2i-iAW">
+                                <rect key="frame" x="258.66666666666669" y="613.66666666666663" width="103.66666666666669" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="余裕"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
@@ -327,9 +327,9 @@
                                     <action selector="didClickButtonR:" destination="BjS-7m-4XC" eventType="touchUpInside" id="7Cr-6i-ukn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-E8-Wya">
-                                <rect key="frame" x="73.666666666666657" y="615.33333333333326" width="101" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-E8-Wya">
+                                <rect key="frame" x="51.666666666666664" y="613.66666666666663" width="103.66666666666669" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="難しい"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
@@ -342,15 +342,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0Dy-xJ-XgD" firstAttribute="width" secondItem="I7E-RD-FFv" secondAttribute="width" multiplier="0.700483" id="0rx-6F-3Gs"/>
-                            <constraint firstItem="Ak4-2i-iAW" firstAttribute="centerX" secondItem="I7E-RD-FFv" secondAttribute="centerX" multiplier="1.4" id="4jd-DN-BZC"/>
+                            <constraint firstItem="Uk2-E8-Wya" firstAttribute="width" secondItem="uuf-Zw-CA3" secondAttribute="width" multiplier="0.25" id="8Ip-CS-zhd"/>
                             <constraint firstItem="0Dy-xJ-XgD" firstAttribute="height" secondItem="I7E-RD-FFv" secondAttribute="height" multiplier="0.283848" id="94H-cN-nYW"/>
                             <constraint firstItem="0Dy-xJ-XgD" firstAttribute="centerY" secondItem="I7E-RD-FFv" secondAttribute="centerY" multiplier="0.73" id="GRG-xd-xqo"/>
-                            <constraint firstItem="Uk2-E8-Wya" firstAttribute="centerY" secondItem="I7E-RD-FFv" secondAttribute="centerY" multiplier="1.51" constant="-5.3766666666667788" id="Nh7-gE-wPn"/>
+                            <constraint firstItem="Uk2-E8-Wya" firstAttribute="centerX" secondItem="I7E-RD-FFv" secondAttribute="centerX" multiplier="0.5" id="H4P-HX-Pgt"/>
                             <constraint firstItem="0Dy-xJ-XgD" firstAttribute="centerX" secondItem="I7E-RD-FFv" secondAttribute="centerX" id="OHx-Vf-cHT"/>
-                            <constraint firstItem="Uk2-E8-Wya" firstAttribute="centerX" secondItem="I7E-RD-FFv" secondAttribute="centerX" multiplier="0.6" id="R5k-8O-dmY"/>
-                            <constraint firstItem="Ak4-2i-iAW" firstAttribute="centerY" secondItem="I7E-RD-FFv" secondAttribute="centerY" multiplier="1.51" constant="-5.3766666666667788" id="mYm-AE-zeP"/>
-                            <constraint firstItem="Uk2-E8-Wya" firstAttribute="width" secondItem="I7E-RD-FFv" secondAttribute="width" multiplier="0.243961" id="ueJ-w2-r4w"/>
-                            <constraint firstItem="Ak4-2i-iAW" firstAttribute="width" secondItem="I7E-RD-FFv" secondAttribute="width" multiplier="0.243961" id="vgd-0H-4Ja"/>
+                            <constraint firstItem="Ak4-2i-iAW" firstAttribute="centerY" secondItem="I7E-RD-FFv" secondAttribute="centerY" multiplier="1.5" id="TRU-dy-JoM"/>
+                            <constraint firstItem="Uk2-E8-Wya" firstAttribute="centerY" secondItem="I7E-RD-FFv" secondAttribute="centerY" multiplier="1.5" id="fV4-MO-ykJ"/>
+                            <constraint firstItem="Ak4-2i-iAW" firstAttribute="centerX" secondItem="I7E-RD-FFv" secondAttribute="centerX" multiplier="1.5" id="itX-oi-K5v"/>
+                            <constraint firstItem="Ak4-2i-iAW" firstAttribute="width" secondItem="I7E-RD-FFv" secondAttribute="width" multiplier="0.25" id="jK5-6I-0rf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uuf-Zw-CA3"/>
                     </view>
@@ -375,17 +375,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTs-ZM-woe">
-                                <rect key="frame" x="240.66666666666666" y="612" width="140" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="終わる"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="didClickReturnButton:" destination="Muu-ao-dDx" eventType="touchUpInside" id="AsP-fg-NWP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmw-S0-pBZ">
                                 <rect key="frame" x="66.666666666666686" y="194.33333333333337" width="281" height="226"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -435,9 +424,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-rT-ic7">
-                                <rect key="frame" x="33.666666666666664" y="612" width="140" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-rT-ic7">
+                                <rect key="frame" x="41.333333333333336" y="613.66666666666663" width="124.33333333333331" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="復習"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
@@ -446,38 +435,46 @@
                                     <action selector="didClickRetryButton:" destination="Muu-ao-dDx" eventType="touchUpInside" id="XOz-Ow-w8P"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDu-rF-MhW">
+                                <rect key="frame" x="248.33333333333334" y="613.66666666666663" width="124.33333333333334" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="終わる"/>
+                                <connections>
+                                    <action selector="didClickReturnButton:" destination="Muu-ao-dDx" eventType="touchUpInside" id="fvR-Kb-vEL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VPe-FW-L2Q" firstAttribute="width" secondItem="EEX-KP-pVf" secondAttribute="width" multiplier="0.282609" id="28J-Dx-zT6"/>
                             <constraint firstItem="uhi-bI-3sY" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="1.32" id="2jN-i1-htc"/>
-                            <constraint firstItem="uwN-rT-ic7" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="0.5" id="7Cp-cU-MeE"/>
+                            <constraint firstItem="uwN-rT-ic7" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="0.5" id="68C-Wb-HMR"/>
+                            <constraint firstItem="uwN-rT-ic7" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.3" id="AvQ-XK-Tic"/>
+                            <constraint firstItem="uwN-rT-ic7" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="1.5" id="G6e-xD-xgl"/>
                             <constraint firstItem="Bmw-S0-pBZ" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.678744" id="HY7-Aw-6UA"/>
                             <constraint firstItem="VPe-FW-L2Q" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="0.7" id="RQA-KP-0hv"/>
                             <constraint firstItem="gUh-sY-jRP" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="1.32" id="SKg-p0-F5P"/>
                             <constraint firstItem="P69-3I-iHo" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="0.7" id="UEj-qZ-dhq"/>
+                            <constraint firstItem="sDu-rF-MhW" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="1.5" id="Uuw-tR-9Eg"/>
                             <constraint firstItem="gUh-sY-jRP" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.73" id="Xrp-7M-yDh"/>
                             <constraint firstItem="Gcl-Zx-J8q" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="0.7" id="YZe-60-QRo"/>
                             <constraint firstItem="weB-FV-gLR" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.89" id="ZOf-cu-61H"/>
-                            <constraint firstItem="fTs-ZM-woe" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="1.5" id="Zbc-bb-Xm6"/>
-                            <constraint firstItem="uwN-rT-ic7" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.338164" id="aZZ-mj-S7t"/>
                             <constraint firstItem="uhi-bI-3sY" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.282609" id="aeh-So-LsL"/>
                             <constraint firstItem="Bmw-S0-pBZ" firstAttribute="height" secondItem="WTN-uv-odP" secondAttribute="height" multiplier="0.268409" id="azI-l4-mYo"/>
                             <constraint firstItem="gUh-sY-jRP" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.282609" id="bdX-Ve-cUl"/>
                             <constraint firstItem="VPe-FW-L2Q" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.89" id="dvw-Ql-5WB"/>
                             <constraint firstItem="0Te-3U-60h" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.46" id="fzW-m3-dyb"/>
                             <constraint firstItem="0Te-3U-60h" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.149758" id="h4C-lO-GOa"/>
-                            <constraint firstItem="fTs-ZM-woe" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="1.5" constant="-4.5" id="hjX-pF-ON2"/>
                             <constraint firstItem="0Te-3U-60h" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="0.6" id="iA1-hZ-u6v"/>
+                            <constraint firstItem="sDu-rF-MhW" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="1.5" id="iMd-Kv-iPL"/>
                             <constraint firstItem="Bmw-S0-pBZ" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.73" id="ngh-f1-9Md"/>
                             <constraint firstItem="weB-FV-gLR" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.282609" id="pqK-zc-6lM"/>
-                            <constraint firstItem="uwN-rT-ic7" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="1.5" constant="-4.5" id="t1D-cM-pl0"/>
+                            <constraint firstItem="sDu-rF-MhW" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.3" id="rWT-CC-qTv"/>
                             <constraint firstItem="Gcl-Zx-J8q" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.282609" id="tE6-e1-WkA"/>
                             <constraint firstItem="weB-FV-gLR" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" multiplier="1.32" id="ugl-0i-jfX"/>
                             <constraint firstItem="P69-3I-iHo" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.282609" id="vmm-R6-BA5"/>
                             <constraint firstItem="uhi-bI-3sY" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.57" id="wX0-aa-1V8"/>
                             <constraint firstItem="Gcl-Zx-J8q" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.57" id="xJe-g2-ZDC"/>
-                            <constraint firstItem="fTs-ZM-woe" firstAttribute="width" secondItem="WTN-uv-odP" secondAttribute="width" multiplier="0.338164" id="xOn-RR-dBz"/>
                             <constraint firstItem="P69-3I-iHo" firstAttribute="centerY" secondItem="WTN-uv-odP" secondAttribute="centerY" multiplier="0.73" id="xS1-If-X4c"/>
                             <constraint firstItem="Bmw-S0-pBZ" firstAttribute="centerX" secondItem="WTN-uv-odP" secondAttribute="centerX" id="yAv-49-PlB"/>
                         </constraints>
@@ -486,7 +483,7 @@
                     <navigationItem key="navigationItem" id="NVx-Mx-XSH"/>
                     <connections>
                         <outlet property="button1" destination="uwN-rT-ic7" id="yBa-PS-4gA"/>
-                        <outlet property="button2" destination="fTs-ZM-woe" id="yv4-RM-BU6"/>
+                        <outlet property="button2" destination="sDu-rF-MhW" id="EBg-yR-wGG"/>
                         <outlet property="label1" destination="Gcl-Zx-J8q" id="Xdh-RS-VtB"/>
                         <outlet property="label2" destination="P69-3I-iHo" id="9fo-o7-OC0"/>
                         <outlet property="label3" destination="VPe-FW-L2Q" id="FB6-Ah-io5"/>
@@ -597,9 +594,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boF-ws-zK2">
-                                <rect key="frame" x="243.66666666666666" y="696.33333333333326" width="132" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boF-ws-zK2">
+                                <rect key="frame" x="258.66666666666669" y="702" width="103.66666666666669" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="学習する"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
@@ -608,30 +605,30 @@
                                     <action selector="didClickStartButton2:" destination="uci-Ji-wl6" eventType="touchUpInside" id="HGl-t1-FSJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptv-hX-gkB">
-                                <rect key="frame" x="39" y="696" width="132" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaD-ZO-qDy">
+                                <rect key="frame" x="51.666666666666664" y="702" width="103.66666666666669" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="苦手克服"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didClickStartButton1:" destination="uci-Ji-wl6" eventType="touchUpInside" id="64y-OR-Xci"/>
+                                    <action selector="didClickStartButton1:" destination="uci-Ji-wl6" eventType="touchUpInside" id="sEN-Pb-er1"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Ptv-hX-gkB" firstAttribute="centerY" secondItem="Tfx-qT-gkH" secondAttribute="centerY" multiplier="1.75" constant="-4.3666666666666742" id="Npv-lw-Xkj"/>
-                            <constraint firstItem="boF-ws-zK2" firstAttribute="centerX" secondItem="Tfx-qT-gkH" secondAttribute="centerX" multiplier="1.5" id="QIY-5y-qvL"/>
+                            <constraint firstItem="GaD-ZO-qDy" firstAttribute="centerY" secondItem="Tfx-qT-gkH" secondAttribute="centerY" multiplier="1.71" id="0zk-wH-yRy"/>
+                            <constraint firstItem="boF-ws-zK2" firstAttribute="centerX" secondItem="Tfx-qT-gkH" secondAttribute="centerX" multiplier="1.5" id="5rr-59-aiC"/>
+                            <constraint firstItem="GaD-ZO-qDy" firstAttribute="centerX" secondItem="Tfx-qT-gkH" secondAttribute="centerX" multiplier="0.5" id="9A5-oP-w1S"/>
+                            <constraint firstItem="GaD-ZO-qDy" firstAttribute="width" secondItem="Tfx-qT-gkH" secondAttribute="width" multiplier="0.25" id="V28-8v-1m2"/>
                             <constraint firstItem="iLr-LT-Ni0" firstAttribute="height" secondItem="Tfx-qT-gkH" secondAttribute="height" multiplier="0.720903" id="Vkz-N2-UoQ"/>
-                            <constraint firstItem="Ptv-hX-gkB" firstAttribute="width" secondItem="Tfx-qT-gkH" secondAttribute="width" multiplier="0.323671" constant="-2" id="Vou-jx-0Hh"/>
-                            <constraint firstItem="boF-ws-zK2" firstAttribute="width" secondItem="Tfx-qT-gkH" secondAttribute="width" multiplier="0.323671" constant="-2" id="Xbw-rx-0Zx"/>
                             <constraint firstItem="iLr-LT-Ni0" firstAttribute="width" secondItem="Tfx-qT-gkH" secondAttribute="width" id="Yvv-1J-oeD"/>
                             <constraint firstItem="iLr-LT-Ni0" firstAttribute="centerX" secondItem="Tfx-qT-gkH" secondAttribute="centerX" id="cnh-4K-KSF"/>
-                            <constraint firstItem="boF-ws-zK2" firstAttribute="centerY" secondItem="Tfx-qT-gkH" secondAttribute="centerY" multiplier="1.75" constant="-4.3666666666666742" id="pgn-V9-tV0"/>
-                            <constraint firstItem="Ptv-hX-gkB" firstAttribute="centerX" secondItem="Tfx-qT-gkH" secondAttribute="centerX" multiplier="0.5" constant="1.5" id="t6I-AP-v0o"/>
+                            <constraint firstItem="boF-ws-zK2" firstAttribute="centerY" secondItem="Tfx-qT-gkH" secondAttribute="centerY" multiplier="1.71" id="m3u-hn-Afg"/>
                             <constraint firstItem="iLr-LT-Ni0" firstAttribute="centerY" secondItem="Tfx-qT-gkH" secondAttribute="centerY" multiplier="0.9" id="tYn-cx-m6j"/>
+                            <constraint firstItem="boF-ws-zK2" firstAttribute="width" secondItem="4p9-X5-yfo" secondAttribute="width" multiplier="0.25" id="ud4-gj-evS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4p9-X5-yfo"/>
                     </view>
@@ -651,7 +648,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button1" destination="Ptv-hX-gkB" id="ho9-ZA-3AV"/>
+                        <outlet property="button1" destination="GaD-ZO-qDy" id="Scd-sF-Dvi"/>
                         <outlet property="button2" destination="boF-ws-zK2" id="myH-YK-dkI"/>
                         <outlet property="tableView" destination="iLr-LT-Ni0" id="m0D-x9-I9Y"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toEdit" id="WYJ-Hy-W7J"/>

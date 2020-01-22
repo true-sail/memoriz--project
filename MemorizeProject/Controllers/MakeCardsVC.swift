@@ -334,7 +334,7 @@ class MakeCardsVC: UIViewController {
                 let trigger: UNNotificationTrigger
      
                 // 時間の設定
-                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 43200, repeats: true)
 //                let uuid = NSUUID().uuidString
                 let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
             
@@ -342,7 +342,7 @@ class MakeCardsVC: UIViewController {
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
                 // アラートのメッセージ
-                alertMessage = "分ごとに通知されます。"
+                alertMessage = "12時間ごとに通知されます。"
                 
         } else {
             

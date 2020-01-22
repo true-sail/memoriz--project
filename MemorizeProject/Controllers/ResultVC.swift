@@ -32,7 +32,7 @@ class ResultVC: UIViewController {
     
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +101,9 @@ class ResultVC: UIViewController {
         performSegue(withIdentifier: "returnToQuestion", sender: retryCards)
     }
     
+
     @IBAction func didClickReturnButton(_ sender: UIButton) {
-               
+    
         performSegue(withIdentifier: "returnToCard", sender: categorizedCards)
     }
     

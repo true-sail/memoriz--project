@@ -110,8 +110,8 @@ class CardVC: UIViewController {
     
     // 苦手のみ学習するボタンを押した時の処理
     @IBAction func didClickStartButton1(_ sender: UIButton) {
-        
-        // もしカードが0枚の時、アラートを表示し処理を中断する
+
+    // もしカードが0枚の時、アラートを表示し処理を中断する
         if categorizedCards.count == 0 {
             let alert = UIAlertController(title:  "カードがありません", message: "カードを作成して下さい", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
