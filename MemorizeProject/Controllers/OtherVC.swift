@@ -11,7 +11,7 @@ import StoreKit
 import Accounts
 import MessageUI
 
-var others = ["レビュー", "ご意見", "アプリを教える"]
+var others = ["ご意見はこちら"]
 
 class OtherVC: UIViewController {
 
@@ -25,6 +25,7 @@ class OtherVC: UIViewController {
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self
+       
         
         // navbarの文字色
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -33,13 +34,13 @@ class OtherVC: UIViewController {
         
         // navbarのタイトル
         navigationItem.title = "その他"
-             
-     
+
+
     }
 
         
 }
-extension OtherVC: UITableViewDataSource, UITableViewDelegate {
+extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         others.count
     }
@@ -57,51 +58,44 @@ extension OtherVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let other = others[indexPath.row]
         
-        if other == "レビュー" {
-            // レビューページへ遷移
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
+        if other == "ご意見はこちら" {
+            let mailComposeViewController = configureMailController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                showMailError()
             }
-                // iOS 10.3未満の処理
-            else {
-                if let url = URL(string: "itms-apps://itunes.apple.com/app/id1274048262?action=write-review") {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url, options: [:])
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-            }
-        } else if other == "アプリを教える" {
-            
-            // 共有する項目
-                    let shareText = "memorizé(メモリゼ)で効率よく暗記しよう！"
-                    let shareWebsite = NSURL(string: "https://www.apple.com/jp/watch/")!
-            //        let shareImage = UIImage(named: "shareSample.png")!
-
-            //        let activityItems = [shareText, shareWebsite, shareImage] as [Any]
-
-                     let activityItems = [shareText, shareWebsite] as [Any]
-                    
-                    // 初期化処理
-                    let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-
-                    // 使用しないアクティビティタイプ
-                    let excludedActivityTypes = [
-            //            UIActivity.ActivityType.postToFacebook,
-            //            UIActivity.ActivityType.postToTwitter,
-            //            UIActivity.ActivityType.message,
-                        UIActivity.ActivityType.saveToCameraRoll,
-                        UIActivity.ActivityType.print
-                    ]
-
-                    activityVC.excludedActivityTypes = excludedActivityTypes
-
-                    // UIActivityViewControllerを表示
-                    self.present(activityVC, animated: true, completion: nil)
-            
         }
-    }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        }
+
+        
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            
+            return "その他"
+        }
     
+        func configureMailController() -> MFMailComposeViewController {
+            let mailComposerVC = MFMailComposeViewController()
+            mailComposerVC.mailComposeDelegate = self
+            mailComposerVC.setToRecipients(["idts4869@gmail.com"])
+            mailComposerVC.setSubject("memorizéに関するご意見")
+            mailComposerVC.setMessageBody("ここにご意見を入力し、メールを送信して下さい。", isHTML: false)
+            
+            return mailComposerVC
+        }
+    
+        func showMailError() {
+            let sendMailErrorAlert = UIAlertController(title: "メールを送信できません", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            sendMailErrorAlert.addAction(okAction)
+            self.present(sendMailErrorAlert, animated: true, completion: nil)
+        }
+    
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            controller.dismiss(animated: true, completion: nil)
+        }
     
 }

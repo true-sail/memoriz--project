@@ -241,6 +241,7 @@ extension CardVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let editCard = categorizedCards[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         
         performSegue(withIdentifier: "toEdit", sender: editCard)
     }
