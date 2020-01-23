@@ -668,29 +668,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="memorizé" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-3z-o1s">
-                                <rect key="frame" x="57.666666666666657" y="419.33333333333331" width="299" height="57.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memorizé" translatesAutoresizingMaskIntoConstraints="NO" id="H47-1z-fPD">
+                                <rect key="frame" x="41.333333333333343" y="-493" width="331.33333333333371" height="1882.0000000000005"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="A7L-3z-o1s" firstAttribute="centerX" secondItem="me2-V9-wdm" secondAttribute="centerX" id="TDy-yr-1AL"/>
-                            <constraint firstItem="A7L-3z-o1s" firstAttribute="width" secondItem="me2-V9-wdm" secondAttribute="width" multiplier="0.722222" id="Vac-Uh-G7i"/>
-                            <constraint firstItem="A7L-3z-o1s" firstAttribute="centerY" secondItem="me2-V9-wdm" secondAttribute="centerY" id="dWq-Id-UDi"/>
+                            <constraint firstItem="H47-1z-fPD" firstAttribute="width" secondItem="me2-V9-wdm" secondAttribute="width" multiplier="0.8" id="0yT-Qg-3i4"/>
+                            <constraint firstItem="H47-1z-fPD" firstAttribute="centerY" secondItem="me2-V9-wdm" secondAttribute="centerY" id="1Kx-mM-MSG"/>
+                            <constraint firstItem="H47-1z-fPD" firstAttribute="centerX" secondItem="me2-V9-wdm" secondAttribute="centerX" id="lZL-lf-ClE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2pE-Se-vvR"/>
                     </view>
                     <connections>
-                        <outlet property="label" destination="A7L-3z-o1s" id="fsz-mo-zpJ"/>
+                        <outlet property="imageView" destination="H47-1z-fPD" id="ldI-YV-CvO"/>
                         <segue destination="ids-fl-vr2" kind="modal" identifier="toStart" modalPresentationStyle="fullScreen" id="37p-aJ-vBq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANb-Te-OlD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="15"/>
+            <point key="canvasLocation" x="408.69565217391306" y="14.732142857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DFx-yR-SNt">
@@ -795,6 +792,7 @@
         <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
         <image name="ellipsis.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="memorizé" width="1882" height="1882"/>
         <image name="plus.app" catalog="system" width="64" height="56"/>
         <image name="plus.app.fill" catalog="system" width="64" height="56"/>
     </resources>
