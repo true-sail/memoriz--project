@@ -672,7 +672,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memorizé" translatesAutoresizingMaskIntoConstraints="NO" id="H47-1z-fPD">
-                                <rect key="frame" x="41.333333333333343" y="-493" width="331.33333333333371" height="1882.0000000000005"/>
+                                <rect key="frame" x="41.333333333333343" y="-1434" width="331.33333333333326" height="3764"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

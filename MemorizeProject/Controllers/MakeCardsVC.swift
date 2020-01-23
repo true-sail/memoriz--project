@@ -313,9 +313,6 @@ class MakeCardsVC: UIViewController {
             // 新規作成の場合
             cardID = makeNewCards(inputQ, inputA, inputCategory, inputNotification: didCheckSwitch)
         }
-        print("==========================-")
-      print(didCheckSwitch)
-        print("==========================-")
         // スイッチがオンの時、通知を設定
         if didCheckSwitch {
             
@@ -340,6 +337,11 @@ class MakeCardsVC: UIViewController {
             
                 // 通知を登録
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
+                UNUserNotificationCenter.current().getPendingNotificationRequests{requests in
+                print(requests)
+                }
+            
             
                 // アラートのメッセージ
                 alertMessage = "12時間ごとに通知されます。"
