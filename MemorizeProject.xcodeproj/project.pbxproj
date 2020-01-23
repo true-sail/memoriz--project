@@ -30,7 +30,7 @@
 
 /* Begin PBXFileReference section */
 		171EB40623BA75FB00DE67E0 /* DownloadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVC.swift; sourceTree = "<group>"; };
-		174EC8F4239E97560075B28F /* MemorizeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemorizeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		174EC8F4239E97560075B28F /* memorizé.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "memorizé.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		174EC8F7239E97560075B28F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		174EC8F9239E97560075B28F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		174EC8FE239E97560075B28F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		174EC8F5239E97560075B28F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				174EC8F4239E97560075B28F /* MemorizeProject.app */,
+				174EC8F4239E97560075B28F /* memorizé.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 			);
 			name = MemorizeProject;
 			productName = MemorizeProject;
-			productReference = 174EC8F4239E97560075B28F /* MemorizeProject.app */;
+			productReference = 174EC8F4239E97560075B28F /* memorizé.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizéProject" */;
+			buildConfigurationList = 174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizeProject" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -434,7 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MemorizeApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "memorizé";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,7 +453,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MemorizeApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "memorizé";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,7 +462,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizéProject" */ = {
+		174EC8EF239E97560075B28F /* Build configuration list for PBXProject "MemorizeProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				174EC906239E97580075B28F /* Debug */,

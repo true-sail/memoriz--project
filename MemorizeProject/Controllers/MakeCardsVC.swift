@@ -330,8 +330,10 @@ class MakeCardsVC: UIViewController {
               
                 let trigger: UNNotificationTrigger
      
-                // 時間の設定
-                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 43200, repeats: true)
+//                // 時間の設定
+//                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 43200, repeats: true)
+            // 時間の設定
+                        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
 //                let uuid = NSUUID().uuidString
                 let request = UNNotificationRequest(identifier: "\(cardID)", content: notificationContent, trigger: trigger)
             
