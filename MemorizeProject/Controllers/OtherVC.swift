@@ -11,7 +11,11 @@ import StoreKit
 import Accounts
 import MessageUI
 
-var others = ["ご意見はこちら"]
+
+var sections = [String]()
+var othersArray = [[String]]()
+var header = ""
+var selectedCell = ""
 
 class OtherVC: UIViewController {
 
@@ -37,30 +41,81 @@ class OtherVC: UIViewController {
         // navbarのタイトル
         navigationItem.title = "その他"
 
+        sections = ["設定", "その他"]
+        
+        for _ in 0 ... 1 {
+            othersArray.append([])
+        }
+        
+        othersArray[0] = ["通知間隔を設定する"]
+        othersArray[1] = ["アプリを評価する", "アプリを教える", "ご意見はこちら"]
 
     }
 
         
 }
 extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        others.count
+        return othersArray[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = others[indexPath.row]
-        
+        cell.textLabel?.text = othersArray[indexPath.section][indexPath.row]
         cell.accessoryType = .disclosureIndicator
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let other = others[indexPath.row]
+        header = sections[indexPath.section]
+        selectedCell = othersArray[indexPath.section][indexPath.row]
         
-        if other == "ご意見はこちら" {
+        if selectedCell == "通知間隔を設定する" {
+            
+        
+        } else if selectedCell == "アプリを評価する" {
+            // レビューページへ遷移
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                
+                if let url = URL(string: "itms-apps://itunes.apple.com/app/id1495997508?action=write-review") {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:])
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+        } else if selectedCell == "アプリを教える" {
+            
+            // 共有する項目
+            let shareText = "memorizé(メモリゼ)で効率よく覚えよう！"
+            let shareWebsite = NSURL(string: "https://apps.apple.com/jp/app/memoriz%C3%A9-%E3%83%8A%E3%83%9E%E3%82%B1%E3%83%A2%E3%83%8E%E3%81%AB%E3%82%82%E6%9A%97%E8%A8%98%E3%82%A2%E3%83%97%E3%83%AA/id1495997508")!
+            
+            let activityItems = [shareText, shareWebsite] as [Any]
+            
+            // 初期化処理
+            let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+            // 使用しないアクティビティタイプ
+            let excludedActivityTypes = [
+                UIActivity.ActivityType.saveToCameraRoll,
+                UIActivity.ActivityType.print
+            ]
+
+            activityVC.excludedActivityTypes = excludedActivityTypes
+
+            // UIActivityViewControllerを表示
+            self.present(activityVC, animated: true, completion: nil)
+        } else if selectedCell == "ご意見はこちら" {
             let mailComposeViewController = configureMailController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: nil)
@@ -69,14 +124,14 @@ extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeView
             }
         }
         
+
         tableView.deselectRow(at: indexPath, animated: true)
         
         }
 
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            
-            return "その他"
+            return sections[section]
         }
     
         func configureMailController() -> MFMailComposeViewController {
