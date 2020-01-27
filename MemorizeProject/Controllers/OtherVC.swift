@@ -30,6 +30,7 @@ class OtherVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         
@@ -41,21 +42,26 @@ class OtherVC: UIViewController {
         // navbarのタイトル
         navigationItem.title = "その他"
 
-        sections = ["設定", "その他"]
-        
-        for _ in 0 ... 1 {
-            othersArray.append([])
-        }
-        
-        othersArray[0] = ["通知間隔を設定する"]
-        othersArray[1] = ["アプリを評価する", "アプリを教える", "ご意見はこちら"]
+        // tableViewのグループ化
+//        sections = ["設定", "その他"]
+//        for _ in 0 ... 1 {
+//            othersArray.append([])
+//        }
+                
+        sections = ["その他"]
+//        othersArray[0] = ["通知間隔を設定する"]
+//        othersArray[1] = ["アプリを評価する", "アプリを教える", "ご意見はこちら"]
+        othersArray.append(["アプリを評価する", "アプリを教える", "ご意見はこちら"])
 
+        
+       
     }
 
         
 }
+
 extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -78,6 +84,7 @@ extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeView
         selectedCell = othersArray[indexPath.section][indexPath.row]
         
         if selectedCell == "通知間隔を設定する" {
+            
             
         
         } else if selectedCell == "アプリを評価する" {
@@ -154,5 +161,7 @@ extension OtherVC: UITableViewDataSource, UITableViewDelegate, MFMailComposeView
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
             controller.dismiss(animated: true, completion: nil)
         }
+    
+
     
 }
