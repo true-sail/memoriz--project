@@ -32,6 +32,9 @@ class SearchVC: UIViewController {
         // naigationBarの色設定
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
+        // 常にライトモード（明るい外観）を指定することでダークモード適用を回避
+        self.overrideUserInterfaceStyle = .light
+        
         // おまじない
         tableView.delegate = self
         tableView.dataSource = self

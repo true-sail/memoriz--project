@@ -52,6 +52,9 @@ class MakeCardsVC: UIViewController {
         // tabbarの色設定
         tabBarController?.tabBar.barTintColor = UIColor(red: 109/255, green: 185/255, blue: 208/255, alpha: 100)
         
+        // 常にライトモード（明るい外観）を指定することでダークモード適用を回避
+        self.overrideUserInterfaceStyle = .light
+        
         // おまじない
         textViewQ.delegate = self
         textViewA.delegate = self

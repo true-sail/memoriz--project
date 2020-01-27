@@ -37,6 +37,9 @@ class ResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 常にライトモード（明るい外観）を指定することでダークモード適用を回避
+        self.overrideUserInterfaceStyle = .light
+        
         // nuvbaritemを消す
          self.navigationItem.setHidesBackButton(true, animated:true);
         
